@@ -159,12 +159,12 @@ def client_process(rank, args, model, device,dataset, test_dataset, kwargs,kwarg
     
     while not flag.value:
         
-        #epoch_begin = time.time()
+        # epoch_begin = time.time() ##
 
-        #train_begin = time.time()
+        train_begin = time.time() ##
         train_epoch(epoch, args, model, device, train_loader, optimizer,rank)
-        #train_end = time.time()
-        #logging("id:{},train time:{}".format(rank,train_end-train_begin),args)
+        train_end = time.time() ##
+        logging("id:{},train time:{}".format(rank,train_end-train_begin),args) ##
 
         params_list,params_num,layer_shape = params_tolist(model)
         total_sum = sum(params_num.values())
@@ -178,17 +178,21 @@ def client_process(rank, args, model, device,dataset, test_dataset, kwargs,kwarg
             if args.enc:
                 if args.algorithm == 'paillier':
                     params_list = (np.array(params_list) * self_weight).tolist()
+                    
                 if args.algorithm == 'bfv':
                     params_list = (np.array(params_list) * self_weight).tolist()
+
                 if args.isSpars == 'topk' :  
-                    #enc_begin = time.time()
+                    enc_begin = time.time() ##
                     cipher, mask = enc_params(params_list,enc_tools, args)
                     pipe.send([rank,mask,cipher])
-                    #enc_end = time.time()
-                    #logging("id:{},enc time:{}".format(rank,enc_end-enc_begin),args)
-                    # lock.acquire()
-                    # logging("client {}, send mask {}.".format(rank,mask),args)
-                    # lock.release()
+                    enc_end = time.time() ##
+                    logging("id:{},enc time:{}".format(rank,enc_end-enc_begin),args) ##
+                    lock.acquire() ##
+                    # logging("client {}, send mask {}.".format(rank,mask),args) ##
+                    logging(f"client {rank}, mask ones: {sum(mask)}, len: {len(mask)}", args) ##
+                    lock.release() ##
+
                 elif args.isSpars == 'randk':
                     cipher, randk_list = enc_params(params_list,enc_tools,args,epoch = epoch)
                     if rank == 0:
@@ -196,16 +200,41 @@ def client_process(rank, args, model, device,dataset, test_dataset, kwargs,kwarg
                     pipe.send([rank,cipher])                 
 
                 elif args.isSpars == 'full':
-                    #enc_begin = time.time()
+                    enc_begin = time.time() ##
                     cipher = enc_params(params_list,enc_tools,args,epoch = epoch)
                     pipe.send([rank,cipher])
-                    #enc_end = time.time()
-                    #logging("id:{},enc time:{}".format(rank,enc_end-enc_begin),args)
+                    enc_end = time.time() ##
+                    logging("id:{},enc time:{}".format(rank,enc_end-enc_begin),args) ##
+
             else:
-                pipe.send([rank,params_list])
-            # lock.acquire()
-            # logging("client {}, send params {}.".format(rank,params_list[0]),args)
-            # lock.release()
+                # ===== 여기(평문 송신 지점)에 '스파스 + 트래픽 로깅'을 넣는다 =====
+                arr = np.array(params_list, dtype=np.float32)
+
+                if args.isSpars == 'topk':
+                    # 1) element-wise 절댓값 상위 k% 선택 (임시 구현)
+                    k = max(1, int(len(arr) * args.topk))
+                    idx = np.argpartition(np.abs(arr), -k)[-k:]
+                    sparse_vals = arr[idx]
+
+                    # 2) 트래픽 로깅 (평문): 값 k개 + 인덱스 k개 (각 4B 가정)
+                    if args.cipher_count:
+                        bytes_out = k * 4 + k * 4
+                        logging(f"[PT-Sparse] client {rank} uplink ~{bytes_out} bytes (k={k})", args)
+
+                    # 3) 전송
+                    pipe.send([rank, idx.tolist(), sparse_vals.tolist()])
+
+                else:
+                    # full 평문 전송
+                    if args.cipher_count:
+                        bytes_out = len(arr) * 4
+                        logging(f"[PT-Full] client {rank} uplink ~{bytes_out} bytes", args)
+
+                    pipe.send([rank, arr.tolist()])
+
+            # lock.acquire() ##
+            # logging("client {}, send params {}.".format(rank,params_list[0]),args) ##
+            # lock.release() ##
 
         if flag.value:
             break       
@@ -214,30 +243,35 @@ def client_process(rank, args, model, device,dataset, test_dataset, kwargs,kwarg
         e.wait()
 
         global_list = queue.get()
-        involved_frac = global_list[0]      
-        global_weights = global_list[1]  
+        involved_frac = global_list[0]   # 평문=가중치합, CKKS-full=가중치합, CKKS-topk=pack별 합 sum_mask   
+        global_weights = global_list[1]  # 평문=합계 벡터, CKKS=암호문 리스트
+
 
         if args.enc:
             if args.isSpars == 'topk':
-                #dec_begin = time.time()
+                dec_begin = time.time() ##
                 sum_masks = involved_frac
-                global_weights = (dec_params(global_weights,sum_masks,enc_tools, args)).tolist()
-                #dec_end = time.time()
-                #logging("id:{},dec time:{}".format(rank,dec_end-dec_begin),args)
+                global_weights = (dec_params(global_weights,sum_masks,enc_tools, args)).tolist() # pack별 정규화 내장
+                dec_end = time.time() ##
+                logging("id:{},dec time:{}".format(rank,dec_end-dec_begin),args) ##
+
             elif args.isSpars == 'randk':
                 global_weights = (dec_params(global_weights,sum_masks,enc_tools, args, randk_list)).tolist()
-            else:
-                #dec_begin = time.time()
+
+            else: # full
+                dec_begin = time.time() ##
                 global_weights = (dec_params(global_weights,sum_masks, enc_tools,args) / involved_frac).tolist()
-                #dec_end = time.time()
-                #logging("id:{},dec time:{}".format(rank,dec_end-dec_begin),args)
+                dec_end = time.time() ##
+                logging("id:{},dec time:{}".format(rank,dec_end-dec_begin),args) ##
+
             global_weights = global_weights[:total_sum]
-        else:
-            global_weights = (np.array(global_weights) / involved_frac).tolist()
-   
-        # lock.acquire()
-        # print('client{},receive{}'.format(rank,global_weights[0])) 
-        # lock.release()
+
+        else: # plain-text
+            global_weights = (np.array(global_weights) / involved_frac).tolist() ## 필수
+            
+        # lock.acquire() ##
+        # print('client{},receive{}'.format(rank,global_weights[0])) ##
+        # lock.release() ##
         params_list,params_num,layer_shape = params_tolist(model)
 
         params_tomodel(model,global_weights,params_num,layer_shape,args,params_list)
@@ -245,7 +279,7 @@ def client_process(rank, args, model, device,dataset, test_dataset, kwargs,kwarg
         if args.enc:
             client_acc,client_loss = test_epoch(model, device, test_loader)
             acc_pipe.send([rank,client_acc,client_loss])
-            print('client{},acc:{},loss:{}'.format(rank,client_acc,client_loss)) 
+            # print('client{},acc:{},loss:{}'.format(rank,client_acc,client_loss)) 
 
         if args.isSelection:
             client_hash = minHash(rank, random_R,global_weights,params_list,args)
@@ -269,7 +303,7 @@ def client_process(rank, args, model, device,dataset, test_dataset, kwargs,kwarg
                 self_flag = True
                 idx = clients_share.index(rank)
                 self_weight = clients_weights[idx]      
-        #epoch_end = time.time()
+        # epoch_end = time.time() ##
  
         epoch += 1
 
@@ -287,7 +321,7 @@ def test(args, model, device, dataset, kwargs):
     return test_epoch(model, device, test_loader)
 
 
-def train_epoch(epoch, args, model, device, data_loader, optimizer,rank):
+def train_epoch(epoch, args, model, device, data_loader, optimizer,rank): # 표준 학습 루프 (CE Loss)
     model.to(device)
     model.train()
     loss_fn = torch.nn.CrossEntropyLoss()
@@ -301,13 +335,13 @@ def train_epoch(epoch, args, model, device, data_loader, optimizer,rank):
         optimizer.zero_grad()
         loss.backward()
         optimizer.step()
-        # if batch_idx == len(data_loader) - 1:      
+        # if batch_idx == len(data_loader) - 1:     ##  
         #     logging('client {}\tTrain Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}'.format(
         #         rank, epoch, batch_idx * len(data), len(data_loader.dataset),
-        #         100. * batch_idx / len(data_loader), loss.item()))
+        #         100. * batch_idx / len(data_loader), loss.item())) ##
      
 
-def test_epoch(model, device, data_loader):
+def test_epoch(model, device, data_loader): # testset에서 평균 loss/acc 계산해 반환 (암호문일 때만 클라가 서버로 보냄)
     model.to(device)
     model.eval()
     correct = 0
@@ -315,16 +349,16 @@ def test_epoch(model, device, data_loader):
     with torch.no_grad():
         for data, target in data_loader:
             output = model(data.to(device))
-            #test_loss += F.nll_loss(output, target.to(device), reduction='sum').item() # sum up batch loss
-            #test_loss += torch.nn.CrossEntropyLoss()(output, target.to(device),reduction='sum')
+            # test_loss += F.nll_loss(output, target.to(device), reduction='sum').item() # sum up batch loss ##
+            # test_loss += torch.nn.CrossEntropyLoss()(output, target.to(device),reduction='sum') ##
             test_loss +=F.cross_entropy(output, target.to(device), reduction='sum')
             pred = output.max(1)[1] # get the index of the max log-probability
             correct += pred.eq(target.to(device)).sum().item()
     test_loss /= len(data_loader.dataset)
-    #print("loss",test_loss)
+    # print("loss",test_loss) ##
     # print('\nTest set: Average loss: {:.4f}, Accuracy: {}/{} ({:.0f}%)\n'.format(
     #     test_loss, correct, len(data_loader.dataset),
-    #     100. * correct / len(data_loader.dataset)))
+    #     100. * correct / len(data_loader.dataset))) ##
     client_acc = correct / len(data_loader.dataset)
 
     # set the return variable format

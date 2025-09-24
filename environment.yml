@@ -1,0 +1,15 @@
+name: fedphe
+channels:
+  - defaults
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+      - numpy==1.26.2
+      - torch==2.1.2
+      - tenseal==0.3.14
+      - gmpy2==2.1.5
+      - gap-stat==2.0.3
+      - pillow==9.5.0 # 6.1
+      - scikit-learn==1.3.0
+      - pandas==2.1.4

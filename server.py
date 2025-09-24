@@ -13,7 +13,6 @@ from utils.util import logging
 import tenseal as ts
 import pickle
 import utils.min_hash as lsh
-import time
 from functools import reduce
 from multiprocessing import Pool,cpu_count
 from utils import sampling
@@ -23,6 +22,14 @@ from encryption.bfv import bfv_dec
 from client import params_tolist,params_tomodel
 from utils.util import model_init
 from client import test_epoch
+
+''' 추가 '''
+import csv
+import matplotlib
+matplotlib.use("Agg")  # GUI 없는 서버에서도 저장 가능
+import matplotlib.pyplot as plt
+''' 추가 '''
+
 #######################################
 def chunks_idx(l, n):
     d, r = divmod(len(l), n)
@@ -94,7 +101,7 @@ def recv_acc(idx,pipe,recv_list,rec):
     recv_list[idx] = 0
     return
 
-def test_epoch1(model, device, data_loaders):
+def test_epoch1(model, device, data_loaders): # 평문일 경우 서버가 자체 모델로 loss/acc 평가
     model.to(device)
     model.eval()
     correct = 0
@@ -144,6 +151,7 @@ def aggregatie_weights(rec,recv_list,weights_client,total_sum,batch_num,id_list,
             sum_mask = [0] * batch_num
     else:
         agg_res = np.zeros(total_sum)
+        plaintext_size = 0 # 평문 바이트 누적 (옵션)
     add_count = 0
     for idx,value in enumerate(rec.values()):
         c_id = value[0]
@@ -284,9 +292,36 @@ def aggregatie_weights(rec,recv_list,weights_client,total_sum,batch_num,id_list,
         else:
             value = value[1]
             if recv_list[c_id] == 0:
-                add_params = np.array(value)*weights_client[c_id]
+                # if args.cipher_count: ## 
+                #     # float32 가정: 4 bytes/param. (pickle 오버헤드는 비교 지표에서 제외) ##
+                #     plaintext_size += len(value) * 4 ##
+                # add_params = np.array(value)*weights_client[c_id] ##
+
+                ''' 추가 '''
+                if isinstance(value, list) and len(value) == 2 and isinstance(value[0], list):
+                    # 스파스 패킷: [idx_list, sparse_vals]
+                    idx_list, sparse_vals = value
+                    full = np.zeros(total_sum, dtype=np.float32)
+                    full[np.array(idx_list, dtype=np.int64)] = np.array(sparse_vals, dtype=np.float32)
+                    add_params = full * weights_client[c_id]
+                    if args.cipher_count:
+                        # 값 k개(4B) + 인덱스 k개(4B)
+                        plaintext_size += (len(idx_list) * 4) + (len(idx_list) * 4)
+                else:
+                    # 기존 full 벡터
+                    add_params = np.array(value) * weights_client[c_id]
+                    if args.cipher_count:
+                        plaintext_size += len(value) * 4
+                ''' 추가 '''
+
                 weights += weights_client[c_id]
                 agg_res += add_params
+                
+    '''추가'''
+    logging(f"enc={args.enc}, isSpars={args.isSpars}, cipher_count={args.cipher_count}", args)
+    # print("DEBUG enc:", args.enc, "isSpars:", args.isSpars, "cipher_count:", args.cipher_count)
+    '''추가'''
+
     if args.enc:
         if args.isSpars == 'topk':
             if args.cipher_count:
@@ -302,6 +337,9 @@ def aggregatie_weights(rec,recv_list,weights_client,total_sum,batch_num,id_list,
                 return weights,global_cipher
     else:
         agg_res = agg_res.tolist()
+        if args.cipher_count: ##
+            # 암호문과 인터페이스 맞추려고 동일 형식으로 돌려줌
+            return weights, plaintext_size, agg_res ##
         return weights,agg_res
 
 def server_process(args,kwargs_IPC,total_sum,batch_num,train_weights,test_weights,server_test_sets,kwargs):
@@ -338,16 +376,51 @@ def server_process(args,kwargs_IPC,total_sum,batch_num,train_weights,test_weight
     weights_client = [weight for weight in train_weights]   
     time_list = []
     tmp_len_clusters = []
+
+    ''' 추가 '''
+    # === 통계/수렴 ===
+    start_time = time.time()
+    bytes_up_total = 0
+    bytes_down_total = 0
+
+    # 라운드별 곡선/트래픽 히스토리 (원하면 CSV/그래프용으로 씀)
+    acc_hist, loss_hist = [], []
+    traffic_up_hist, traffic_down_hist = [], [] # plain_size_list = [] 대체
+
+    best_acc = -1.0
+    best_round = -1
+    stale = 0
+    patience = getattr(args, "patience", 10)      # 10 라운드 연속 개선 없으면 수렴
+    delta = getattr(args, "conv_delta", 0.1)      # 0.1 (%p) 개선 기준
+
+    # 결과 파일 경로
+    os.makedirs(args.log_dir, exist_ok=True)
+    curve_csv   = os.path.join(args.log_dir, f"{args.dataset}_plain_full_curve.csv")
+    summary_csv = os.path.join(args.log_dir, f"{args.dataset}_summary.csv")
+    acc_png     = os.path.join(args.log_dir, f"{args.dataset}_plain_full_acc.png")
+    loss_png    = os.path.join(args.log_dir, f"{args.dataset}_plain_full_loss.png")
+    ''' 추가 '''
+
     # If it is plain text training, the server has a global model
     if args.enc == False:
         device = device_init(args)
         model = model_init(args.dataset,device)
         params_list,params_num,layer_shape = params_tolist(model)
     server_test_sets = torch.utils.data.DataLoader(server_test_sets, **kwargs)
-    begin = time.time()
+    # begin = time.time() ##
     
     for epoch in range(n_epochs):
-        
+        epoch_start = time.time() # 추가
+
+        ''' 추가 '''
+        # [추가] 이 라운드 수신 버퍼 초기화 (중요)
+        rec.clear()
+        acc_rec.clear() # enc 경로 쓰면 얘도 라운드마다 비우는 게 안전
+        # [추가] 라운드별 트래픽 변수 초기화
+        bytes_up_round = 0
+        bytes_down_round = 0
+        ''' 추가 '''
+
         if epoch > 0 and epoch % 10 == 0:
             select_flag = True
         e.clear()
@@ -360,6 +433,7 @@ def server_process(args,kwargs_IPC,total_sum,batch_num,train_weights,test_weight
                 thread = Thread(target=recv_msg,args = (idx,client_pipe,lock,recv_list,rec,participation_list))
                 threads.append(thread)
                 thread.start()
+                
         for thread in threads:
             thread.join(timeout=3)
 
@@ -394,9 +468,35 @@ def server_process(args,kwargs_IPC,total_sum,batch_num,train_weights,test_weight
                 weights, agg_res= aggregatie_weights(rec,recv_list,weights_client,
                                                 total_sum,batch_num,id_list,args,enc_tools,rep_num)
         else:
-            
-            weights, agg_res= aggregatie_weights(rec,recv_list,weights_client,
-                                              total_sum,batch_num,id_list,args)
+            if args.cipher_count: ##
+                weights, plain_size, agg_res = aggregatie_weights(
+                    rec, recv_list, weights_client, total_sum, batch_num, id_list, args
+                ) ##
+                logging(f'server receive: plaintext size:{plain_size} bytes', args) ##
+                # plain_size_list.append(plain_size) ## 추가
+            else: ##
+                weights, agg_res = aggregatie_weights(
+                    rec, recv_list, weights_client, total_sum, batch_num, id_list, args
+                ) ##
+            # weights, agg_res= aggregatie_weights(rec,recv_list,weights_client,
+            #                                   total_sum,batch_num,id_list,args)
+
+            ''' 추가 '''
+            # === 업링크 트래픽(라운드별/누적) ===
+            if args.cipher_count:
+                bytes_up_round += int(plain_size)                 # 위에서 받은 합계 사용
+            else:
+                # 대략값: 전체 파라미터 * 4B * 참여 클라 수 # 참여 클라이언트 수 추정 (recv_list는 0/1 플래그)
+                n_participants = sum(recv_list)                   # recv_list는 수신 완료 플래그
+                if n_participants == 0:
+                    # 혹시 모든 클라가 응답 안 하면 에러 방지
+                    n_participants = n_clients
+                bytes_up_round += int(total_sum) * 4 * int(n_participants)
+            ''' 추가 '''
+
+            bytes_up_total += bytes_up_round
+            traffic_up_hist.append(bytes_up_round)
+
             global_weights = (np.array(agg_res) / weights).tolist()  
             params_list,params_num,layer_shape = params_tolist(model)
             params_tomodel(model,global_weights,params_num,layer_shape,args,params_list)
@@ -407,6 +507,17 @@ def server_process(args,kwargs_IPC,total_sum,batch_num,train_weights,test_weight
         # The aggregation is completed
         if epoch > 0 and args.isSelection:
             e_server.clear()
+
+        ''' 추가 '''
+        # === 다운링크 트래픽(라운드별/누적) ===
+        n_participants = sum(recv_list)
+        if n_participants == 0:
+            n_participants = n_clients  # 안전장치
+
+        bytes_down_round = int(total_sum) * 4 * n_participants
+        bytes_down_total += bytes_down_round
+        traffic_down_hist.append(bytes_down_round)
+        ''' 추가 '''
 
         # send to client 
         for queue in queues:
@@ -442,9 +553,9 @@ def server_process(args,kwargs_IPC,total_sum,batch_num,train_weights,test_weight
                 acc = id_acc[1]
                 loss = id_acc[2]
 
-                # lock.acquire()
-                # logging('client:{}, accuracy:{}%.'.format(c_id,acc),args)
-                # lock.release()
+                lock.acquire() ##
+                # logging('client:{}, accuracy:{}%.'.format(c_id,acc),args) ##
+                lock.release() ##
 
                 acc_weights += test_weights[c_id]
                 loss_epoch_list.append(loss*test_weights[c_id])
@@ -458,20 +569,54 @@ def server_process(args,kwargs_IPC,total_sum,batch_num,train_weights,test_weight
             accuracy_list.append(epoch_acc)
             loss_list.append(epoch_loss)
             lock.acquire()
-            logging("***********Server epoch {}, Clients accuracy:{}, loss:{}%***********\n".format(
-                epoch,epoch_acc,epoch_loss),args)
+            # logging("***********Server epoch {}, Clients accuracy:{}, loss:{}%***********\n".format(
+                # epoch,epoch_acc,epoch_loss),args) ## 
             lock.release()
         else:
             server_acc,server_loss = test_epoch(model, device, server_test_sets)
             accuracy_list.append(server_acc)
             loss_list.append(server_loss)
             lock.acquire()
-            logging("***********Server epoch {}, Clients accuracy:{}%***********\n".format(epoch,server_acc),args)
+            # logging("***********Server epoch {}, Clients accuracy:{}%***********\n".format(epoch,server_acc),args) ##
             lock.release()
-        end = time.time()
-        time_cost = round(end-begin,2)
-        print("time:{}s".format(time_cost))
-        time_list.append(time_cost)
+        # end = time.time() ##
+        # time_cost = round(end-begin,2)
+        # print("time:{}s".format(time_cost))
+        # time_list.append(time_cost)
+
+        ''' 추가 '''
+        # === [추가] 공통 후처리 ===
+        acc_hist.append(float(accuracy_list[-1]))
+        loss_hist.append(float(loss_list[-1]))
+
+        cur_acc = float(accuracy_list[-1])
+        if cur_acc > best_acc + float(delta):
+            best_acc = cur_acc
+            best_round = epoch
+            stale = 0
+        else:
+            stale += 1
+
+        if stale >= patience:
+            logging(f"[Converged] round={epoch}, best_acc={best_acc:.2f} at round {best_round}", args)
+            break
+        ''' 추가 '''
+
+        epoch_time = round(time.time() - epoch_start, 2) # 변경
+        ''' 추가 '''
+        MB = 1024**2
+        log_line = (
+            f"[E{epoch}] acc={accuracy_list[-1]:.2f}% "
+            f"loss={float(loss_list[-1]):.4f} "
+            f"time={epoch_time:.2f}s "
+            f"up={bytes_up_round/MB:.2f}MB "
+            f"down={bytes_down_round/MB:.2f}MB "
+            f"cum={(bytes_up_total+bytes_down_total)/MB:.2f}MB"
+        )
+        logging(log_line, args)
+        ''' 추가 '''
+        # logging(f"epoch {epoch} time: {epoch_time}s", args) ##
+        time_list.append(epoch_time)
 
         if args.isSelection:
             time.sleep(1)
@@ -504,11 +649,61 @@ def server_process(args,kwargs_IPC,total_sum,batch_num,train_weights,test_weight
         
     logging('server end!',args)
     
+    ''' 추가 '''
+    # [추가] 요약/저장 (루프 종료 후)
+    time_total = time.time() - start_time
+    mb_up   = bytes_up_total   / (1024**2)
+    mb_down = bytes_down_total / (1024**2)
+    mb_total = mb_up + mb_down
+
+    logging(f"[Summary] mode=plain-full | rounds={best_round+1 if best_round>=0 else len(acc_hist)} | "
+            f"best_acc={best_acc:.2f}% | time={time_total:.1f}s | "
+            f"up={mb_up:.2f}MB | down={mb_down:.2f}MB | total={mb_total:.2f}MB", args)
+
+    # (a) 라운드별 곡선 CSV
+    if len(acc_hist) > 0:
+        need_header = not os.path.exists(curve_csv) or os.path.getsize(curve_csv) == 0
+        with open(curve_csv, "a", newline="") as f:
+            w = csv.writer(f)
+            if need_header:
+                w.writerow(["round","acc","loss","up_bytes","down_bytes"])
+            for r,(a,l,u,d) in enumerate(zip(acc_hist, loss_hist, traffic_up_hist, traffic_down_hist), start=1):
+                w.writerow([r, f"{a:.2f}", f"{float(l):.4f}", u, d])
+
+        # (b) 그래프 저장
+        plt.figure()
+        plt.plot(range(1, len(acc_hist)+1), acc_hist)
+        plt.xlabel("Round"); plt.ylabel("Test Accuracy (%)"); plt.title(f"{args.dataset} - Plain+FL")
+        plt.grid(True); plt.tight_layout(); plt.savefig(acc_png); plt.close()
+
+        plt.figure()
+        plt.plot(range(1, len(loss_hist)+1), loss_hist)
+        plt.xlabel("Round"); plt.ylabel("Test Loss"); plt.title(f"{args.dataset} - Plain+FL")
+        plt.grid(True); plt.tight_layout(); plt.savefig(loss_png); plt.close()
+
+    # (c) 요약 CSV (한 줄)
+    need_header = not os.path.exists(summary_csv) or os.path.getsize(summary_csv) == 0
+    with open(summary_csv, "a", newline="") as f:
+        w = csv.writer(f)
+        if need_header:
+            w.writerow(["dataset","model","mode","rounds_to_conv","best_acc",
+                        "time_s","traffic_MB_up","traffic_MB_down","traffic_MB_total"])
+        model_name = getattr(args, "model", "auto")
+        rounds_to_conv = best_round+1 if best_round>=0 else len(acc_hist)
+        w.writerow([args.dataset, model_name, "plain-full",
+                    rounds_to_conv, f"{best_acc:.2f}",
+                    f"{time_total:.1f}", f"{mb_up:.2f}", f"{mb_down:.2f}", f"{mb_total:.2f}"])
+    ''' 추가 '''
+
     flag.value = True
     e.clear()
     e_server.clear()
     if args.enc and args.cipher_count:
         logging("Total ciphertext size: {} bytes, size list: {}.".format(total_ciphertext_size,cipher_size_list),args)
+    
+    if not args.enc and args.cipher_count:   # 추가
+        logging(f"Total plaintext uplink: {sum(traffic_up_hist)} bytes", args)
+
     logging("Accuracy list: {}%.".format(accuracy_list), args)
     logging("Loss list:{}".format(loss_list),args)
     logging("time list:{}s".format(time_list),args)

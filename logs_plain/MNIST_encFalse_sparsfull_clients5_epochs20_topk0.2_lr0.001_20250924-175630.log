@@ -1,0 +1,307 @@
+2025-09-24 17:56:30 | Basic information: device mps, learning rate 0.001, num clients 5, epochs 20,noniid_method dirichlet,            isEnc False,isBatch True,sparsification full, client selection False,topk 0.2, enc_batch_size 4096
+2025-09-24 17:56:42 | training weights: [0.2, 0.2, 0.2, 0.2, 0.2]
+2025-09-24 17:56:42 | testing weights:[0.2, 0.2, 0.2, 0.2, 0.2]
+2025-09-24 17:56:42 | client0, train samples 12000,test samples 2000
+2025-09-24 17:56:42 | client1, train samples 12000,test samples 2000
+2025-09-24 17:56:42 | client2, train samples 12000,test samples 2000
+2025-09-24 17:56:42 | client3, train samples 12000,test samples 2000
+2025-09-24 17:56:42 | client4, train samples 12000,test samples 2000
+2025-09-24 17:56:42 | data split finished!
+2025-09-24 17:56:51 | id:1,train time:2.036482095718384
+2025-09-24 17:56:51 | [PT-Full] client 1 uplink ~177704 bytes
+2025-09-24 17:56:51 | id:3,train time:2.0685410499572754
+2025-09-24 17:56:51 | [PT-Full] client 3 uplink ~177704 bytes
+2025-09-24 17:56:51 | id:4,train time:2.0674519538879395
+2025-09-24 17:56:51 | [PT-Full] client 4 uplink ~177704 bytes
+2025-09-24 17:56:51 | id:0,train time:2.2130630016326904
+2025-09-24 17:56:51 | id:2,train time:2.135587692260742
+2025-09-24 17:56:51 | [PT-Full] client 2 uplink ~177704 bytes
+2025-09-24 17:56:51 | [PT-Full] client 0 uplink ~177704 bytes
+2025-09-24 17:56:52 | enc=False, isSpars=full, cipher_count=True
+2025-09-24 17:56:52 | server receive: plaintext size:888520 bytes
+2025-09-24 17:56:52 | server agg: epoch 0.
+2025-09-24 17:56:53 | [E0] acc=91.54% loss=0.2980 time=7.48s up=0.85MB down=0.85MB cum=1.69MB
+2025-09-24 17:56:53 | id:3,train time:1.1871917247772217
+2025-09-24 17:56:53 | [PT-Full] client 3 uplink ~177704 bytes
+2025-09-24 17:56:53 | id:1,train time:1.221137285232544
+2025-09-24 17:56:53 | [PT-Full] client 1 uplink ~177704 bytes
+2025-09-24 17:56:53 | id:2,train time:1.2874398231506348
+2025-09-24 17:56:53 | id:0,train time:1.2882609367370605
+2025-09-24 17:56:53 | [PT-Full] client 0 uplink ~177704 bytes
+2025-09-24 17:56:53 | [PT-Full] client 2 uplink ~177704 bytes
+2025-09-24 17:56:53 | id:4,train time:1.3010408878326416
+2025-09-24 17:56:53 | [PT-Full] client 4 uplink ~177704 bytes
+2025-09-24 17:56:53 | enc=False, isSpars=full, cipher_count=True
+2025-09-24 17:56:53 | server receive: plaintext size:888520 bytes
+2025-09-24 17:56:53 | server agg: epoch 1.
+2025-09-24 17:56:54 | [E1] acc=95.13% loss=0.1650 time=1.13s up=0.85MB down=0.85MB cum=3.39MB
+2025-09-24 17:56:55 | id:3,train time:1.1545631885528564
+2025-09-24 17:56:55 | id:1,train time:1.1537237167358398
+2025-09-24 17:56:55 | [PT-Full] client 3 uplink ~177704 bytes
+2025-09-24 17:56:55 | [PT-Full] client 1 uplink ~177704 bytes
+2025-09-24 17:56:55 | id:2,train time:1.228628396987915
+2025-09-24 17:56:55 | [PT-Full] client 2 uplink ~177704 bytes
+2025-09-24 17:56:55 | id:0,train time:1.2445340156555176
+2025-09-24 17:56:55 | [PT-Full] client 0 uplink ~177704 bytes
+2025-09-24 17:56:55 | id:4,train time:1.2491672039031982
+2025-09-24 17:56:55 | [PT-Full] client 4 uplink ~177704 bytes
+2025-09-24 17:56:55 | enc=False, isSpars=full, cipher_count=True
+2025-09-24 17:56:55 | server receive: plaintext size:888520 bytes
+2025-09-24 17:56:55 | server agg: epoch 2.
+2025-09-24 17:56:55 | [E2] acc=96.37% loss=0.1160 time=1.27s up=0.85MB down=0.85MB cum=5.08MB
+2025-09-24 17:56:56 | id:3,train time:1.2890057563781738
+2025-09-24 17:56:56 | [PT-Full] client 3 uplink ~177704 bytes
+2025-09-24 17:56:56 | id:1,train time:1.3073017597198486
+2025-09-24 17:56:56 | [PT-Full] client 1 uplink ~177704 bytes
+2025-09-24 17:56:56 | id:2,train time:1.4257757663726807
+2025-09-24 17:56:56 | [PT-Full] client 2 uplink ~177704 bytes
+2025-09-24 17:56:56 | id:0,train time:1.4341189861297607
+2025-09-24 17:56:56 | id:4,train time:1.433704137802124
+2025-09-24 17:56:56 | [PT-Full] client 0 uplink ~177704 bytes
+2025-09-24 17:56:56 | [PT-Full] client 4 uplink ~177704 bytes
+2025-09-24 17:56:56 | enc=False, isSpars=full, cipher_count=True
+2025-09-24 17:56:56 | server receive: plaintext size:888520 bytes
+2025-09-24 17:56:56 | server agg: epoch 3.
+2025-09-24 17:56:57 | [E3] acc=97.09% loss=0.0880 time=1.51s up=0.85MB down=0.85MB cum=6.78MB
+2025-09-24 17:56:57 | id:3,train time:1.1367888450622559
+2025-09-24 17:56:57 | [PT-Full] client 3 uplink ~177704 bytes
+2025-09-24 17:56:57 | id:1,train time:1.1452889442443848
+2025-09-24 17:56:57 | [PT-Full] client 1 uplink ~177704 bytes
+2025-09-24 17:56:57 | id:4,train time:1.2615938186645508
+2025-09-24 17:56:57 | id:0,train time:1.2649779319763184
+2025-09-24 17:56:57 | id:2,train time:1.2657930850982666
+2025-09-24 17:56:57 | [PT-Full] client 4 uplink ~177704 bytes
+2025-09-24 17:56:57 | [PT-Full] client 0 uplink ~177704 bytes
+2025-09-24 17:56:57 | [PT-Full] client 2 uplink ~177704 bytes
+2025-09-24 17:56:57 | enc=False, isSpars=full, cipher_count=True
+2025-09-24 17:56:57 | server receive: plaintext size:888520 bytes
+2025-09-24 17:56:57 | server agg: epoch 4.
+2025-09-24 17:56:58 | [E4] acc=97.34% loss=0.0780 time=1.25s up=0.85MB down=0.85MB cum=8.47MB
+2025-09-24 17:56:59 | id:1,train time:1.121387004852295
+2025-09-24 17:56:59 | [PT-Full] client 1 uplink ~177704 bytes
+2025-09-24 17:56:59 | id:3,train time:1.145759105682373
+2025-09-24 17:56:59 | [PT-Full] client 3 uplink ~177704 bytes
+2025-09-24 17:56:59 | id:2,train time:1.2261052131652832
+2025-09-24 17:56:59 | [PT-Full] client 2 uplink ~177704 bytes
+2025-09-24 17:56:59 | id:0,train time:1.2382469177246094
+2025-09-24 17:56:59 | [PT-Full] client 0 uplink ~177704 bytes
+2025-09-24 17:56:59 | id:4,train time:1.2508351802825928
+2025-09-24 17:56:59 | [PT-Full] client 4 uplink ~177704 bytes
+2025-09-24 17:56:59 | enc=False, isSpars=full, cipher_count=True
+2025-09-24 17:56:59 | server receive: plaintext size:888520 bytes
+2025-09-24 17:56:59 | server agg: epoch 5.
+2025-09-24 17:56:59 | [E5] acc=97.55% loss=0.0670 time=1.30s up=0.85MB down=0.85MB cum=10.17MB
+2025-09-24 17:57:00 | id:1,train time:1.1165339946746826
+2025-09-24 17:57:00 | [PT-Full] client 1 uplink ~177704 bytes
+2025-09-24 17:57:00 | id:3,train time:1.1229948997497559
+2025-09-24 17:57:00 | [PT-Full] client 3 uplink ~177704 bytes
+2025-09-24 17:57:00 | id:4,train time:1.2399168014526367
+2025-09-24 17:57:00 | id:2,train time:1.246739149093628
+2025-09-24 17:57:00 | [PT-Full] client 4 uplink ~177704 bytes
+2025-09-24 17:57:00 | id:0,train time:1.2503128051757812
+2025-09-24 17:57:00 | [PT-Full] client 2 uplink ~177704 bytes
+2025-09-24 17:57:00 | [PT-Full] client 0 uplink ~177704 bytes
+2025-09-24 17:57:00 | enc=False, isSpars=full, cipher_count=True
+2025-09-24 17:57:00 | server receive: plaintext size:888520 bytes
+2025-09-24 17:57:00 | server agg: epoch 6.
+2025-09-24 17:57:01 | [E6] acc=97.77% loss=0.0600 time=1.27s up=0.85MB down=0.85MB cum=11.86MB
+2025-09-24 17:57:01 | id:3,train time:1.422738790512085
+2025-09-24 17:57:01 | [PT-Full] client 3 uplink ~177704 bytes
+2025-09-24 17:57:01 | id:1,train time:1.4766430854797363
+2025-09-24 17:57:01 | [PT-Full] client 1 uplink ~177704 bytes
+2025-09-24 17:57:02 | id:0,train time:1.5615181922912598
+2025-09-24 17:57:02 | id:4,train time:1.5797717571258545
+2025-09-24 17:57:02 | [PT-Full] client 0 uplink ~177704 bytes
+2025-09-24 17:57:02 | id:2,train time:1.5877201557159424
+2025-09-24 17:57:02 | [PT-Full] client 4 uplink ~177704 bytes
+2025-09-24 17:57:02 | [PT-Full] client 2 uplink ~177704 bytes
+2025-09-24 17:57:02 | enc=False, isSpars=full, cipher_count=True
+2025-09-24 17:57:02 | server receive: plaintext size:888520 bytes
+2025-09-24 17:57:02 | server agg: epoch 7.
+2025-09-24 17:57:02 | [E7] acc=98.01% loss=0.0530 time=1.62s up=0.85MB down=0.85MB cum=13.56MB
+2025-09-24 17:57:03 | id:3,train time:1.1232831478118896
+2025-09-24 17:57:03 | id:1,train time:1.1292448043823242
+2025-09-24 17:57:03 | [PT-Full] client 3 uplink ~177704 bytes
+2025-09-24 17:57:03 | [PT-Full] client 1 uplink ~177704 bytes
+2025-09-24 17:57:03 | id:0,train time:1.2305080890655518
+2025-09-24 17:57:03 | [PT-Full] client 0 uplink ~177704 bytes
+2025-09-24 17:57:03 | id:2,train time:1.237771987915039
+2025-09-24 17:57:03 | id:4,train time:1.239987850189209
+2025-09-24 17:57:03 | [PT-Full] client 4 uplink ~177704 bytes
+2025-09-24 17:57:03 | [PT-Full] client 2 uplink ~177704 bytes
+2025-09-24 17:57:03 | enc=False, isSpars=full, cipher_count=True
+2025-09-24 17:57:03 | server receive: plaintext size:888520 bytes
+2025-09-24 17:57:03 | server agg: epoch 8.
+2025-09-24 17:57:04 | [E8] acc=98.24% loss=0.0480 time=1.27s up=0.85MB down=0.85MB cum=15.25MB
+2025-09-24 17:57:04 | id:3,train time:1.1093099117279053
+2025-09-24 17:57:04 | [PT-Full] client 3 uplink ~177704 bytes
+2025-09-24 17:57:04 | id:1,train time:1.1349070072174072
+2025-09-24 17:57:04 | [PT-Full] client 1 uplink ~177704 bytes
+2025-09-24 17:57:04 | id:0,train time:1.23301100730896
+2025-09-24 17:57:04 | id:4,train time:1.2376701831817627
+2025-09-24 17:57:04 | [PT-Full] client 0 uplink ~177704 bytes
+2025-09-24 17:57:04 | [PT-Full] client 4 uplink ~177704 bytes
+2025-09-24 17:57:04 | id:2,train time:1.2569091320037842
+2025-09-24 17:57:04 | [PT-Full] client 2 uplink ~177704 bytes
+2025-09-24 17:57:04 | enc=False, isSpars=full, cipher_count=True
+2025-09-24 17:57:04 | server receive: plaintext size:888520 bytes
+2025-09-24 17:57:04 | server agg: epoch 9.
+2025-09-24 17:57:05 | [E9] acc=98.15% loss=0.0470 time=1.27s up=0.85MB down=0.85MB cum=16.95MB
+2025-09-24 17:57:05 | id:3,train time:1.1117351055145264
+2025-09-24 17:57:05 | [PT-Full] client 3 uplink ~177704 bytes
+2025-09-24 17:57:05 | id:1,train time:1.1388278007507324
+2025-09-24 17:57:05 | [PT-Full] client 1 uplink ~177704 bytes
+2025-09-24 17:57:05 | id:4,train time:1.2299797534942627
+2025-09-24 17:57:05 | id:2,train time:1.237198829650879
+2025-09-24 17:57:05 | [PT-Full] client 4 uplink ~177704 bytes
+2025-09-24 17:57:05 | [PT-Full] client 2 uplink ~177704 bytes
+2025-09-24 17:57:05 | id:0,train time:1.2567131519317627
+2025-09-24 17:57:05 | [PT-Full] client 0 uplink ~177704 bytes
+2025-09-24 17:57:05 | enc=False, isSpars=full, cipher_count=True
+2025-09-24 17:57:05 | server receive: plaintext size:888520 bytes
+2025-09-24 17:57:05 | server agg: epoch 10.
+2025-09-24 17:57:06 | [E10] acc=98.29% loss=0.0450 time=1.36s up=0.85MB down=0.85MB cum=18.64MB
+2025-09-24 17:57:07 | id:3,train time:1.3187017440795898
+2025-09-24 17:57:07 | [PT-Full] client 3 uplink ~177704 bytes
+2025-09-24 17:57:07 | id:1,train time:1.3292899131774902
+2025-09-24 17:57:07 | [PT-Full] client 1 uplink ~177704 bytes
+2025-09-24 17:57:07 | id:2,train time:1.4137532711029053
+2025-09-24 17:57:07 | [PT-Full] client 2 uplink ~177704 bytes
+2025-09-24 17:57:07 | id:0,train time:1.4216969013214111
+2025-09-24 17:57:07 | id:4,train time:1.4274170398712158
+2025-09-24 17:57:07 | [PT-Full] client 0 uplink ~177704 bytes
+2025-09-24 17:57:07 | [PT-Full] client 4 uplink ~177704 bytes
+2025-09-24 17:57:07 | enc=False, isSpars=full, cipher_count=True
+2025-09-24 17:57:07 | server receive: plaintext size:888520 bytes
+2025-09-24 17:57:07 | server agg: epoch 11.
+2025-09-24 17:57:08 | [E11] acc=98.47% loss=0.0410 time=1.39s up=0.85MB down=0.85MB cum=20.34MB
+2025-09-24 17:57:08 | id:3,train time:1.1206698417663574
+2025-09-24 17:57:08 | [PT-Full] client 3 uplink ~177704 bytes
+2025-09-24 17:57:08 | id:1,train time:1.1438801288604736
+2025-09-24 17:57:08 | [PT-Full] client 1 uplink ~177704 bytes
+2025-09-24 17:57:08 | id:0,train time:1.2621088027954102
+2025-09-24 17:57:08 | id:2,train time:1.2623178958892822
+2025-09-24 17:57:08 | id:4,train time:1.2662179470062256
+2025-09-24 17:57:08 | [PT-Full] client 0 uplink ~177704 bytes
+2025-09-24 17:57:08 | [PT-Full] client 2 uplink ~177704 bytes
+2025-09-24 17:57:08 | [PT-Full] client 4 uplink ~177704 bytes
+2025-09-24 17:57:08 | enc=False, isSpars=full, cipher_count=True
+2025-09-24 17:57:08 | server receive: plaintext size:888520 bytes
+2025-09-24 17:57:08 | server agg: epoch 12.
+2025-09-24 17:57:09 | [E12] acc=98.43% loss=0.0400 time=1.25s up=0.85MB down=0.85MB cum=22.03MB
+2025-09-24 17:57:09 | id:1,train time:1.1354658603668213
+2025-09-24 17:57:09 | id:3,train time:1.137782096862793
+2025-09-24 17:57:09 | [PT-Full] client 1 uplink ~177704 bytes
+2025-09-24 17:57:09 | [PT-Full] client 3 uplink ~177704 bytes
+2025-09-24 17:57:09 | id:4,train time:1.2338440418243408
+2025-09-24 17:57:09 | id:0,train time:1.2407748699188232
+2025-09-24 17:57:09 | [PT-Full] client 4 uplink ~177704 bytes
+2025-09-24 17:57:09 | [PT-Full] client 0 uplink ~177704 bytes
+2025-09-24 17:57:09 | id:2,train time:1.2485179901123047
+2025-09-24 17:57:09 | [PT-Full] client 2 uplink ~177704 bytes
+2025-09-24 17:57:09 | enc=False, isSpars=full, cipher_count=True
+2025-09-24 17:57:09 | server receive: plaintext size:888520 bytes
+2025-09-24 17:57:09 | server agg: epoch 13.
+2025-09-24 17:57:10 | [E13] acc=98.65% loss=0.0360 time=1.28s up=0.85MB down=0.85MB cum=23.73MB
+2025-09-24 17:57:11 | id:3,train time:1.135408878326416
+2025-09-24 17:57:11 | [PT-Full] client 3 uplink ~177704 bytes
+2025-09-24 17:57:11 | id:1,train time:1.1476991176605225
+2025-09-24 17:57:11 | [PT-Full] client 1 uplink ~177704 bytes
+2025-09-24 17:57:11 | id:4,train time:1.2458648681640625
+2025-09-24 17:57:11 | [PT-Full] client 4 uplink ~177704 bytes
+2025-09-24 17:57:11 | id:0,train time:1.2544193267822266
+2025-09-24 17:57:11 | id:2,train time:1.2592511177062988
+2025-09-24 17:57:11 | [PT-Full] client 0 uplink ~177704 bytes
+2025-09-24 17:57:11 | [PT-Full] client 2 uplink ~177704 bytes
+2025-09-24 17:57:11 | enc=False, isSpars=full, cipher_count=True
+2025-09-24 17:57:11 | server receive: plaintext size:888520 bytes
+2025-09-24 17:57:11 | server agg: epoch 14.
+2025-09-24 17:57:11 | [E14] acc=98.66% loss=0.0340 time=1.31s up=0.85MB down=0.85MB cum=25.42MB
+2025-09-24 17:57:12 | id:3,train time:1.3696203231811523
+2025-09-24 17:57:12 | [PT-Full] client 3 uplink ~177704 bytes
+2025-09-24 17:57:12 | id:1,train time:1.3858838081359863
+2025-09-24 17:57:12 | [PT-Full] client 1 uplink ~177704 bytes
+2025-09-24 17:57:12 | id:0,train time:1.4589920043945312
+2025-09-24 17:57:12 | id:4,train time:1.4600260257720947
+2025-09-24 17:57:12 | id:2,train time:1.465555191040039
+2025-09-24 17:57:12 | [PT-Full] client 4 uplink ~177704 bytes
+2025-09-24 17:57:12 | [PT-Full] client 0 uplink ~177704 bytes
+2025-09-24 17:57:12 | [PT-Full] client 2 uplink ~177704 bytes
+2025-09-24 17:57:12 | enc=False, isSpars=full, cipher_count=True
+2025-09-24 17:57:12 | server receive: plaintext size:888520 bytes
+2025-09-24 17:57:12 | server agg: epoch 15.
+2025-09-24 17:57:13 | [E15] acc=98.69% loss=0.0340 time=1.52s up=0.85MB down=0.85MB cum=27.12MB
+2025-09-24 17:57:13 | id:3,train time:1.179776906967163
+2025-09-24 17:57:13 | id:1,train time:1.1829087734222412
+2025-09-24 17:57:13 | [PT-Full] client 3 uplink ~177704 bytes
+2025-09-24 17:57:13 | [PT-Full] client 1 uplink ~177704 bytes
+2025-09-24 17:57:14 | id:0,train time:1.2868950366973877
+2025-09-24 17:57:14 | [PT-Full] client 0 uplink ~177704 bytes
+2025-09-24 17:57:14 | id:4,train time:1.2978312969207764
+2025-09-24 17:57:14 | id:2,train time:1.3013689517974854
+2025-09-24 17:57:14 | [PT-Full] client 4 uplink ~177704 bytes
+2025-09-24 17:57:14 | [PT-Full] client 2 uplink ~177704 bytes
+2025-09-24 17:57:14 | enc=False, isSpars=full, cipher_count=True
+2025-09-24 17:57:14 | server receive: plaintext size:888520 bytes
+2025-09-24 17:57:14 | server agg: epoch 16.
+2025-09-24 17:57:14 | [E16] acc=98.77% loss=0.0320 time=1.28s up=0.85MB down=0.85MB cum=28.81MB
+2025-09-24 17:57:15 | id:3,train time:1.1307930946350098
+2025-09-24 17:57:15 | [PT-Full] client 3 uplink ~177704 bytes
+2025-09-24 17:57:15 | id:1,train time:1.1522819995880127
+2025-09-24 17:57:15 | [PT-Full] client 1 uplink ~177704 bytes
+2025-09-24 17:57:15 | id:4,train time:1.2402639389038086
+2025-09-24 17:57:15 | [PT-Full] client 4 uplink ~177704 bytes
+2025-09-24 17:57:15 | id:2,train time:1.2503178119659424
+2025-09-24 17:57:15 | [PT-Full] client 2 uplink ~177704 bytes
+2025-09-24 17:57:15 | id:0,train time:1.2672967910766602
+2025-09-24 17:57:15 | [PT-Full] client 0 uplink ~177704 bytes
+2025-09-24 17:57:15 | enc=False, isSpars=full, cipher_count=True
+2025-09-24 17:57:15 | server receive: plaintext size:888520 bytes
+2025-09-24 17:57:15 | server agg: epoch 17.
+2025-09-24 17:57:16 | [E17] acc=98.87% loss=0.0320 time=1.32s up=0.85MB down=0.85MB cum=30.50MB
+2025-09-24 17:57:16 | id:3,train time:1.1073670387268066
+2025-09-24 17:57:16 | [PT-Full] client 3 uplink ~177704 bytes
+2025-09-24 17:57:16 | id:1,train time:1.1442489624023438
+2025-09-24 17:57:16 | [PT-Full] client 1 uplink ~177704 bytes
+2025-09-24 17:57:16 | id:0,train time:1.2352168560028076
+2025-09-24 17:57:16 | id:2,train time:1.2401049137115479
+2025-09-24 17:57:16 | [PT-Full] client 0 uplink ~177704 bytes
+2025-09-24 17:57:16 | [PT-Full] client 2 uplink ~177704 bytes
+2025-09-24 17:57:16 | id:4,train time:1.2575631141662598
+2025-09-24 17:57:16 | [PT-Full] client 4 uplink ~177704 bytes
+2025-09-24 17:57:16 | enc=False, isSpars=full, cipher_count=True
+2025-09-24 17:57:16 | server receive: plaintext size:888520 bytes
+2025-09-24 17:57:16 | server agg: epoch 18.
+2025-09-24 17:57:17 | [E18] acc=98.71% loss=0.0330 time=1.26s up=0.85MB down=0.85MB cum=32.20MB
+2025-09-24 17:57:17 | id:3,train time:1.2670249938964844
+2025-09-24 17:57:17 | [PT-Full] client 3 uplink ~177704 bytes
+2025-09-24 17:57:17 | id:1,train time:1.2982170581817627
+2025-09-24 17:57:17 | [PT-Full] client 1 uplink ~177704 bytes
+2025-09-24 17:57:18 | id:4,train time:1.377943992614746
+2025-09-24 17:57:18 | [PT-Full] client 4 uplink ~177704 bytes
+2025-09-24 17:57:18 | id:2,train time:1.388524055480957
+2025-09-24 17:57:18 | [PT-Full] client 2 uplink ~177704 bytes
+2025-09-24 17:57:18 | id:0,train time:1.4115979671478271
+2025-09-24 17:57:18 | [PT-Full] client 0 uplink ~177704 bytes
+2025-09-24 17:57:18 | enc=False, isSpars=full, cipher_count=True
+2025-09-24 17:57:18 | server receive: plaintext size:888520 bytes
+2025-09-24 17:57:18 | server agg: epoch 19.
+2025-09-24 17:57:18 | [E19] acc=98.92% loss=0.0300 time=1.45s up=0.85MB down=0.85MB cum=33.89MB
+2025-09-24 17:57:18 | server end!
+2025-09-24 17:57:18 | [Summary] mode=plain-full | rounds=18 | best_acc=98.87% | time=32.8s | up=16.95MB | down=16.95MB | total=33.89MB
+2025-09-24 17:57:18 | Total plaintext uplink: 17770400 bytes
+2025-09-24 17:57:18 | Accuracy list: [91.53999999999999, 95.13000000000001, 96.37, 97.09, 97.34, 97.55, 97.77, 98.00999999999999, 98.24000000000001, 98.15, 98.29, 98.47, 98.42999999999999, 98.65, 98.66, 98.69, 98.77, 98.87, 98.71, 98.92]%.
+2025-09-24 17:57:18 | Loss list:[0.298, 0.165, 0.116, 0.088, 0.078, 0.067, 0.06, 0.053, 0.048, 0.047, 0.045, 0.041, 0.04, 0.036, 0.034, 0.034, 0.032, 0.032, 0.033, 0.03]
+2025-09-24 17:57:18 | time list:[7.48, 1.13, 1.27, 1.51, 1.25, 1.3, 1.27, 1.62, 1.27, 1.27, 1.36, 1.39, 1.25, 1.28, 1.31, 1.52, 1.28, 1.32, 1.26, 1.45]s
+2025-09-24 17:57:18 | Participate list: [20, 20, 20, 20, 20].
+2025-09-24 17:57:18 | tmp_len_clusters:[]
+2025-09-24 17:57:19 | id:3,train time:1.34871506690979
+2025-09-24 17:57:19 | [PT-Full] client 3 uplink ~177704 bytes
+2025-09-24 17:57:19 | id:1,train time:1.3683860301971436
+2025-09-24 17:57:19 | [PT-Full] client 1 uplink ~177704 bytes
+2025-09-24 17:57:19 | id:4,train time:1.4448776245117188
+2025-09-24 17:57:19 | [PT-Full] client 4 uplink ~177704 bytes
+2025-09-24 17:57:19 | id:0,train time:1.4542169570922852
+2025-09-24 17:57:19 | id:2,train time:1.4559910297393799
+2025-09-24 17:57:19 | [PT-Full] client 0 uplink ~177704 bytes
+2025-09-24 17:57:19 | [PT-Full] client 2 uplink ~177704 bytes

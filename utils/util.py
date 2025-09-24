@@ -21,13 +21,21 @@ def model_init(dataset,device):
         raise ValueError("Datset name is invalid, please input MNIST, FashionMNIST or CIFAR10")
     return model
 
-def logging(str,args):
-    log_file = open(os.path.join(args.log_dir, args.dataset + '.log'), "a+")
-    print("{} | {}".format(datetime.now().strftime('%Y-%m-%d %H:%M:%S'), str))
-    print("{} | {}".format(datetime.now().strftime('%Y-%m-%d %H:%M:%S'), str), file=log_file)
+def logging(msg,args):
+    # log_file = open(os.path.join(args.log_dir, args.dataset + '.log'), "a+")
+    # print("{} | {}".format(datetime.now().strftime('%Y-%m-%d %H:%M:%S'), str))
+    # print("{} | {}".format(datetime.now().strftime('%Y-%m-%d %H:%M:%S'), str), file=log_file)
+
+    # args.log_file이 있으면 그걸 쓰고, 없으면 기존 규칙 유지
+    log_path = getattr(args, "log_file", os.path.join(args.log_dir, args.dataset + '.log'))
+    
+    with open(log_path, "a+") as log_file:
+        timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        print(f"{timestamp} | {msg}")
+        print(f"{timestamp} | {msg}", file=log_file)
 
 
-def init_prop(train_dataset,test_dataset,n_clients):
+def init_prop(train_dataset,test_dataset,n_clients): # 중요
     """
     Initialize weights of aggregation according to the samples of clients.
 
@@ -71,8 +79,8 @@ def seed_everything(seed):
 def pseudo_random(seed, batch_num, topk, round_t):
     random.seed(seed + round_t)  
     number_list = list(range(batch_num))
-    topk = int(np.ceil(batch_num * topk))
-    # 对数字列表进行洗牌
+    topk = int(np.ceil(batch_num * topk)) # topk는 비율(float)
+    
     random.shuffle(number_list)
     random_list = sorted(number_list[:topk])
 

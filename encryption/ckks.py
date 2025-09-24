@@ -32,7 +32,7 @@ class CKKSCipher(Encrypt):
         # self.context.generate_galois_keys()
         # self.context.global_scale = self.global_scale
 
-    def from_bytes(self, arr):
+    def from_bytes(self, arr): # 직렬화된 벡터(또는 리스트)를 TenSEAL 객체로 복원
         if isinstance(arr, list):
             ret = []
             for e in arr:
@@ -42,7 +42,7 @@ class CKKSCipher(Encrypt):
             c = ts.CKKSVector.load(self.context, arr)
             return c
 
-    def to_bytes(self, arr):
+    def to_bytes(self, arr): # TenSEAL 벡터를 직렬화
         if isinstance(arr, list):
             ret = []
             for e in arr:
@@ -51,14 +51,14 @@ class CKKSCipher(Encrypt):
         else:
             return arr.serialize()
 
-    def encrypt(self, value):
+    def encrypt(self, value): 
         batch_size = []
         # value should be a 1-d np.array
         cipher = ts.ckks_vector(self.context, value)
         cipher_serial = cipher.serialize()
         return cipher_serial
 
-    def enc_batch(self,value):
+    def enc_batch(self,value): # 입력을 고정 batch_size=50으로 나눠 리스트로 직렬화
         batch_size = 50
         batch_num = int(np.ceil(len(value) / batch_size))
         cipher_list = []
@@ -71,7 +71,7 @@ class CKKSCipher(Encrypt):
     
 
 
-    def sum(self, arr,idx_weights):
+    def sum(self, arr,idx_weights): # 여러 암호문을 가중합(복호 없이 동형덧셈)
         loaded = [ts.CKKSVector.load(self.context, e)*idx_weights[arr.index(e)] for e in arr]
         res = reduce(lambda x, y: x + y, loaded)
         return res.serialize()
@@ -141,7 +141,7 @@ def ckks_enc(plain_list,ckks_ctx,isBatch,batch_size,topk,round,randk_seed, is_sp
     batch_num = int(np.ceil(len(plain_list) / batch_size))
     if isBatch:
         # padding
-        if len(plain_list) %  batch_num != 0:
+        if len(plain_list) %  batch_num != 0: # batch_size인가?
             padding_num = batch_num * batch_size - len(plain_list)
             plain_list.extend([0]*padding_num)
         if is_spars == 'topk':
@@ -184,7 +184,7 @@ def ckks_enc(plain_list,ckks_ctx,isBatch,batch_size,topk,round,randk_seed, is_sp
                 cipher = ts.ckks_vector(ckks_ctx, plain_list[i * batch_size : (i + 1) * batch_size])
                 cipher_list.append(cipher.serialize())
             return cipher_list
-    else:
+    else: # 원소별 암호화 리스트 반환
         cipher = [ts.ckks_vector(ckks_ctx, [i]).serialize() for i in plain_list]
         return cipher
   
@@ -192,20 +192,20 @@ def ckks_enc(plain_list,ckks_ctx,isBatch,batch_size,topk,round,randk_seed, is_sp
 def ckks_dec(cipher_list,ckks_ctx,sk,isBatch,randk_list, sum_masks = [],batch_size = 0):
     if isBatch:
         # randk align
-        if randk_list != []:
+        if randk_list != []: # 원래 pack 자리로 재배치
             tmp_list = [0] * len(cipher_list)
             for i,radnk_idx in enumerate(randk_list):
                 tmp_list[radnk_idx] = cipher_list[i]
             cipher_list = tmp_list
         plain_list = []
-        for idx, cipher_serial in enumerate(cipher_list):
-            if cipher_serial == 0:
-                zero_pad = [0] * batch_size
+        for idx, cipher_serial in enumerate(cipher_list): # 각 pack에 대해
+            if cipher_serial == 0: # 암호문이 0이면,
+                zero_pad = [0] * batch_size # 선택 안 된 pack 자리 유지
                 plain_list.extend(zero_pad)
-            else:
+            else: # 암호문이 있으면, 
                 plain = ts.CKKSVector.load(ckks_ctx, cipher_serial).decrypt(sk)    
-                if sum_masks != []:
-                    plain = np.array(plain)/sum_masks[idx]
+                if sum_masks != []: # 비어 있지 않으면, top-k 경로
+                    plain = np.array(plain)/sum_masks[idx] # pack별 평균 정규화
                 plain_list.extend(plain)   
         return np.array(plain_list)
     else:

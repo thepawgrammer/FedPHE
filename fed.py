@@ -4,7 +4,7 @@ import torch
 import torch.multiprocessing as mp
 import numpy as np
 
-import utils.min_hash as lsh
+# import utils.min_hash as lsh ## Sketch 용
 from utils.util import logging
 from client import client_process
 from server import server_process
@@ -44,7 +44,7 @@ def model_init(dataset,device):
 
 def run(args,kwargs_IPC,device):
     """
-    Run fucntion to launch server and clients processes.
+    Run function to launch server and clients processes.
 
     Args:
         args (`arg_parse`):
@@ -58,10 +58,10 @@ def run(args,kwargs_IPC,device):
     """
     train_file = os.path.join(args.data_dir, args.dataset + '_train')
     if not os.path.exists(train_file):
-        client_train_datasets, client_test_datasets, data_info,server_test_sets = load_dataset(args)
+        client_train_datasets, client_test_datasets, data_info, server_test_sets = load_dataset(args)
         print("Generate new files!")
     else:
-        client_train_datasets, client_test_datasets, data_info,server_test_sets = load_exist(args)
+        client_train_datasets, client_test_datasets, data_info, server_test_sets = load_exist(args)
         print("Load last files!")
 
     train_weights,test_weights = init_prop(client_train_datasets,client_test_datasets, args.n_clients)
@@ -81,7 +81,7 @@ def run(args,kwargs_IPC,device):
                       })
 
 
-    model = model_init(args.dataset,device)
+    model = model_init(args.dataset,device) # Model initialization.
     params_list,params_num,layer_shape = params_tolist(model)
     total_sum = sum(params_num.values())
 
@@ -96,8 +96,8 @@ def run(args,kwargs_IPC,device):
     if args.enc and args.isBatch:
         logging("Batch num:{}".format(batch_num),args)
     
-    if args.isSelection:
-        random_R = lsh.gen_random_R(input_len = total_sum, sim_len=args.sim_len)
+    if args.isSelection: # 
+        random_R = lsh.gen_random_R(input_len = total_sum, sim_len=args.sim_len) # Random matrix is needed for sketch-based client selection.
         kwargs_IPC.update({'random_R':random_R,})
 
 
