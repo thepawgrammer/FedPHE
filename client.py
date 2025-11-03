@@ -124,6 +124,40 @@ def straggler(rank):
     if rank == 2:
         time.sleep(timewait)
 
+# CKKS 스타일: Flatten → pack(P개) → 각 pack L2-norm(정확히는 ||·||^2) 계산 → 상위 ζ% pack 선택.
+def pack_level_sparse(arr: np.ndarray, pack_size: int, zeta: float):
+    """
+    CKKS 스타일: Flatten → pack(P개) → 각 pack L2-norm(정확히는 ||·||^2) 계산 → 상위 ζ% pack 선택.
+    반환은 '요소 인덱스 + 값'로 해서, 기존 server.py의 평문 스파스 처리(인덱스/값 쌍)와 호환시킴.
+    """
+    N = len(arr)
+    P = int(pack_size)
+    B_tot = int(N / P)          # 총 pack 개수
+    # 1) pack별 L2^2 스코어 계산
+    scores = []
+    for j in range(B_tot):
+        s = j * P
+        e = min((j + 1) * P, N)
+        block = arr[s:e]
+        scores.append((j, float(np.dot(block, block))))  # ||block||^2
+
+    # 2) 상위 ζ 비율의 pack을 선택
+    B_sel = max(1, int(zeta * B_tot))
+    top = sorted(scores, key=lambda x: x[1], reverse=True)[:B_sel]
+    sel_packs = sorted([j for (j, _) in top])  # pack index 오름차순
+
+    # 3) 선택된 pack 내부의 '요소 인덱스'를 모두 모아 전송용으로 구성
+    idx_list = []
+    vals = []
+    for j in sel_packs:
+        s = j * P
+        e = min((j + 1) * P, N)
+        local_idx = list(range(s, e))
+        idx_list.extend(local_idx)
+        vals.extend(arr[s:e].tolist())
+
+    return idx_list, vals, B_tot, len(sel_packs)
+
 def client_process(rank, args, model, device,dataset, test_dataset, kwargs,kwargs_IPC,train_weights):
     torch.manual_seed(args.seed + rank)
     queue = kwargs_IPC['queues'][rank]
@@ -207,31 +241,35 @@ def client_process(rank, args, model, device,dataset, test_dataset, kwargs,kwarg
                     logging("id:{},enc time:{}".format(rank,enc_end-enc_begin),args) ##
 
             else:
+                ''' 추가 '''
                 # ===== 여기(평문 송신 지점)에 '스파스 + 트래픽 로깅'을 넣는다 =====
                 arr = np.array(params_list, dtype=np.float32)
 
                 if args.isSpars == 'topk':
-                    # 1) element-wise 절댓값 상위 k% 선택 (임시 구현)
-                    k = max(1, int(len(arr) * args.topk))
-                    idx = np.argpartition(np.abs(arr), -k)[-k:]
-                    sparse_vals = arr[idx]
+                    # ✅ pack 기준 sparsification: enc_batch_size = pack 크기, topk = ζ(비율)
+                    pack_size = int(args.enc_batch_size)
+                    zeta = float(args.topk)  # 예: 0.2 → 상위 20% pack
+                    idx_list, sparse_vals, B_tot, B_sel = pack_level_sparse(arr, pack_size, zeta)
 
-                    # 2) 트래픽 로깅 (평문): 값 k개 + 인덱스 k개 (각 4B 가정)
+                    # 업로드 바이트 추정(평문): 값 k개(4B) + 인덱스 k개(4B)
+                    k = len(idx_list)
                     if args.cipher_count:
                         bytes_out = k * 4 + k * 4
-                        logging(f"[PT-Sparse] client {rank} uplink ~{bytes_out} bytes (k={k})", args)
+                        logging(
+                            f"[PT-PackSparse] client {rank} uplink ~{bytes_out} bytes "
+                            f"(packs {B_sel}/{B_tot}, elements {k})", args
+                        )
 
-                    # 3) 전송
-                    pipe.send([rank, idx.tolist(), sparse_vals.tolist()])
+                    # 전송 (서버는 [idx_list, vals]를 받아 복원)
+                    pipe.send([rank, idx_list, sparse_vals])
 
                 else:
                     # full 평문 전송
                     if args.cipher_count:
                         bytes_out = len(arr) * 4
                         logging(f"[PT-Full] client {rank} uplink ~{bytes_out} bytes", args)
-
                     pipe.send([rank, arr.tolist()])
-
+                ''' 추가 끝 '''
             # lock.acquire() ##
             # logging("client {}, send params {}.".format(rank,params_list[0]),args) ##
             # lock.release() ##

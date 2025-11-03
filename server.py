@@ -289,33 +289,83 @@ def aggregatie_weights(rec,recv_list,weights_client,total_sum,batch_num,id_list,
                     weights += weights_client[c_id]      
             else:
                 raise ValueError("invalid enc algorithm",args.algorithm)
-        else:
-            value = value[1]
+        else: # 평문
+            raw = value # 전체 메시지 그대로 (rank 포함)
             if recv_list[c_id] == 0:
-                # if args.cipher_count: ## 
-                #     # float32 가정: 4 bytes/param. (pickle 오버헤드는 비교 지표에서 제외) ##
-                #     plaintext_size += len(value) * 4 ##
-                # add_params = np.array(value)*weights_client[c_id] ##
+                # raw 포맷: [rank, ...]
+                # 케이스: (A) [rank, mask, vals]  (pack-sparse)
+                #         (B) [rank, idx_list, sparse_vals]  (scalar-sparse)
+                #         (C) [rank, full_vector]  (full)
 
                 ''' 추가 '''
-                if isinstance(value, list) and len(value) == 2 and isinstance(value[0], list):
-                    # 스파스 패킷: [idx_list, sparse_vals]
-                    idx_list, sparse_vals = value
-                    full = np.zeros(total_sum, dtype=np.float32)
-                    full[np.array(idx_list, dtype=np.int64)] = np.array(sparse_vals, dtype=np.float32)
-                    add_params = full * weights_client[c_id]
+                if not isinstance(raw, list) or len(raw) < 2:
+                    continue  # 방어코드
+                
+                rank_msg = raw[0]
+                payloads = raw[1:]
+
+                add_params = None  # 최종 가중합 대상
+                counted_bytes = 0
+
+                # --- (A) pack-sparse: [rank, mask, vals] ---
+                if len(payloads) == 2 and isinstance(payloads[0], list) and isinstance(payloads[1], list):
+                    maybe_mask = payloads[0]
+                    maybe_vals = payloads[1]
+
+                    # pack-추정 기준: mask 길이 == ceil(total_sum / P) 이고 mask 원소가 0/1
+                    P = int(args.enc_batch_size)
+                    B_tot = int(total_sum / P)
+                    is_mask = (len(maybe_mask) == B_tot) and all((x == 0 or x == 1) for x in maybe_mask)
+
+                    if is_mask:
+                        # === pack-sparse 복원 ===
+                        full = np.zeros(total_sum, dtype=np.float32)
+                        pos = 0
+                        for j, m in enumerate(maybe_mask):
+                            if m:
+                                s = j * P
+                                e = min((j + 1) * P, total_sum)
+                                block_len = e - s
+                                full[s:e] = np.array(maybe_vals[pos:pos + block_len], dtype=np.float32)
+                                pos += block_len
+
+                        add_params = full * weights_client[c_id]
+
+                        if args.cipher_count:
+                            # 값(4B) + mask(B_tot/8 byte)
+                            counted_bytes = len(maybe_vals) * 4 + int(B_tot / 8.0)
+
+                    else:
+                        # === (B) scalar-sparse로 처리 ===
+                        idx_list = maybe_mask
+                        sparse_vals = maybe_vals
+                        full = np.zeros(total_sum, dtype=np.float32)
+                        full[np.array(idx_list, dtype=np.int64)] = np.array(sparse_vals, dtype=np.float32)
+                        add_params = full * weights_client[c_id]
+
+                        if args.cipher_count:
+                            # 인덱스 k개(4B) + 값 k개(4B)
+                            counted_bytes = (len(idx_list) * 4) + (len(idx_list) * 4)
+
+                # --- (C) full: [rank, full_vector] ---
+                elif len(payloads) == 1 and isinstance(payloads[0], list):
+                    vec = payloads[0]
+                    add_params = np.array(vec, dtype=np.float32) * weights_client[c_id]
                     if args.cipher_count:
-                        # 값 k개(4B) + 인덱스 k개(4B)
-                        plaintext_size += (len(idx_list) * 4) + (len(idx_list) * 4)
+                        counted_bytes = len(vec) * 4
+
                 else:
-                    # 기존 full 벡터
-                    add_params = np.array(value) * weights_client[c_id]
-                    if args.cipher_count:
-                        plaintext_size += len(value) * 4
-                ''' 추가 '''
+                    # 예상치 못한 포맷은 skip (필요시 로그)
+                    add_params = None
+                    counted_bytes = 0
 
-                weights += weights_client[c_id]
-                agg_res += add_params
+                if add_params is not None:
+                    if args.cipher_count:
+                        plaintext_size += counted_bytes
+                    weights += weights_client[c_id]
+                    agg_res += add_params
+
+                ''' 추가 '''
                 
     '''추가'''
     logging(f"enc={args.enc}, isSpars={args.isSpars}, cipher_count={args.cipher_count}", args)
@@ -514,7 +564,7 @@ def server_process(args,kwargs_IPC,total_sum,batch_num,train_weights,test_weight
         if n_participants == 0:
             n_participants = n_clients  # 안전장치
 
-        bytes_down_round = int(total_sum) * 4 * n_participants
+        bytes_down_round = 0 # int(total_sum) * 4 * n_participants
         bytes_down_total += bytes_down_round
         traffic_down_hist.append(bytes_down_round)
         ''' 추가 '''

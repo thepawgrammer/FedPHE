@@ -20,7 +20,7 @@ def arg_parse():
                             help='datasets: MNIST, FashionMNIST, CIFAR10, CIFAR100')
     parser.add_argument('--batch-size', type=int, default=64, metavar='N',
                         help='input batch size for training (default: 64)')
-    parser.add_argument('--epochs', type=int, default=10, metavar='N',
+    parser.add_argument('--epochs', type=int, default=100, metavar='N',
                         help='number of epochs to train (default: 10)')
     parser.add_argument('--lr', type=float, default=0.001, metavar='LR',
                         help='learning rate (default: 0.001)')
@@ -29,7 +29,7 @@ def arg_parse():
     parser.add_argument('--weighted', action=argparse.BooleanOptionalAction, default=True,
                         help='weighted or not')
     '''추가'''
-    parser.add_argument('--n_clients', type=int, default= 5, metavar='N',
+    parser.add_argument('--n_clients', type=int, default= 10, metavar='N',
                         help='how many training processes to use (default: 5)')
     parser.add_argument('--momentum', type=float, default=0.9, metavar='M',
                         help='momentum (default: 0.9)')
@@ -62,7 +62,7 @@ def arg_parse():
                         help='sparsification method: topk or randk or full')   
          
     # sparsification
-    parser.add_argument('--topk',type=float,default=0.2,
+    parser.add_argument('--topk',type=float,default=0.1,
                         help='sparfication fraction')
                   
     # encryption params
