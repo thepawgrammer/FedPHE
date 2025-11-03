@@ -445,6 +445,8 @@ def server_process(args,kwargs_IPC,total_sum,batch_num,train_weights,test_weight
     patience = getattr(args, "patience", 10)      # 10 라운드 연속 개선 없으면 수렴
     delta = getattr(args, "conv_delta", 0.1)      # 0.1 (%p) 개선 기준
 
+    converged_round = None   # ✅ 추가: 아직 수렴하지 않았다는 의미로 초기화
+
     # 에폭 루프 밖, server_process() 시작부 어딘가에:
     def _mode_tag(args):
         if args.enc:
@@ -654,20 +656,26 @@ def server_process(args,kwargs_IPC,total_sum,batch_num,train_weights,test_weight
             stale += 1
 
         if stale >= patience:
-            logging(f"[Converged] round={epoch}, best_acc={best_acc:.2f} at round {best_round}", args)
+            converged_round = epoch  # ✅ 수렴 라운드 기록 (0-based)
+            logging(f"[Converged] round={epoch}, best_acc={best_acc:.4f} at round {best_round}", args)
             break
         ''' 추가 '''
 
         epoch_time = round(time.time() - epoch_start, 2) # 변경
         ''' 추가 '''
         MB = 1024**2
+        total_participations = sum(participation_list)  # 모든 클라 참여 횟수 합
+        avg_MB_up_per_participation = (bytes_up_total / max(1, total_participations)) / MB
+        avg_MB_up_per_client_total = (bytes_up_total / max(1, args.n_clients)) / MB
+        
         log_line = (
-            f"[E{epoch}] acc={accuracy_list[-1]:.2f}% "
+            f"[E{epoch}] acc={accuracy_list[-1]:.4f}% "
             f"loss={float(loss_list[-1]):.4f} "
-            f"time={epoch_time:.2f}s "
-            f"up={bytes_up_round/MB:.2f}MB "
-            f"down={bytes_down_round/MB:.2f}MB "
-            f"cum={(bytes_up_total+bytes_down_total)/MB:.2f}MB"
+            f"time={epoch_time:.4f}s "
+            f"up={bytes_up_round/MB:.4f}MB "
+            f"down={bytes_down_round/MB:.4f}MB "
+            f"cum={(bytes_up_total+bytes_down_total)/MB:.4f}MB "
+            f"(best@{best_round+1 if best_round>=0 else '-'}:{best_acc:.4f}%)"
         )
         logging(log_line, args)
         ''' 추가 '''
@@ -708,6 +716,17 @@ def server_process(args,kwargs_IPC,total_sum,batch_num,train_weights,test_weight
     ''' 추가 '''
     # [추가] 요약/저장 (루프 종료 후)
     time_total = time.time() - start_time
+
+    # ✅ 실제 실행된 라운드 수(1-based): 수렴 시점까지 포함
+    rounds_run = len(acc_hist)
+
+    # ✅ 베스트 정확도가 나온 라운드(1-based)
+    round_best = (best_round + 1) if best_round >= 0 else None
+
+    # (선택) 수렴 라운드도 기록하고 싶으면, break 직전에 epoch를 저장하는 변수를 하나 두세요.
+    # 예: converged_round = epoch  # break 직전 설정, 0-based
+    round_converged = converged_round + 1 if converged_round is not None else rounds_run
+
     mb_up   = bytes_up_total   / (1024**2)
     mb_down = bytes_down_total / (1024**2)
     mb_total = mb_up + mb_down
@@ -719,9 +738,13 @@ def server_process(args,kwargs_IPC,total_sum,batch_num,train_weights,test_weight
     summary_csv = os.path.join(args.log_dir, f"{args.dataset}_summary.csv")  # 이건 그대로여도 됨
 
     # Summary 라인
-    logging(f"[Summary] mode={mode} | rounds={best_round+1 if best_round>=0 else len(acc_hist)} | "
-            f"best_acc={best_acc:.2f}% | time={time_total:.1f}s | "
-            f"up={mb_up:.2f}MB | down={mb_down:.2f}MB | total={mb_total:.2f}MB", args)
+    logging(
+    f"[Summary] mode={mode} | rounds_run={rounds_run} | "
+    f"best_acc={best_acc:.4f}% (best@{best_round+1}) | time={time_total:.4f}s | "
+    f"up={mb_up:.4f}MB | down={mb_down:.4f}MB | total={mb_total:.4f}MB | "
+    f"avg_up/participation={avg_MB_up_per_participation*args.n_clients:.4f}MB | ",
+    args
+    )
 
 
     # (a) 라운드별 곡선 CSV
@@ -750,13 +773,18 @@ def server_process(args,kwargs_IPC,total_sum,batch_num,train_weights,test_weight
     with open(summary_csv, "a", newline="") as f:
         w = csv.writer(f)
         if need_header:
-            w.writerow(["dataset","model","mode","rounds_to_conv","best_acc",
-                        "time_s","traffic_MB_up","traffic_MB_down","traffic_MB_total"])
+            w.writerow([
+                "dataset","model","mode","rounds_run","best_acc","round_best","time_s",
+                "traffic_MB_up","traffic_MB_down","traffic_MB_total",
+                "avg_MB_up_per_rounds",# "avg_MB_up_per_client_total"
+            ])
         model_name = getattr(args, "model", "auto")
-        rounds_to_conv = best_round+1 if best_round>=0 else len(acc_hist)
-        w.writerow([args.dataset, model_name, mode,
-                    rounds_to_conv, f"{best_acc:.2f}",
-                    f"{time_total:.1f}", f"{mb_up:.2f}", f"{mb_down:.2f}", f"{mb_total:.2f}"])
+        w.writerow([
+            args.dataset, model_name, mode,
+            rounds_run, f"{best_acc:.4f}", best_round+1,
+            f"{time_total:.4f}", f"{mb_up:.4f}", f"{mb_down:.4f}", f"{mb_total:.4f}",
+            f"{avg_MB_up_per_participation*args.n_clients:.4f}", # f"{avg_MB_up_per_client_total:.3f}"
+        ])
     ''' 추가 '''
 
     flag.value = True

@@ -1,0 +1,2 @@
+dataset,model,mode,rounds_run,best_acc,round_best,time_s,traffic_MB_up,traffic_MB_down,traffic_MB_total,avg_MB_up_per_rounds
+MNIST,auto,enc-ckks-topk-0.2,16,98.2000,6,97.9272,229.5523,0.0000,229.5523,14.3470
