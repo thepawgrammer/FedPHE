@@ -17,8 +17,8 @@ from functools import reduce
 from multiprocessing import Pool,cpu_count
 from utils import sampling
 from sklearn.cluster import KMeans
-from encryption.paillier import paillier_dec,paillier_enc
-from encryption.bfv import bfv_dec
+# from encryption.paillier import paillier_dec,paillier_enc
+# from encryption.bfv import bfv_dec
 from client import params_tolist,params_tomodel
 from utils.util import model_init
 from client import test_epoch
@@ -196,6 +196,7 @@ def aggregatie_weights(rec,recv_list,weights_client,total_sum,batch_num,id_list,
                         global_cipher[batch] = add_cipher_batch.serialize() 
                     weights += weights_client[c_id]
             elif args.algorithm == 'paillier':
+                from encryption.paillier import paillier_enc,paillier_dec
                 mod = enc_tools['mod']
                 num_bits_per_batch = enc_tools['num_bits_per_batch']
                 if args.isSpars == 'topk':
@@ -246,6 +247,7 @@ def aggregatie_weights(rec,recv_list,weights_client,total_sum,batch_num,id_list,
                         global_cipher[batch] =  add_cipher_batch
                     weights += weights_client[c_id]
             elif args.algorithm == 'bfv':
+                from encryption.bfv import bfv_dec
                 bfv_file = os.path.join(args.data_dir + 'bfv_ctx')
                 with open(bfv_file, "rb") as f:
                     params = f.read()
@@ -443,6 +445,15 @@ def server_process(args,kwargs_IPC,total_sum,batch_num,train_weights,test_weight
     patience = getattr(args, "patience", 10)      # 10 라운드 연속 개선 없으면 수렴
     delta = getattr(args, "conv_delta", 0.1)      # 0.1 (%p) 개선 기준
 
+    # 에폭 루프 밖, server_process() 시작부 어딘가에:
+    def _mode_tag(args):
+        if args.enc:
+            return f"enc-{args.algorithm}-{args.isSpars}-{args.topk}"
+        else:
+            return "plain-" + ("full" if args.isSpars == "full" else args.isSpars)
+
+    mode = _mode_tag(args)
+
     # 결과 파일 경로
     os.makedirs(args.log_dir, exist_ok=True)
     curve_csv   = os.path.join(args.log_dir, f"{args.dataset}_plain_full_curve.csv")
@@ -513,39 +524,34 @@ def server_process(args,kwargs_IPC,total_sum,batch_num,train_weights,test_weight
                                                 total_sum,batch_num,id_list,args,enc_tools,rep_num)
                 total_ciphertext_size += agg_res[0]
                 cipher_size_list.append(agg_res[0])
+
+                bytes_up_round += int(agg_res[0])
                 agg_res = agg_res[1]             
             else:
                 weights, agg_res= aggregatie_weights(rec,recv_list,weights_client,
                                                 total_sum,batch_num,id_list,args,enc_tools,rep_num)
+            
+            bytes_up_total += int(bytes_up_round)
+            traffic_up_hist.append(int(bytes_up_round))
+        
         else:
             if args.cipher_count: ##
                 weights, plain_size, agg_res = aggregatie_weights(
                     rec, recv_list, weights_client, total_sum, batch_num, id_list, args
                 ) ##
+                bytes_up_round += int(plain_size)                 # 위에서 받은 합계 사용
                 logging(f'server receive: plaintext size:{plain_size} bytes', args) ##
                 # plain_size_list.append(plain_size) ## 추가
             else: ##
                 weights, agg_res = aggregatie_weights(
                     rec, recv_list, weights_client, total_sum, batch_num, id_list, args
                 ) ##
+                bytes_up_round += int(total_sum) * 4 * n_clients  # 대략값: 전체 파라미터 * 4B * 참여 클라 수 ##
             # weights, agg_res= aggregatie_weights(rec,recv_list,weights_client,
             #                                   total_sum,batch_num,id_list,args)
 
-            ''' 추가 '''
-            # === 업링크 트래픽(라운드별/누적) ===
-            if args.cipher_count:
-                bytes_up_round += int(plain_size)                 # 위에서 받은 합계 사용
-            else:
-                # 대략값: 전체 파라미터 * 4B * 참여 클라 수 # 참여 클라이언트 수 추정 (recv_list는 0/1 플래그)
-                n_participants = sum(recv_list)                   # recv_list는 수신 완료 플래그
-                if n_participants == 0:
-                    # 혹시 모든 클라가 응답 안 하면 에러 방지
-                    n_participants = n_clients
-                bytes_up_round += int(total_sum) * 4 * int(n_participants)
-            ''' 추가 '''
-
-            bytes_up_total += bytes_up_round
-            traffic_up_hist.append(bytes_up_round)
+            bytes_up_total += int(bytes_up_round)
+            traffic_up_hist.append(int(bytes_up_round))
 
             global_weights = (np.array(agg_res) / weights).tolist()  
             params_list,params_num,layer_shape = params_tolist(model)
@@ -706,9 +712,17 @@ def server_process(args,kwargs_IPC,total_sum,batch_num,train_weights,test_weight
     mb_down = bytes_down_total / (1024**2)
     mb_total = mb_up + mb_down
 
-    logging(f"[Summary] mode=plain-full | rounds={best_round+1 if best_round>=0 else len(acc_hist)} | "
+    # 파일 이름들
+    curve_csv = os.path.join(args.log_dir, f"{args.dataset}_{mode}_curve.csv")
+    acc_png   = os.path.join(args.log_dir, f"{args.dataset}_{mode}_acc.png")
+    loss_png  = os.path.join(args.log_dir, f"{args.dataset}_{mode}_loss.png")
+    summary_csv = os.path.join(args.log_dir, f"{args.dataset}_summary.csv")  # 이건 그대로여도 됨
+
+    # Summary 라인
+    logging(f"[Summary] mode={mode} | rounds={best_round+1 if best_round>=0 else len(acc_hist)} | "
             f"best_acc={best_acc:.2f}% | time={time_total:.1f}s | "
             f"up={mb_up:.2f}MB | down={mb_down:.2f}MB | total={mb_total:.2f}MB", args)
+
 
     # (a) 라운드별 곡선 CSV
     if len(acc_hist) > 0:
@@ -740,7 +754,7 @@ def server_process(args,kwargs_IPC,total_sum,batch_num,train_weights,test_weight
                         "time_s","traffic_MB_up","traffic_MB_down","traffic_MB_total"])
         model_name = getattr(args, "model", "auto")
         rounds_to_conv = best_round+1 if best_round>=0 else len(acc_hist)
-        w.writerow([args.dataset, model_name, "plain-full",
+        w.writerow([args.dataset, model_name, mode,
                     rounds_to_conv, f"{best_acc:.2f}",
                     f"{time_total:.1f}", f"{mb_up:.2f}", f"{mb_down:.2f}", f"{mb_total:.2f}"])
     ''' 추가 '''

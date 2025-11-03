@@ -1,2 +1,0 @@
-dataset,model,mode,rounds_to_conv,best_acc,time_s,traffic_MB_up,traffic_MB_down,traffic_MB_total
-MNIST,auto,plain-full,18,98.87,32.8,16.95,16.95,33.89

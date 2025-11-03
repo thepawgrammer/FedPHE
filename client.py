@@ -12,8 +12,8 @@ import random
 import tenseal as ts
 from threading import Thread
 from encryption.ckks import ckks_enc,ckks_dec
-from encryption.bfv import bfv_enc,bfv_dec
-from encryption.paillier import paillier_enc,paillier_dec
+# from encryption.bfv import bfv_enc,bfv_dec
+# from encryption.paillier import paillier_enc,paillier_dec
 
 import utils.min_hash as min_lsh
 
@@ -415,9 +415,11 @@ def enc_params(params_list,enc_tools,args,epoch = 0):
         return ckks_enc(params_list,ckks_ctx,isBatch=args.isBatch,batch_size=args.enc_batch_size,
                         topk=args.topk,round = epoch,randk_seed=args.randk_seed, is_spars = args.isSpars)
     elif args.algorithm =='paillier':
+        from encryption.paillier import paillier_enc
         cls_paillier = enc_tools['cls_paillier']
         return  paillier_enc(params_list,cls_paillier,args)
     elif args.algorithm == 'bfv':
+        from encryption.bfv import bfv_enc
         bfv_file = os.path.join(args.data_dir + 'bfv_ctx')
         with open(bfv_file, "rb") as f:
             params = f.read()
@@ -436,10 +438,12 @@ def dec_params(cipher_list,sum_masks, enc_tools,args, randk_list = []):
         sk = ckks_ctx.secret_key()
         return ckks_dec(cipher_list,ckks_ctx,sk,args.isBatch,randk_list,sum_masks,args.enc_batch_size)
     elif args.algorithm =='paillier':
+        from encryption.paillier import paillier_dec
         cls_paillier = enc_tools['cls_paillier']
         total_params = enc_tools['total_params']
         return  paillier_dec(cipher_list,cls_paillier,total_params,args)
     elif args.algorithm == 'bfv':
+        from encryption.bfv import bfv_dec
         bfv_file = os.path.join(args.data_dir + 'bfv_ctx')
         with open(bfv_file, "rb") as f:
             params = f.read()
