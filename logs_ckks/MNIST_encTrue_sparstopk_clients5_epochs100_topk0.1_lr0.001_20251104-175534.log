@@ -1,0 +1,28 @@
+2025-11-04 17:55:34 | Basic information: device cpu, learning rate 0.001, num clients 5, epochs 100,noniid_method dirichlet,            isEnc True,isBatch True,sparsification topk, client selection False,topk 0.1, enc_batch_size 8192
+2025-11-04 17:55:35 | training weights: [0.2, 0.2, 0.2, 0.2, 0.2]
+2025-11-04 17:55:35 | testing weights:[0.2, 0.2, 0.2, 0.2, 0.2]
+2025-11-04 17:55:35 | client0, train samples 12000,test samples 2000
+2025-11-04 17:55:35 | client1, train samples 12000,test samples 2000
+2025-11-04 17:55:35 | client2, train samples 12000,test samples 2000
+2025-11-04 17:55:35 | client3, train samples 12000,test samples 2000
+2025-11-04 17:55:35 | client4, train samples 12000,test samples 2000
+2025-11-04 17:55:35 | data split finished!
+2025-11-04 17:55:35 | Batch num:6
+2025-11-04 17:55:43 | id:0,train time:1.6777536869049072
+2025-11-04 17:55:43 | id:0,enc time:0.21686983108520508
+2025-11-04 17:55:43 | client 0, mask ones: 1, len: 6
+2025-11-04 17:55:46 | id:1,train time:1.6704185009002686
+2025-11-04 17:55:46 | id:1,enc time:0.20753717422485352
+2025-11-04 17:55:46 | client 1, mask ones: 1, len: 6
+2025-11-04 17:55:49 | id:2,train time:1.6617162227630615
+2025-11-04 17:55:49 | id:2,enc time:0.20665216445922852
+2025-11-04 17:55:49 | client 2, mask ones: 1, len: 6
+2025-11-04 17:55:52 | id:3,train time:1.6094341278076172
+2025-11-04 17:55:52 | id:3,enc time:0.21414756774902344
+2025-11-04 17:55:52 | client 3, mask ones: 1, len: 6
+2025-11-04 17:55:55 | id:4,train time:1.532221794128418
+2025-11-04 17:55:56 | id:4,enc time:0.2156658172607422
+2025-11-04 17:55:56 | client 4, mask ones: 1, len: 6
+2025-11-04 17:55:57 | enc=True, isSpars=topk, cipher_count=True
+2025-11-04 17:55:57 | server receive: ciphertext size:3341914 bytes
+2025-11-04 17:55:57 | server agg: epoch 0.

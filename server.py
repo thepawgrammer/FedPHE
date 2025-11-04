@@ -24,7 +24,6 @@ from utils.util import model_init
 from client import test_epoch
 
 ''' 추가 '''
-import math
 import csv
 import matplotlib
 matplotlib.use("Agg")  # GUI 없는 서버에서도 저장 가능
@@ -317,7 +316,7 @@ def aggregatie_weights(rec,recv_list,weights_client,total_sum,batch_num,id_list,
 
                     # pack-추정 기준: mask 길이 == ceil(total_sum / P) 이고 mask 원소가 0/1
                     P = int(args.enc_batch_size)
-                    B_tot = int(math.ceil(total_sum / float(P)))
+                    B_tot = int(total_sum / P)
                     is_mask = (len(maybe_mask) == B_tot) and all((x == 0 or x == 1) for x in maybe_mask)
 
                     if is_mask:
@@ -556,9 +555,9 @@ def server_process(args,kwargs_IPC,total_sum,batch_num,train_weights,test_weight
             bytes_up_total += int(bytes_up_round)
             traffic_up_hist.append(int(bytes_up_round))
 
-            global_weights = (np.array(agg_res, dtype=np.float32) / float(weights)).tolist()
-            params_list, params_num, layer_shape = params_tolist(model)
-            params_tomodel(model, global_weights, params_num, layer_shape, args, params_list)
+            global_weights = (np.array(agg_res) / weights).tolist()  
+            params_list,params_num,layer_shape = params_tolist(model)
+            params_tomodel(model,global_weights,params_num,layer_shape,args,params_list)
         lock.acquire()
         logging('server agg: epoch {}.'.format(epoch),args)
         lock.release()
@@ -567,12 +566,22 @@ def server_process(args,kwargs_IPC,total_sum,batch_num,train_weights,test_weight
         if epoch > 0 and args.isSelection:
             e_server.clear()
 
+        ''' 추가 '''
+        # === 다운링크 트래픽(라운드별/누적) ===
+        n_participants = sum(recv_list)
+        if n_participants == 0:
+            n_participants = n_clients  # 안전장치
+
+        bytes_down_round = 0 # int(total_sum) * 4 * n_participants
+        bytes_down_total += bytes_down_round
+        traffic_down_hist.append(bytes_down_round)
+        ''' 추가 '''
+
         # send to client 
         for queue in queues:
             if queue.empty() == False:
-                _ = queue.get()
-            # queue.put([weights,agg_res])
-            queue.put([weights,global_weights])
+                a = queue.get()
+            queue.put([weights,agg_res])
         
         # The aggregated content has been sent and can be read by the client
         e.set()
@@ -646,7 +655,7 @@ def server_process(args,kwargs_IPC,total_sum,batch_num,train_weights,test_weight
         else:
             stale += 1
 
-        if best_acc >= 80 and stale >= patience:
+        if stale >= patience:
             converged_round = epoch  # ✅ 수렴 라운드 기록 (0-based)
             logging(f"[Converged] round={epoch}, best_acc={best_acc:.4f} at round {best_round}", args)
             break
@@ -695,7 +704,7 @@ def server_process(args,kwargs_IPC,total_sum,batch_num,train_weights,test_weight
             new_weights = []
             for i in client_selected:
                 new_weights.append(weights_client[i])
-            selected_file = os.path.join(args.data_dir, f"{args.dataset}_selected")
+            selected_file = os.path.join(args.data_dir, args.dataset + 'selected')
             with open(selected_file, "wb") as f:
                 clients_bytes = pickle.dumps([client_selected,new_weights])
                 f.write(clients_bytes)  

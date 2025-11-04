@@ -1,0 +1,118 @@
+2025-11-04 17:59:46 | Basic information: device cpu, learning rate 0.001, num clients 5, epochs 100,noniid_method dirichlet,            isEnc True,isBatch True,sparsification topk, client selection False,topk 0.1, enc_batch_size 8192
+2025-11-04 17:59:46 | training weights: [0.2, 0.2, 0.2, 0.2, 0.2]
+2025-11-04 17:59:46 | testing weights:[0.2, 0.2, 0.2, 0.2, 0.2]
+2025-11-04 17:59:46 | client0, train samples 12000,test samples 2000
+2025-11-04 17:59:46 | client1, train samples 12000,test samples 2000
+2025-11-04 17:59:46 | client2, train samples 12000,test samples 2000
+2025-11-04 17:59:46 | client3, train samples 12000,test samples 2000
+2025-11-04 17:59:46 | client4, train samples 12000,test samples 2000
+2025-11-04 17:59:46 | data split finished!
+2025-11-04 17:59:46 | Batch num:6
+2025-11-04 17:59:54 | id:0,train time:1.6495983600616455
+2025-11-04 17:59:54 | id:0,enc time:0.20961451530456543
+2025-11-04 17:59:54 | client 0, mask ones: 1, len: 6
+2025-11-04 17:59:57 | id:1,train time:1.7564795017242432
+2025-11-04 17:59:58 | id:1,enc time:0.20266938209533691
+2025-11-04 17:59:58 | client 1, mask ones: 1, len: 6
+2025-11-04 18:00:00 | id:2,train time:1.635777473449707
+2025-11-04 18:00:01 | id:2,enc time:0.2051408290863037
+2025-11-04 18:00:01 | client 2, mask ones: 1, len: 6
+2025-11-04 18:00:04 | id:3,train time:1.6767008304595947
+2025-11-04 18:00:04 | id:3,enc time:0.2101597785949707
+2025-11-04 18:00:04 | client 3, mask ones: 1, len: 6
+2025-11-04 18:00:07 | id:4,train time:1.5982751846313477
+2025-11-04 18:00:07 | id:4,enc time:0.20413541793823242
+2025-11-04 18:00:07 | client 4, mask ones: 1, len: 6
+2025-11-04 18:00:09 | enc=True, isSpars=topk, cipher_count=True
+2025-11-04 18:00:09 | server receive: ciphertext size:3343073 bytes
+2025-11-04 18:00:09 | server agg: epoch 0.
+2025-11-04 18:00:09 | id:1,dec time:0.19710588455200195
+2025-11-04 18:00:09 | id:2,dec time:0.19510507583618164
+2025-11-04 18:00:09 | id:3,dec time:0.19510459899902344
+2025-11-04 18:00:09 | id:4,dec time:0.19510507583618164
+2025-11-04 18:00:10 | [E0] acc=96.1300% loss=0.0900 time=20.5100s up=3.1882MB down=0.0000MB cum=3.1882MB (best@1:96.1300%)
+2025-11-04 18:00:13 | id:0,train time:3.5358026027679443
+2025-11-04 18:00:13 | id:4,train time:3.5553207397460938
+2025-11-04 18:00:13 | id:3,train time:3.548811674118042
+2025-11-04 18:00:13 | id:2,train time:3.5398786067962646
+2025-11-04 18:00:13 | id:1,enc time:0.20114493370056152
+2025-11-04 18:00:13 | id:0,enc time:0.20114493370056152
+2025-11-04 18:00:13 | id:4,enc time:0.19814491271972656
+2025-11-04 18:00:13 | id:3,enc time:0.19964957237243652
+2025-11-04 18:00:13 | client 0, mask ones: 1, len: 6
+2
+2025-11-04 18:00:13 | client 1, mask ones: 1, len: 6
+2025-11-04 18:00:13 | client 4, mask ones: 1, len: 6
+2025-11-04 18:00:13 | client 3, mask ones: 1, len: 6
+2025-11-04 18:00:13 | client 2, mask ones: 1, len: 6
+2025-11-04 18:00:14 | enc=True, isSpars=topk, cipher_count=True
+2025-11-04 18:00:14 | server receive: ciphertext size:3343330 bytes
+2025-11-04 18:00:14 | server agg: epoch 1.
+2025-11-04 18:00:14 | id:2,dec time:0.19267606735229492
+2025-11-04 18:00:14 | id:4,dec time:0.1903676986694336
+
+2025-11-04 18:00:14 | id:0,dec time:0.19467735290527344
+2025-11-04 18:00:15 | [E1] acc=97.3100% loss=0.0600 time=5.1700s up=3.1884MB down=0.0000MB cum=6.3767MB (best@2:97.3100%)
+2025-11-04 18:00:19 | id:0,train time:5.093800783157349
+2025-11-04 18:00:19 | id:2,train time:5.0978007316589355
+2025-11-04 18:00:19 | id:3,train time:5.114336013793945
+
+2025-11-04 18:00:19 | id:4,enc time:0.20016980171203613
+2025-11-04 18:00:19 | id:2,enc time:0.20153260231018066
+2025-11-04 18:00:19 | id:0,enc time:0.20417118072509766
+2025-11-04 18:00:20 | client 4, mask ones: 1, len: 6
+2025-11-04 18:00:20 | client 0, mask ones: 1, len: 6
+2025-11-04 18:00:20 | id:3,enc time:0.19866251945495605
+2025-11-04 18:00:20 | id:1,enc time:0.20116162300109863
+2025-11-04 18:00:20 | client 2, mask ones: 1, len: 6
+2025-11-04 18:00:20 | client 1, mask ones: 1, len: 6
+2025-11-04 18:00:20 | client 3, mask ones: 1, len: 6
+2025-11-04 18:00:21 | enc=True, isSpars=topk, cipher_count=True
+2025-11-04 18:00:21 | server receive: ciphertext size:3343060 bytes
+2025-11-04 18:00:21 | server agg: epoch 2.
+2025-11-04 18:00:21 | id:2,dec time:0.19244742393493652
+2025-11-04 18:00:21 | id:3,dec time:0.19546127319335938
+2025-11-04 18:00:21 | id:1,dec time:0.193955659866333
+2025-11-04 18:00:21 | id:4,dec time:0.19144845008850098
+2025-11-04 18:00:22 | [E2] acc=97.9200% loss=0.0400 time=6.6200s up=3.1882MB down=0.0000MB cum=9.5648MB (best@3:97.9200%)
+2025-11-04 18:00:26 | id:2,train time:4.697340488433838
+2025-11-04 18:00:26 | id:1,train time:4.706860542297363
+2025-11-04 18:00:26 | id:3,train time:4.708367824554443
+2025-11-04 18:00:26 | id:3,enc time:0.19562697410583496
+2025-11-04 18:00:26 | id:1,enc time:0.20212697982788086
+2025-11-04 18:00:26 | id:2,enc time:0.20062971115112305
+2025-11-04 18:00:26 | id:0,enc time:0.20012617111206055
+2025-11-04 18:00:26 | client 1, mask ones: 1, len: 6
+2025-11-04 18:00:26 | client 3, mask ones: 1, len: 6
+2025-11-04 18:00:26 | client 2, mask ones: 1, len: 6
+2025-11-04 18:00:26 | client 4, mask ones: 1, len: 6
+2025-11-04 18:00:26 | client 0, mask ones: 1, len: 6
+2025-11-04 18:00:27 | enc=True, isSpars=topk, cipher_count=True
+2025-11-04 18:00:27 | server receive: ciphertext size:3342588 bytes
+2025-11-04 18:00:27 | server agg: epoch 3.
+2025-11-04 18:00:27 | id:4,dec time:0.19409751892089844
+2025-11-04 18:00:27 | id:3,dec time:0.19209742546081543
+2025-11-04 18:00:27 | id:2,dec time:0.19209742546081543
+2025-11-04 18:00:28 | [E3] acc=97.9200% loss=0.0400 time=6.2400s up=3.1877MB down=0.0000MB cum=12.7526MB (best@3:97.9200%)
+2025-11-04 18:00:33 | id:0,train time:5.392390727996826
+2025-11-04 18:00:33 | id:1,train time:5.395890235900879
+2025-11-04 18:00:33 | id:2,train time:5.39189076423645
+2025-11-04 18:00:33 | id:4,train time:5.411409854888916
+2025-11-04 18:00:33 | id:3,enc time:0.20111918449401855
+2025-11-04 18:00:33 | id:0,enc time:0.2046213150024414
+2025-11-04 18:00:33 | id:2,enc time:0.1981189250946045
+2025-11-04 18:00:33 | client 3, mask ones: 1, len: 6
+2025-11-04 18:00:33 | id:4,enc time:0.20164084434509277
+2025-11-04 18:00:33 | client 1, mask ones: 1, len: 6
+2025-11-04 18:00:33 | client 0, mask ones: 1, len: 6
+2025-11-04 18:00:33 | client 2, mask ones: 1, len: 6
+2025-11-04 18:00:33 | client 4, mask ones: 1, len: 6
+2025-11-04 18:00:34 | enc=True, isSpars=topk, cipher_count=True
+2025-11-04 18:00:34 | server receive: ciphertext size:3343772 bytes
+2025-11-04 18:00:34 | server agg: epoch 4.
+2025-11-04 18:00:34 | id:3,dec time:0.19620013236999512
+2025-11-04 18:00:34 | id:4,dec time:0.19769906997680664
+2025-11-04 18:00:34 | id:2,dec time:0.19269847869873047
+2025-11-04 18:00:34 | id:0,dec time:0.1941988468170166
+
+2025-11-04 18:00:35 | [E4] acc=97.9300% loss=0.0400 time=6.9200s up=3.1889MB down=0.0000MB cum=15.9415MB (best@3:97.9200%)
