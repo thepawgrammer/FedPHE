@@ -1,0 +1,1 @@
+python main.py --dataset MNIST --seed 42 --n_clients 5 --isSpars topk --cipher_count --no-isSelection --no-enc --epochs 100 --enc_batch_size 4096 --topk 0.1 --log_dir logs_plain

@@ -11,6 +11,7 @@ from utils.util import logging
 import random
 import tenseal as ts
 from threading import Thread
+import math
 from encryption.ckks import ckks_enc,ckks_dec
 # from encryption.bfv import bfv_enc,bfv_dec
 # from encryption.paillier import paillier_enc,paillier_dec
@@ -74,25 +75,22 @@ def params_tomodel(model,global_list,params_num,layer_shape,args,params_list):
     update_state = OrderedDict()
     model.to('cpu')
     idx_cnt = 0      
-    if args.isSpars == 'topk' or args.isSpars == 'randk':
-        for idx, key in enumerate(model.state_dict().keys()):
+    if args.isSpars in ('topk', 'randk'):
+        for key in model.state_dict().keys():
             layer_size = int(params_num[key])
-            tmp = global_list[idx_cnt : idx_cnt + layer_size]
+            tmp_arr   = np.array(global_list[idx_cnt : idx_cnt + layer_size], dtype=np.float32)
+            local_arr = np.array(params_list[idx_cnt : idx_cnt + layer_size], dtype=np.float32)
 
-            # The part with a value of 0 is replaced by local parameters.
-            for idx_tmp in range(len(tmp)):
-                if tmp[idx_tmp] == 0 and ( idx_tmp == len(tmp)- 1 or tmp[idx_tmp+1]==0 ):
-                    tmp[idx_tmp] = params_list[idx_cnt + idx_tmp]
-                    # global_list[idx_cnt+idx_tmp] = tmp[idx_tmp]
-            update_state[
-                key] =  torch.from_numpy(np.array(tmp).reshape(layer_shape[key]))
-            idx_cnt += layer_size            
+            missing = np.isclose(tmp_arr, 0.0, atol=1e-8)
+            tmp_arr[missing] = local_arr[missing]
+
+            update_state[key] = torch.from_numpy(tmp_arr.reshape(layer_shape[key]))
+            idx_cnt += layer_size
     else:
-        for idx, key in enumerate(model.state_dict().keys()):
+        for key in model.state_dict().keys():
             layer_size = int(params_num[key])
-            tmp = global_list[idx_cnt:idx_cnt + layer_size]
-            update_state[
-                key] =  torch.from_numpy(np.array(tmp).reshape(layer_shape[key]))
+            tmp_arr = np.array(global_list[idx_cnt : idx_cnt + layer_size], dtype=np.float32)
+            update_state[key] = torch.from_numpy(tmp_arr.reshape(layer_shape[key]))
             idx_cnt += layer_size
 
     model.load_state_dict(update_state)
@@ -132,13 +130,13 @@ def pack_level_sparse(arr: np.ndarray, pack_size: int, zeta: float):
     """
     N = len(arr)
     P = int(pack_size)
-    B_tot = int(N / P)          # 총 pack 개수
+    B_tot = int(math.ceil(N / float(P)))          # 총 pack 개수
     # 1) pack별 L2^2 스코어 계산
     scores = []
     for j in range(B_tot):
         s = j * P
-        e = min((j + 1) * P, N)
-        block = arr[s:e]
+        er = min((j + 1) * P, N)
+        block = arr[s:er]
         scores.append((j, float(np.dot(block, block))))  # ||block||^2
 
     # 2) 상위 ζ 비율의 pack을 선택
@@ -151,12 +149,18 @@ def pack_level_sparse(arr: np.ndarray, pack_size: int, zeta: float):
     vals = []
     for j in sel_packs:
         s = j * P
-        e = min((j + 1) * P, N)
-        local_idx = list(range(s, e))
+        er = min((j + 1) * P, N)
+        local_idx = list(range(s, er))
         idx_list.extend(local_idx)
-        vals.extend(arr[s:e].tolist())
+        vals.extend(arr[s:er].tolist())
 
     return idx_list, vals, B_tot, len(sel_packs)
+
+def idxs_to_mask(n_total, pack_size, idx_list):
+    mask = [0]*int(math.ceil(n_total/pack_size))
+    for idx in idx_list:
+        mask[idx // pack_size] = 1
+    return mask
 
 def client_process(rank, args, model, device,dataset, test_dataset, kwargs,kwargs_IPC,train_weights):
     torch.manual_seed(args.seed + rank)
@@ -304,8 +308,12 @@ def client_process(rank, args, model, device,dataset, test_dataset, kwargs,kwarg
 
             global_weights = global_weights[:total_sum]
 
-        else: # plain-text
-            global_weights = (np.array(global_weights) / involved_frac).tolist() ## 필수
+        else:  # plain-text
+            if args.isSpars == 'full':
+                global_weights = (np.array(global_weights, dtype=np.float32) / float(involved_frac)).tolist()
+            else:
+                # sparse(topk/randk): 서버가 평균/정규화를 처리했다는 가정. 추가로 나누지 않음.
+                global_weights = np.array(global_weights, dtype=np.float32).tolist()
             
         # lock.acquire() ##
         # print('client{},receive{}'.format(rank,global_weights[0])) ##
@@ -329,7 +337,7 @@ def client_process(rank, args, model, device,dataset, test_dataset, kwargs,kwarg
             # Wait for server to make client selection
             e_server.wait()
             
-            selected_file = os.path.join(args.data_dir, args.dataset + 'selected')
+            selected_file = os.path.join(args.data_dir, f"{args.dataset}_selected")
             with open(selected_file, "rb") as f:
                 clients_bytes = f.read()
                 clients_share = list(pickle.loads(clients_bytes))[0]
