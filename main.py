@@ -20,13 +20,13 @@ def arg_parse():
                             help='datasets: MNIST, FashionMNIST, CIFAR10, CIFAR100')
     parser.add_argument('--batch-size', type=int, default=64, metavar='N',
                         help='input batch size for training (default: 64)')
-    parser.add_argument('--epochs', type=int, default=50, metavar='N',
-                        help='number of epochs to train (default: 10)')
+    parser.add_argument('--epochs', type=int, default=100, metavar='N',
+                        help='number of epochs to train (default: 100)')
     parser.add_argument('--lr', type=float, default=0.001, metavar='LR',
                         help='learning rate (default: 0.001)')
-    parser.add_argument('--weighted',type=bool,default=True)
-    parser.add_argument('--n_clients', type=int, default= 8, metavar='N',
-                        help='how many training processes to use (default: 10)')
+    parser.add_argument('--weighted',type=bool,default=False)
+    parser.add_argument('--n_clients', type=int, default= 5, metavar='N',
+                        help='how many training processes to use (default: 5)')
     parser.add_argument('--momentum', type=float, default=0.9, metavar='M',
                         help='momentum (default: 0.9)')
 
@@ -38,14 +38,14 @@ def arg_parse():
                         help='parameter of dirichlet')
     parser.add_argument('--sgm', type=float, default=0.3,
                         help='parameter of unbalance')
-    parser.add_argument('--split', type=str, default='noniid',
+    parser.add_argument('--split', type=str, default='iid',
                         help='split method: iid or non-iid')
     parser.add_argument('--noniid_method', type=str, default='dirichlet',
                         help='noniid method: pathological or dirichlet')  
     # modules 
-    parser.add_argument('--enc',type=bool,default=True,
+    parser.add_argument('--enc',type=bool,default=False,
                         help='enc or not')
-    parser.add_argument('--isSelection',type=bool,default=True, 
+    parser.add_argument('--isSelection',type=bool,default=False, 
                         help='Client selection or not')
     parser.add_argument('--isSpars', type=str, default='topk',
                         help='sparsification method: topk or randk or topk')        

@@ -1,0 +1,126 @@
+2025-11-13 17:59:48 | Basic information: device cpu, learning rate 0.001, num clients 5, epochs 100,noniid_method dirichlet,            isEnc False,isBatch True,sparsification topk, client selection False,topk 0.1, enc_batch_size 4096
+2025-11-13 17:59:48 | training weights: [0.2, 0.2, 0.2, 0.2, 0.2]
+2025-11-13 17:59:48 | testing weights:[0.2, 0.2, 0.2, 0.2, 0.2]
+2025-11-13 17:59:48 | client0, train samples 12000,test samples 2000
+2025-11-13 17:59:48 | client1, train samples 12000,test samples 2000
+2025-11-13 17:59:48 | client2, train samples 12000,test samples 2000
+2025-11-13 17:59:48 | client3, train samples 12000,test samples 2000
+2025-11-13 17:59:48 | client4, train samples 12000,test samples 2000
+2025-11-13 17:59:48 | data split finished!
+2025-11-13 18:00:33 | server receive: payload size:889320 bytes (0.8481 MB)
+2025-11-13 18:00:33 | server agg: epoch 0.
+2025-11-13 18:00:33 | ***********Server epoch 0, Clients accuracy:96.36%***********
+
+2025-11-13 18:00:36 | server receive: payload size:184605 bytes (0.1761 MB)
+2025-11-13 18:00:36 | server agg: epoch 1.
+2025-11-13 18:00:36 | ***********Server epoch 1, Clients accuracy:95.67999999999999%***********
+
+2025-11-13 18:00:39 | server receive: payload size:156245 bytes (0.1490 MB)
+2025-11-13 18:00:39 | server agg: epoch 2.
+2025-11-13 18:00:40 | ***********Server epoch 2, Clients accuracy:96.2%***********
+
+2025-11-13 18:00:44 | server receive: payload size:184605 bytes (0.1761 MB)
+2025-11-13 18:00:44 | server agg: epoch 3.
+2025-11-13 18:00:44 | ***********Server epoch 3, Clients accuracy:96.22%***********
+
+2025-11-13 18:00:48 | server receive: payload size:156245 bytes (0.1490 MB)
+2025-11-13 18:00:48 | server agg: epoch 4.
+2025-11-13 18:00:48 | ***********Server epoch 4, Clients accuracy:96.21%***********
+
+2025-11-13 18:00:53 | server receive: payload size:184605 bytes (0.1761 MB)
+2025-11-13 18:00:53 | server agg: epoch 5.
+2025-11-13 18:00:53 | ***********Server epoch 5, Clients accuracy:96.41999999999999%***********
+
+2025-11-13 18:00:57 | server receive: payload size:156245 bytes (0.1490 MB)
+2025-11-13 18:00:57 | server agg: epoch 6.
+2025-11-13 18:00:58 | ***********Server epoch 6, Clients accuracy:95.67%***********
+
+2025-11-13 18:01:02 | server receive: payload size:184605 bytes (0.1761 MB)
+2025-11-13 18:01:02 | server agg: epoch 7.
+2025-11-13 18:01:03 | ***********Server epoch 7, Clients accuracy:95.55%***********
+
+2025-11-13 18:01:07 | server receive: payload size:184605 bytes (0.1761 MB)
+2025-11-13 18:01:07 | server agg: epoch 8.
+2025-11-13 18:01:08 | ***********Server epoch 8, Clients accuracy:96.45%***********
+
+2025-11-13 18:01:11 | server receive: payload size:184605 bytes (0.1761 MB)
+2025-11-13 18:01:11 | server agg: epoch 9.
+2025-11-13 18:01:12 | ***********Server epoch 9, Clients accuracy:96.41999999999999%***********
+
+2025-11-13 18:01:15 | server receive: payload size:184605 bytes (0.1761 MB)
+2025-11-13 18:01:15 | server agg: epoch 10.
+2025-11-13 18:01:15 | ***********Server epoch 10, Clients accuracy:96.39999999999999%***********
+
+2025-11-13 18:01:19 | server receive: payload size:184605 bytes (0.1761 MB)
+2025-11-13 18:01:19 | server agg: epoch 11.
+2025-11-13 18:01:19 | ***********Server epoch 11, Clients accuracy:96.69%***********
+
+2025-11-13 18:01:22 | server receive: payload size:184605 bytes (0.1761 MB)
+2025-11-13 18:01:22 | server agg: epoch 12.
+2025-11-13 18:01:23 | ***********Server epoch 12, Clients accuracy:96.87%***********
+
+2025-11-13 18:01:27 | server receive: payload size:184605 bytes (0.1761 MB)
+2025-11-13 18:01:27 | server agg: epoch 13.
+2025-11-13 18:01:27 | ***********Server epoch 13, Clients accuracy:96.73%***********
+
+2025-11-13 18:01:31 | server receive: payload size:184605 bytes (0.1761 MB)
+2025-11-13 18:01:31 | server agg: epoch 14.
+2025-11-13 18:01:31 | ***********Server epoch 14, Clients accuracy:96.76%***********
+
+2025-11-13 18:01:35 | server receive: payload size:184605 bytes (0.1761 MB)
+2025-11-13 18:01:35 | server agg: epoch 15.
+2025-11-13 18:01:36 | ***********Server epoch 15, Clients accuracy:96.63000000000001%***********
+
+2025-11-13 18:01:40 | server receive: payload size:184605 bytes (0.1761 MB)
+2025-11-13 18:01:41 | server agg: epoch 16.
+2025-11-13 18:01:41 | ***********Server epoch 16, Clients accuracy:96.91%***********
+
+2025-11-13 18:01:47 | server receive: payload size:184605 bytes (0.1761 MB)
+2025-11-13 18:01:47 | server agg: epoch 17.
+2025-11-13 18:01:47 | ***********Server epoch 17, Clients accuracy:96.16%***********
+
+2025-11-13 18:01:52 | server receive: payload size:184605 bytes (0.1761 MB)
+2025-11-13 18:01:52 | server agg: epoch 18.
+2025-11-13 18:01:53 | ***********Server epoch 18, Clients accuracy:96.03%***********
+
+2025-11-13 18:01:56 | server receive: payload size:184605 bytes (0.1761 MB)
+2025-11-13 18:01:56 | server agg: epoch 19.
+2025-11-13 18:01:56 | ***********Server epoch 19, Clients accuracy:96.23%***********
+
+2025-11-13 18:02:01 | server receive: payload size:184605 bytes (0.1761 MB)
+2025-11-13 18:02:02 | server agg: epoch 20.
+2025-11-13 18:02:02 | ***********Server epoch 20, Clients accuracy:96.39999999999999%***********
+
+2025-11-13 18:02:06 | server receive: payload size:184605 bytes (0.1761 MB)
+2025-11-13 18:02:06 | server agg: epoch 21.
+2025-11-13 18:02:06 | ***********Server epoch 21, Clients accuracy:96.55%***********
+
+2025-11-13 18:02:13 | server receive: payload size:184605 bytes (0.1761 MB)
+2025-11-13 18:02:13 | server agg: epoch 22.
+2025-11-13 18:02:13 | ***********Server epoch 22, Clients accuracy:96.49%***********
+
+2025-11-13 18:02:17 | server receive: payload size:184605 bytes (0.1761 MB)
+2025-11-13 18:02:17 | server agg: epoch 23.
+2025-11-13 18:02:18 | ***********Server epoch 23, Clients accuracy:96.75%***********
+
+2025-11-13 18:02:22 | server receive: payload size:184605 bytes (0.1761 MB)
+2025-11-13 18:02:22 | server agg: epoch 24.
+2025-11-13 18:02:22 | ***********Server epoch 24, Clients accuracy:96.61999999999999%***********
+
+2025-11-13 18:02:27 | server receive: payload size:184605 bytes (0.1761 MB)
+2025-11-13 18:02:27 | server agg: epoch 25.
+2025-11-13 18:02:27 | ***********Server epoch 25, Clients accuracy:96.46000000000001%***********
+
+2025-11-13 18:02:31 | server receive: payload size:184605 bytes (0.1761 MB)
+2025-11-13 18:02:31 | server agg: epoch 26.
+2025-11-13 18:02:32 | ***********Server epoch 26, Clients accuracy:96.55%***********
+
+2025-11-13 18:02:32 | [Converged] No improvement in best_acc for 10 rounds. best_acc=96.9100 at epoch 16.
+2025-11-13 18:02:32 | server end!
+2025-11-13 18:02:32 | Training stopped early at epoch 26 (best_acc=96.9100 at epoch 16).
+2025-11-13 18:02:32 | Total payload size: 5603970 bytes (5.3444 MB), size list: [889320, 184605, 156245, 184605, 156245, 184605, 156245, 184605, 184605, 184605, 184605, 184605, 184605, 184605, 184605, 184605, 184605, 184605, 184605, 184605, 184605, 184605, 184605, 184605, 184605, 184605, 184605].
+2025-11-13 18:02:32 | Accuracy list: [96.36, 95.67999999999999, 96.2, 96.22, 96.21, 96.41999999999999, 95.67, 95.55, 96.45, 96.41999999999999, 96.39999999999999, 96.69, 96.87, 96.73, 96.76, 96.63000000000001, 96.91, 96.16, 96.03, 96.23, 96.39999999999999, 96.55, 96.49, 96.75, 96.61999999999999, 96.46000000000001, 96.55]%.
+2025-11-13 18:02:32 | Loss list:[0.116, 0.131, 0.117, 0.116, 0.117, 0.111, 0.133, 0.137, 0.108, 0.114, 0.114, 0.105, 0.105, 0.105, 0.1, 0.105, 0.102, 0.121, 0.126, 0.121, 0.115, 0.11, 0.109, 0.102, 0.109, 0.111, 0.107]
+2025-11-13 18:02:32 | time list:[42.06, 45.28, 48.72, 53.36, 57.23, 62.27, 66.71, 72.1, 76.52, 80.43, 84.03, 88.21, 91.96, 96.01, 100.37, 104.76, 110.03, 116.21, 121.45, 125.35, 131.05, 135.32, 142.04, 146.62, 151.12, 155.83]s
+2025-11-13 18:02:32 | Participate list: [27, 27, 27, 27, 27].
+2025-11-13 18:02:32 | tmp_len_clusters:[]

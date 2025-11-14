@@ -124,6 +124,23 @@ def straggler(rank):
     if rank == 2:
         time.sleep(timewait)
 
+''' 평문 L2 기반 Top-K 선택 '''
+def chunk_list(arr, pack_size):
+    return [arr[i:i+pack_size] for i in range(0, len(arr), pack_size)]
+
+def select_topk_packs_by_l2(delta_list, pack_size, topk_ratio):
+    packs = chunk_list(delta_list, pack_size)
+    scores = [np.linalg.norm(np.asarray(p, dtype=np.float32), ord=2) for p in packs]
+    num_packs = len(packs)
+    k = max(1, int(num_packs * topk_ratio))
+    keep_idx = np.argsort(scores)[-k:]  # 상위 k
+
+    mask = [0] * num_packs
+    for i in keep_idx:
+        mask[i] = 1
+    return mask, keep_idx
+''' 평문 L2 기반 Top-K 선택 '''
+
 def client_process(rank, args, model, device,dataset, test_dataset, kwargs,kwargs_IPC,train_weights):
     torch.manual_seed(args.seed + rank)
     queue = kwargs_IPC['queues'][rank]
@@ -157,6 +174,11 @@ def client_process(rank, args, model, device,dataset, test_dataset, kwargs,kwarg
     self_flag = True
     acc_list = []
     
+    ''' 평문 계산을 위한 추가 변수 '''
+    prev_global = None  # 직전 라운드 서버 글로벌(플랫)
+    pack_size = args.enc_batch_size  # 기존 프로젝트 관례대로 사용
+    ''' 평문 계산을 위한 추가 변수 '''
+
     while not flag.value:
         
         #epoch_begin = time.time()
@@ -202,7 +224,22 @@ def client_process(rank, args, model, device,dataset, test_dataset, kwargs,kwarg
                     #enc_end = time.time()
                     #logging("id:{},enc time:{}".format(rank,enc_end-enc_begin),args)
             else:
-                pipe.send([rank,params_list])
+                ''' 평문 L2 기반 Top-K 선택 '''
+                if args.isSpars == 'topk' and prev_global is not None:
+                    # Δ = local - global (L2 기준은 Δ 권장)
+                    delta = (np.asarray(params_list, dtype=np.float32) - 
+                            np.asarray(prev_global, dtype=np.float32)).tolist()
+
+                    mask, keep_idx = select_topk_packs_by_l2(delta, pack_size, args.topk)
+                    # 선택된 pack의 "원본 파라미터"를 보냅니다(서버가 평균낼 재료).
+                    full_packs = chunk_list(params_list, pack_size)
+                    sel_packs = [full_packs[i] for i in keep_idx]
+
+                    pipe.send([rank, mask, sel_packs])
+                    ''' 평문 L2 기반 Top-K 선택 '''
+                else: # 기존
+                    pipe.send([rank,params_list])
+
             # lock.acquire()
             # logging("client {}, send params {}.".format(rank,params_list[0]),args)
             # lock.release()
@@ -242,10 +279,17 @@ def client_process(rank, args, model, device,dataset, test_dataset, kwargs,kwarg
 
         params_tomodel(model,global_weights,params_num,layer_shape,args,params_list)
 
+        # ↓↓↓ 추가 (다음 라운드 topk 선정에 사용)
+        prev_global = global_weights[:]  # flatten된 글로벌 파라미터 보관
+        
+        
+        client_acc,client_loss = test_epoch(model, device, test_loader)
+        # acc_pipe.send([rank,client_acc,client_loss])
+        print('client{},acc:{},loss:{}'.format(rank,client_acc,client_loss)) 
+
         if args.enc:
-            client_acc,client_loss = test_epoch(model, device, test_loader)
             acc_pipe.send([rank,client_acc,client_loss])
-            print('client{},acc:{},loss:{}'.format(rank,client_acc,client_loss)) 
+
 
         if args.isSelection:
             client_hash = minHash(rank, random_R,global_weights,params_list,args)

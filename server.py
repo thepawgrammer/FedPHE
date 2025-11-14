@@ -282,27 +282,108 @@ def aggregatie_weights(rec,recv_list,weights_client,total_sum,batch_num,id_list,
             else:
                 raise ValueError("invalid enc algorithm",args.algorithm)
         else:
+             # 🔹평문 + topk인 경우에는 여기에서 아무 것도 하지 않는다
+            if args.isSpars == 'topk':
+                continue
+
             value = value[1]
             if recv_list[c_id] == 0:
                 add_params = np.array(value)*weights_client[c_id]
                 weights += weights_client[c_id]
                 agg_res += add_params
+                
     if args.enc:
         if args.isSpars == 'topk':
             if args.cipher_count:
-                logging('server receive: ciphertext size:{} bytes'.format(ciphertext_size),args)
+                logging('server receive: ciphertext size:{} bytes ({:.4f} MB)'.format(ciphertext_size, ciphertext_size / (1024 * 1024)),args)
                 return sum_mask, ciphertext_size, global_cipher
             else:
                 return sum_mask,global_cipher
         else:
             if args.cipher_count:
-                logging('server receive: ciphertext size:{} bytes'.format(ciphertext_size),args)
+                logging('server receive: ciphertext size:{} bytes ({:.4f} MB)'.format(ciphertext_size, ciphertext_size / (1024 * 1024)),args)
                 return weights, ciphertext_size, global_cipher
             else:
                 return weights,global_cipher
     else:
-        agg_res = agg_res.tolist()
-        return weights,agg_res
+        ''' 추가 코드: 평문 집계용 '''
+        # === Plaintext aggregation ===
+        if args.isSpars == 'topk':
+            sum_mask = [0] * batch_num
+            global_packs = [None] * batch_num
+            payload_size = 0  # 업로드 용량 누적
+
+            for idx, value in enumerate(rec.values()):
+
+                if not isinstance(value, (list, tuple)) or len(value) < 2:
+                    continue
+
+                c_id = value[0]
+                if recv_list[c_id] != 0:
+                    continue
+                
+                if len(value) >= 3:
+                    # value 포맷: [rank, mask, packs]
+                    mask = value[1]
+                    packs = value[2]
+
+                    # 🔹여기에 넣습니다: 클라이언트 업로드 페이로드 직렬화 크기
+                    if args.cipher_count:
+                        payload_size += len(pickle.dumps([mask, packs], protocol=4))
+
+                else:
+                    full_vec = np.asarray(value[1], dtype=np.float32)
+
+                    # 업로드량 측정은 전체 벡터 기준 (원하면 pack 단위로 바꿀 수도 있음)
+                    if args.cipher_count:
+                        payload_size += len(pickle.dumps(full_vec, protocol=4))
+
+                    # pack_size 기준으로 쪼개서, 모든 pack을 사용(mask=1)
+                    pack_size = args.enc_batch_size
+                    packs = []
+                    mask = [0] * batch_num
+
+                    for b in range(batch_num):
+                        start = b * pack_size
+                        end = min(start + pack_size, len(full_vec))
+                        if start >= len(full_vec):
+                            break
+                        pack = full_vec[start:end]
+                        packs.append(pack)
+                        mask[b] = 1  # 첫 라운드는 sparsification 없이 full 사용
+
+                # 공통: pack별 가중합
+                w = weights_client[c_id]
+
+                seen = 0
+                for b in range(batch_num):
+                    if mask[b]:
+                        vec = np.asarray(packs[seen], dtype=np.float32) * w
+                        if global_packs[b] is None:
+                            global_packs[b] = vec
+                        else:
+                            global_packs[b] += vec
+                        sum_mask[b] += w
+                        seen += 1
+
+            # 반환 형태: cipher_count 여부에 따라 payload_size 포함
+            if args.cipher_count:
+                return sum_mask, payload_size, global_packs
+            else:
+                return sum_mask, global_packs
+            ''' 추가 코드: 평문 집계용 '''
+        else:
+            # (기존 평문 full 경로)
+            agg_res = np.zeros(total_sum, dtype=np.float32)
+            weights = 0.0
+            for idx, value in enumerate(rec.values()):
+                c_id = value[0]
+                if recv_list[c_id] == 0:
+                    v = np.array(value[1], dtype=np.float32) * weights_client[c_id]
+                    weights += weights_client[c_id]
+                    agg_res += v
+            agg_res = agg_res.tolist() # 기존
+            return weights,agg_res # 기존
 
 def server_process(args,kwargs_IPC,total_sum,batch_num,train_weights,test_weights,server_test_sets,kwargs):
     n_clients = args.n_clients
@@ -338,6 +419,16 @@ def server_process(args,kwargs_IPC,total_sum,batch_num,train_weights,test_weight
     weights_client = [weight for weight in train_weights]   
     time_list = []
     tmp_len_clusters = []
+
+    ''' best_acc 수렴 체크용 변수 '''
+    # 🔹여기 추가: best 기반 수렴 체크용 변수
+    best_acc = 0.0
+    best_round = -1
+    stale = 0              # 개선 없는 라운드 수
+    patience = 10          # 10번 연속 개선 없으면 수렴으로 간주
+    converged_round = None
+    ''' best_acc 수렴 체크용 변수 '''
+
     # If it is plain text training, the server has a global model
     if args.enc == False:
         device = device_init(args)
@@ -394,12 +485,55 @@ def server_process(args,kwargs_IPC,total_sum,batch_num,train_weights,test_weight
                 weights, agg_res= aggregatie_weights(rec,recv_list,weights_client,
                                                 total_sum,batch_num,id_list,args,enc_tools,rep_num)
         else:
+            ''' 추가 코드: 평문 집계용 '''
+            # === Plaintext ===
+            if args.isSpars == 'topk':
+                if args.cipher_count:
+                    sum_mask, payload_size, global_packs = aggregatie_weights(
+                        rec, recv_list, weights_client, total_sum, batch_num, id_list, args
+                    )
+
+                    # 🔹여기 추가: 평문 업로드 사이즈 로그
+                    logging('server receive: payload size:{} bytes ({:.4f} MB)'.format(payload_size, payload_size / (1024 * 1024)), args)
+
+                    total_ciphertext_size += payload_size
+                    cipher_size_list.append(payload_size)
+                else:
+                    sum_mask, global_packs = aggregatie_weights(
+                        rec, recv_list, weights_client, total_sum, batch_num, id_list, args
+                    )
+
+                # pack별 정규화 → full 벡터 재구성
+                pack_size = args.enc_batch_size
+                rebuilt = []
+                for b in range(batch_num):
+                    if global_packs[b] is None:
+                        rebuilt.extend([0.0] * pack_size)
+                    else:
+                        if sum_mask[b] > 0:
+                            vec = (global_packs[b] / sum_mask[b]).astype(np.float32)
+                        else:
+                            vec = np.zeros_like(global_packs[b], dtype=np.float32)
+                        rebuilt.extend(vec.tolist())
+
+                global_weights = rebuilt[:total_sum]
+                params_list, params_num, layer_shape = params_tolist(model)
+                params_tomodel(model, global_weights, params_num, layer_shape, args, params_list)
+
+                # 👇 클라이언트 인터페이스 유지용 (중요)
+                weights = 1.0
+                agg_res = global_weights
+
+                ''' 추가 코드: 평문 집계용 '''
+
+            else: # 기존
             
-            weights, agg_res= aggregatie_weights(rec,recv_list,weights_client,
-                                              total_sum,batch_num,id_list,args)
-            global_weights = (np.array(agg_res) / weights).tolist()  
-            params_list,params_num,layer_shape = params_tolist(model)
-            params_tomodel(model,global_weights,params_num,layer_shape,args,params_list)
+                weights, agg_res= aggregatie_weights(rec,recv_list,weights_client,
+                                                total_sum,batch_num,id_list,args)
+                global_weights = (np.array(agg_res) / weights).tolist()  
+                params_list,params_num,layer_shape = params_tolist(model)
+                params_tomodel(model,global_weights,params_num,layer_shape,args,params_list)
+
         lock.acquire()
         logging('server agg: epoch {}.'.format(epoch),args)
         lock.release()
@@ -468,10 +602,47 @@ def server_process(args,kwargs_IPC,total_sum,batch_num,train_weights,test_weight
             lock.acquire()
             logging("***********Server epoch {}, Clients accuracy:{}%***********\n".format(epoch,server_acc),args)
             lock.release()
+        
+        ''' 수렴 체크 (best_acc 기반) '''
+        # enc 여부에 따라 이번 epoch accuracy를 가져오기
+        if args.enc:
+            cur_acc = epoch_acc      # enc=True → 클라이언트 기반 평균 accuracy
+        else:
+            cur_acc = server_acc     # enc=False → 서버 테스트 accuracy
+
+        # best_acc 업데이트 & stale(개선 없는 라운드 수) 관리
+        if epoch == 0:
+            best_acc = cur_acc
+            best_round = epoch
+            stale = 0
+        else:
+            # 아주 미세한 소수 오차 방지를 위해 epsilon 사용 (1e-6 정도)
+            if cur_acc > best_acc + 1e-6:
+                best_acc = cur_acc
+                best_round = epoch
+                stale = 0
+            else:
+                stale += 1
+
+            # 10번 연속으로 best_acc 개선이 없으면 수렴으로 간주하고 종료
+            if stale >= patience:
+                converged_round = best_round
+                logging(
+                    "[Converged] No improvement in best_acc for {} rounds. "
+                    "best_acc={:.4f} at epoch {}.".format(
+                        stale, best_acc, best_round
+                    ),
+                    args
+                )
+                break
+        ''' 수렴 체크 (best_acc 기반) 끝 '''
+
         end = time.time()
         time_cost = round(end-begin,2)
         print("time:{}s".format(time_cost))
         time_list.append(time_cost)
+
+        
 
         if args.isSelection:
             time.sleep(1)
@@ -507,8 +678,19 @@ def server_process(args,kwargs_IPC,total_sum,batch_num,train_weights,test_weight
     flag.value = True
     e.clear()
     e_server.clear()
-    if args.enc and args.cipher_count:
-        logging("Total ciphertext size: {} bytes, size list: {}.".format(total_ciphertext_size,cipher_size_list),args)
+
+    ''' 수렴 종료 로그 '''
+    if converged_round is not None:
+        logging("Training stopped early at epoch {} (best_acc={:.4f} at epoch {}).".format(
+            epoch, best_acc, best_round
+        ), args)
+    ''' 수렴 종료 로그'''
+    
+    if args.cipher_count:
+        if args.enc:
+            logging("Total ciphertext size: {} bytes ({:.4f} MB), size list: {}.".format(total_ciphertext_size, total_ciphertext_size / (1024 * 1024), cipher_size_list),args)
+        else:
+            logging("Total payload size: {} bytes ({:.4f} MB), size list: {}.".format(total_ciphertext_size, total_ciphertext_size / (1024 * 1024), cipher_size_list),args)
     logging("Accuracy list: {}%.".format(accuracy_list), args)
     logging("Loss list:{}".format(loss_list),args)
     logging("time list:{}s".format(time_list),args)

@@ -1,0 +1,1267 @@
+2025-11-06 12:31:21 | Basic information: device cpu, learning rate 0.001, num clients 5, epochs 100,noniid_method dirichlet,            isEnc False,isBatch True,sparsification topk, client selection False,topk 0.1, enc_batch_size 8
+2025-11-06 12:31:21 | training weights: [0.2, 0.2, 0.2, 0.2, 0.2]
+2025-11-06 12:31:21 | testing weights:[0.2, 0.2, 0.2, 0.2, 0.2]
+2025-11-06 12:31:21 | client0, train samples 12000,test samples 2000
+2025-11-06 12:31:21 | client1, train samples 12000,test samples 2000
+2025-11-06 12:31:21 | client2, train samples 12000,test samples 2000
+2025-11-06 12:31:21 | client3, train samples 12000,test samples 2000
+2025-11-06 12:31:21 | client4, train samples 12000,test samples 2000
+2025-11-06 12:31:21 | data split finished!
+2025-11-06 12:31:29 | id:0,train time:1.6365442276000977
+2025-11-06 12:31:29 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:31:32 | id:1,train time:1.687448501586914
+2025-11-06 12:31:32 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:31:35 | id:2,train time:1.6697142124176025
+2025-11-06 12:31:35 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:31:38 | id:3,train time:1.7745048999786377
+2025-11-06 12:31:38 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:31:41 | id:4,train time:1.6695797443389893
+2025-11-06 12:31:41 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:31:41 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:31:41 | server receive: plaintext size:92435 bytes
+2025-11-06 12:31:41 | server agg: epoch 0.
+2025-11-06 12:31:42 | [E0] acc=36.0600% loss=1.9870 time=17.6400s up=0.0882MB down=0.0000MB cum=0.0882MB (best@1:36.0600%)
+2025-11-06 12:31:44 | id:4,train time:2.4223201274871826
+2025-11-06 12:31:44 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:31:44 | id:2,train time:2.844182252883911
+2025-11-06 12:31:44 | id:3,train time:2.840176820755005
+2025-11-06 12:31:44 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:31:44 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:31:44 | id:0,train time:2.869706630706787
+2025-11-06 12:31:44 | id:1,train time:2.8777077198028564
+uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:31:44 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:31:44 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:31:44 | server receive: plaintext size:92435 bytes
+2025-11-06 12:31:44 | server agg: epoch 1.
+2025-11-06 12:31:45 | [E1] acc=49.7500% loss=1.6030 time=3.2200s up=0.0882MB down=0.0000MB cum=0.1763MB (best@2:49.7500%)
+2025-11-06 12:31:47 | id:4,train time:3.0662739276885986
+2025-11-06 12:31:47 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:31:47 | id:3,train time:3.0879111289978027
+2025-11-06 12:31:47 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:31:47 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:31:47 | id:0,train time:3.0819814205169678
+2025-11-06 12:31:48 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:31:48 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:31:48 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:31:48 | server receive: plaintext size:92435 bytes
+2025-11-06 12:31:48 | server agg: epoch 2.
+2025-11-06 12:31:48 | [E2] acc=60.4600% loss=1.3560 time=2.8600s up=0.0882MB down=0.0000MB cum=0.2645MB (best@3:60.4600%)
+2025-11-06 12:31:51 | id:4,train time:2.9807755947113037
+2025-11-06 12:31:51 | [PT-PackSparse(mask+vals)] client 3 2025-11-06 12:31:51 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:31:51 | id:0,train time:2.9884555339813232
+uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:31:51 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:31:51 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:31:51 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:31:51 | server receive: plaintext size:92435 bytes
+2025-11-06 12:31:51 | server agg: epoch 3.
+2025-11-06 12:31:51 | [E3] acc=56.9900% loss=1.3190 time=3.1500s up=0.0882MB down=0.0000MB cum=0.3526MB (best@3:60.4600%)
+2025-11-06 12:31:53 | id:4,train time:2.755747079849243
+2025-11-06 12:31:53 | id:2,train time:2.779778242111206
+2025-11-06 12:31:53 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:31:53 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:31:53 | id:0,train time:2.7853097915649414
+2025-11-06 12:31:53 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:31:53 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:31:53 | id:1,train time:2.8038313388824463
+2025-11-06 12:31:53 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:31:53 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:31:53 | server receive: plaintext size:92435 bytes
+2025-11-06 12:31:53 | server agg: epoch 4.
+2025-11-06 12:31:54 | [E4] acc=56.3600% loss=1.2680 time=2.7100s up=0.0882MB down=0.0000MB cum=0.4408MB (best@3:60.4600%)
+2025-11-06 12:31:56 | id:4,train time:2.659428834915161
+2025-11-06 12:31:56 | id:0,train time:2.6813371181488037
+2025-11-06 12:31:56 | id:3,train time:2.6823363304138184
+uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:31:56 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:31:56 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:31:56 | id:1,train time:2.69907546043396
+2025-11-06 12:31:56 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:31:56 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:31:56 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:31:56 | server receive: plaintext size:92435 bytes
+2025-11-06 12:31:56 | server agg: epoch 5.
+2025-11-06 12:31:57 | [E5] acc=53.5400% loss=1.2870 time=2.9100s up=0.0882MB down=0.0000MB cum=0.5289MB (best@3:60.4600%)
+2025-11-06 12:31:59 | id:4,train time:2.6586663722991943
+2025-11-06 12:31:59 | id:3,train time:2.6681745052337646
+uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:31:59 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:31:59 | id:0,train time:2.684353828430176
+2025-11-06 12:31:59 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:31:59 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:31:59 | id:2,train time:2.6917152404785156
+2025-11-06 12:31:59 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:31:59 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:31:59 | server receive: plaintext size:92435 bytes
+2025-11-06 12:31:59 | server agg: epoch 6.
+2025-11-06 12:32:00 | [E6] acc=56.7400% loss=1.2320 time=2.7800s up=0.0882MB down=0.0000MB cum=0.6171MB (best@3:60.4600%)
+2025-11-06 12:32:02 | id:3,train time:3.0756020545959473
+2025-11-06 12:32:02 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:02 | id:2,train time:3.0780622959136963
+2025-11-06 12:32:02 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:02 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:02 | id:0,train time:3.1152658462524414
+2025-11-06 12:32:02 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:02 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:32:02 | server receive: plaintext size:92435 bytes
+2025-11-06 12:32:02 | server agg: epoch 7.
+2025-11-06 12:32:03 | [E7] acc=60.8400% loss=1.1260 time=3.2400s up=0.0882MB down=0.0000MB cum=0.7052MB (best@8:60.8400%)
+2025-11-06 12:32:05 | id:4,train time:2.9465322494506836
+2025-11-06 12:32:05 | id:3,train time:2.9420249462127686
+2025-11-06 12:32:05 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:05 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:05 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:05 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:05 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:32:05 | server receive: plaintext size:92435 bytes
+2025-11-06 12:32:05 | server agg: epoch 8.
+2025-11-06 12:32:06 | [E8] acc=63.7700% loss=1.0830 time=2.7900s up=0.0882MB down=0.0000MB cum=0.7934MB (best@9:63.7700%)
+2025-11-06 12:32:08 | id:4,train time:2.557704448699951
+
+2025-11-06 12:32:08 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:08 | id:0,train time:2.559267520904541
+ uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:08 | id:3,train time:2.5697526931762695
+2025-11-06 12:32:08 | id:2,train time:2.571807622909546
+ uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:08 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:08 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:08 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:32:08 | server receive: plaintext size:92435 bytes
+2025-11-06 12:32:08 | server agg: epoch 9.
+2025-11-06 12:32:08 | [E9] acc=67.7200% loss=0.9960 time=2.7300s up=0.0882MB down=0.0000MB cum=0.8815MB (best@10:67.7200%)
+2025-11-06 12:32:11 | id:4,train time:2.645442008972168
+2025-11-06 12:32:11 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:11 | id:3,train time:2.663022518157959
+2025-11-06 12:32:11 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:11 | id:0,train time:2.682575225830078
+ uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:11 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:11 | id:2,train time:2.6976208686828613
+2025-11-06 12:32:11 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:11 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:32:11 | server receive: plaintext size:92435 bytes
+2025-11-06 12:32:11 | server agg: epoch 10.
+2025-11-06 12:32:11 | [E10] acc=71.1400% loss=0.9230 time=2.7700s up=0.0882MB down=0.0000MB cum=0.9697MB (best@11:71.1400%)
+2025-11-06 12:32:14 | id:3,train time:2.857893943786621
+2025-11-06 12:32:14 | id:1,train time:2.8749053478240967
+2025-11-06 12:32:14 | id:4,train time:2.8684024810791016
+2025-11-06 12:32:14 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:14 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:14 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:14 | id:0,train time:2.881067991256714
+2025-11-06 12:32:14 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:14 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:32:14 | server receive: plaintext size:92435 bytes
+2025-11-06 12:32:14 | server agg: epoch 11.
+2025-11-06 12:32:14 | [E11] acc=68.3600% loss=0.9480 time=2.8400s up=0.0882MB down=0.0000MB cum=1.0578MB (best@11:71.1400%)
+2025-11-06 12:32:16 | id:4,train time:2.637256622314453
+
+2025-11-06 12:32:16 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:16 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:16 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:16 | id:0,train time:2.656459093093872
+2025-11-06 12:32:16 | id:1,train time:2.6669723987579346
+2025-11-06 12:32:16 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:16 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:16 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:32:16 | server receive: plaintext size:92435 bytes
+2025-11-06 12:32:16 | server agg: epoch 12.
+2025-11-06 12:32:17 | [E12] acc=64.1800% loss=0.9820 time=2.9000s up=0.0882MB down=0.0000MB cum=1.1460MB (best@11:71.1400%)
+2025-11-06 12:32:19 | id:3,train time:2.8624300956726074
+2025-11-06 12:32:19 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:19 | id:1,train time:2.873539447784424
+2025-11-06 12:32:19 | id:0,train time:2.8715412616729736
+2025-11-06 12:32:19 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:19 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:19 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:19 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:19 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:32:19 | server receive: plaintext size:92435 bytes
+2025-11-06 12:32:19 | server agg: epoch 13.
+2025-11-06 12:32:20 | [E13] acc=64.0000% loss=0.9690 time=3.0800s up=0.0882MB down=0.0000MB cum=1.2341MB (best@11:71.1400%)
+2025-11-06 12:32:22 | id:4,train time:2.9305598735809326
+2025-11-06 12:32:22 | id:3,train time:2.945720911026001
+ uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:22 | id:0,train time:2.961568832397461
+2025-11-06 12:32:22 | id:1,train time:2.9460322856903076
+2025-11-06 12:32:22 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:22 | id:2,train time:2.9402778148651123
+2025-11-06 12:32:22 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:22 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:22 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:22 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:32:22 | server receive: plaintext size:92435 bytes
+2025-11-06 12:32:22 | server agg: epoch 14.
+2025-11-06 12:32:23 | [E14] acc=65.0900% loss=0.9570 time=2.8300s up=0.0882MB down=0.0000MB cum=1.3223MB (best@11:71.1400%)
+2025-11-06 12:32:25 | id:2,train time:2.8254406452178955
+2025-11-06 12:32:25 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:25 | id:3,train time:2.8654465675354004
+2025-11-06 12:32:25 | id:0,train time:2.8604724407196045
+2025-11-06 12:32:25 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:25 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:25 | id:1,train time:2.882612943649292
+2025-11-06 12:32:25 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:25 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:32:25 | server receive: plaintext size:92435 bytes
+2025-11-06 12:32:25 | server agg: epoch 15.
+2025-11-06 12:32:26 | [E15] acc=64.9600% loss=0.9450 time=3.0400s up=0.0882MB down=0.0000MB cum=1.4104MB (best@11:71.1400%)
+2025-11-06 12:32:28 | id:4,train time:2.6998767852783203
+2025-11-06 12:32:28 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:28 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:28 | id:0,train time:2.732907772064209
+2025-11-06 12:32:28 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:28 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:28 | id:2,train time:2.740415096282959
+2025-11-06 12:32:28 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:28 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:32:28 | server receive: plaintext size:92435 bytes
+2025-11-06 12:32:28 | server agg: epoch 16.
+2025-11-06 12:32:29 | [E16] acc=70.0000% loss=0.8590 time=2.7400s up=0.0882MB down=0.0000MB cum=1.4986MB (best@11:71.1400%)
+2025-11-06 12:32:31 | id:4,train time:2.8369576930999756
+2025-11-06 12:32:31 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:31 | id:3,train time:2.852025270462036
+2025-11-06 12:32:31 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:31 | id:0,train time:2.862079381942749
+2025-11-06 12:32:31 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:31 | id:2,train time:2.878648042678833
+2025-11-06 12:32:31 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:31 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:31 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:32:31 | server receive: plaintext size:92435 bytes
+2025-11-06 12:32:31 | server agg: epoch 17.
+2025-11-06 12:32:32 | [E17] acc=70.7500% loss=0.8370 time=2.7500s up=0.0882MB down=0.0000MB cum=1.5868MB (best@11:71.1400%)
+2025-11-06 12:32:34 | id:4,train time:2.7851369380950928
+2025-11-06 12:32:34 | id:3,train time:2.790496349334717
+2025-11-06 12:32:34 | id:0,train time:2.8071484565734863
+2025-11-06 12:32:34 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:34 | id:1,train time:2.8141517639160156
+2025-11-06 12:32:34 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:34 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:34 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:34 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:32:34 | server receive: plaintext size:92435 bytes
+2025-11-06 12:32:34 | server agg: epoch 18.
+2025-11-06 12:32:35 | [E18] acc=71.3800% loss=0.8300 time=3.0000s up=0.0882MB down=0.0000MB cum=1.6749MB (best@19:71.3800%)
+2025-11-06 12:32:37 | id:3,train time:2.891852378845215
+2025-11-06 12:32:37 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:37 | id:4,train time:2.9237711429595947
+2025-11-06 12:32:37 | id:2,train time:2.9177193641662598
+2025-11-06 12:32:37 | id:1,train time:2.932828903198242
+2025-11-06 12:32:37 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:37 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:37 | id:0,train time:2.9378278255462646
+2025-11-06 12:32:37 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:37 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:32:37 | server receive: plaintext size:92435 bytes
+2025-11-06 12:32:37 | server agg: epoch 19.
+2025-11-06 12:32:38 | [E19] acc=70.7100% loss=0.8230 time=3.0500s up=0.0882MB down=0.0000MB cum=1.7631MB (best@19:71.3800%)
+2025-11-06 12:32:40 | id:4,train time:2.7716050148010254
+2025-11-06 12:32:40 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:40 | id:3,train time:2.7957849502563477
+2025-11-06 12:32:40 | id:1,train time:2.79917025566101072025-11-06 12:32:40 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:40 | id:0,train time:2.7991702556610107
+2025-11-06 12:32:40 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:40 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:40 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:40 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:32:40 | server receive: plaintext size:92435 bytes
+2025-11-06 12:32:40 | server agg: epoch 20.
+2025-11-06 12:32:40 | [E20] acc=72.2400% loss=0.8060 time=2.8700s up=0.0882MB down=0.0000MB cum=1.8512MB (best@21:72.2400%)
+2025-11-06 12:32:43 | id:3,train time:3.093479633331299
+2025-11-06 12:32:43 | id:4,train time:3.0904738903045654
+2025-11-06 12:32:43 | id:0,train time:3.0849690437316895
+2025-11-06 12:32:43 | id:2,train time:3.0991384983062744
+uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:43 | id:1,train time:3.084345579147339
+2025-11-06 12:32:43 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:43 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:43 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:43 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:32:43 | server receive: plaintext size:92435 bytes
+2025-11-06 12:32:43 | server agg: epoch 21.
+2025-11-06 12:32:43 | [E21] acc=73.9000% loss=0.7760 time=3.0000s up=0.0882MB down=0.0000MB cum=1.9394MB (best@22:73.9000%)
+2025-11-06 12:32:46 | id:4,train time:2.611175775527954
+
+2025-11-06 12:32:46 | id:2,train time:2.6244144439697266
+uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:46 | id:1,train time:2.6172397136688232
+2025-11-06 12:32:46 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:46 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:46 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:46 | id:0,train time:2.655470848083496
+2025-11-06 12:32:46 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:46 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:32:46 | server receive: plaintext size:92435 bytes
+2025-11-06 12:32:46 | server agg: epoch 22.
+2025-11-06 12:32:46 | [E22] acc=72.5000% loss=0.7850 time=2.7900s up=0.0882MB down=0.0000MB cum=2.0275MB (best@22:73.9000%)
+2025-11-06 12:32:49 | id:1,train time:2.947676658630371
+2025-11-06 12:32:49 | id:0,train time:2.9673447608947754
+2025-11-06 12:32:49 | id:4,train time:2.9763612747192383
+2025-11-06 12:32:49 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:49 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:49 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:49 | id:2,train time:2.9958736896514893
+2025-11-06 12:32:49 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:49 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:32:49 | server receive: plaintext size:92435 bytes
+2025-11-06 12:32:49 | server agg: epoch 23.
+2025-11-06 12:32:49 | [E23] acc=68.7800% loss=0.8310 time=3.0100s up=0.0882MB down=0.0000MB cum=2.1157MB (best@22:73.9000%)
+2025-11-06 12:32:51 | id:4,train time:2.651850938796997
+2025-11-06 12:32:51 | id:3,train time:2.672471761703491
+2025-11-06 12:32:51 | id:1,train time:2.6704206466674805
+2025-11-06 12:32:51 | id:0,train time:2.674473285675049
+2025-11-06 12:32:51 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:51 | id:2,train time:2.6780223846435547
+2025-11-06 12:32:51 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:51 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:51 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:51 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:32:51 | server receive: plaintext size:92435 bytes
+2025-11-06 12:32:51 | server agg: epoch 24.
+2025-11-06 12:32:52 | [E24] acc=70.8200% loss=0.7990 time=2.6300s up=0.0882MB down=0.0000MB cum=2.2038MB (best@22:73.9000%)
+2025-11-06 12:32:54 | id:4,train time:2.614513874053955
+2025-11-06 12:32:54 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:54 | id:2,train time:2.6220216751098633
+2025-11-06 12:32:54 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:54 | id:1,train time:2.6350889205932617
+2025-11-06 12:32:54 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:54 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:32:54 | server receive: plaintext size:92435 bytes
+2025-11-06 12:32:54 | server agg: epoch 25.
+2025-11-06 12:32:55 | [E25] acc=72.2400% loss=0.7580 time=2.8800s up=0.0882MB down=0.0000MB cum=2.2920MB (best@22:73.9000%)
+2025-11-06 12:32:57 | id:3,train time:2.8590023517608643
+2025-11-06 12:32:57 | id:4,train time:2.8522276878356934
+2025-11-06 12:32:57 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:57 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:57 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:57 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:57 | id:2,train time:2.8756489753723145
+2025-11-06 12:32:57 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:32:57 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:32:57 | server receive: plaintext size:92435 bytes
+2025-11-06 12:32:57 | server agg: epoch 26.
+2025-11-06 12:32:58 | [E26] acc=68.9800% loss=0.8160 time=3.0700s up=0.0882MB down=0.0000MB cum=2.3801MB (best@22:73.9000%)
+2025-11-06 12:33:00 | id:3,train time:3.16099596023559572025-11-06 12:33:00 | id:4,train time:3.166996479034424
+2025-11-06 12:33:00 | id:0,train time:3.175506591796875
+
+2025-11-06 12:33:00 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:00 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:00 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:00 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:00 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:33:00 | server receive: plaintext size:92435 bytes
+2025-11-06 12:33:00 | server agg: epoch 27.
+2025-11-06 12:33:01 | [E27] acc=71.1700% loss=0.7680 time=3.0300s up=0.0882MB down=0.0000MB cum=2.4683MB (best@22:73.9000%)
+2025-11-06 12:33:03 | id:4,train time:2.6225547790527344
+2025-11-06 12:33:03 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:03 | id:1,train time:2.6487765312194824
+2025-11-06 12:33:03 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:03 | id:2,train time:2.6729323863983154
+uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:03 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:03 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:33:03 | server receive: plaintext size:92435 bytes
+2025-11-06 12:33:03 | server agg: epoch 28.
+2025-11-06 12:33:04 | [E28] acc=70.3400% loss=0.7860 time=2.7100s up=0.0882MB down=0.0000MB cum=2.5564MB (best@22:73.9000%)
+2025-11-06 12:33:06 | id:4,train time:2.876715660095215
+2025-11-06 12:33:06 | id:0,train time:2.8646960258483887
+2025-11-06 12:33:06 | id:3,train time:2.871696949005127
+2025-11-06 12:33:06 | id:1,train time:2.866691827774048
+2025-11-06 12:33:06 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:06 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:06 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:06 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:06 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:33:06 | server receive: plaintext size:92435 bytes
+2025-11-06 12:33:06 | server agg: epoch 29.
+2025-11-06 12:33:07 | [E29] acc=69.7600% loss=0.7970 time=2.9700s up=0.0882MB down=0.0000MB cum=2.6446MB (best@22:73.9000%)
+2025-11-06 12:33:09 | id:4,train time:2.7092671394348145
+2025-11-06 12:33:09 | id:0,train time:2.7233502864837646
+uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:09 | id:3,train time:2.7223520278930664
+2025-11-06 12:33:09 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:09 | id:1,train time:2.730391263961792
+2025-11-06 12:33:09 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:09 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:09 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:09 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:33:09 | server receive: plaintext size:92435 bytes
+2025-11-06 12:33:09 | server agg: epoch 30.
+2025-11-06 12:33:10 | [E30] acc=69.8500% loss=0.8060 time=2.8400s up=0.0882MB down=0.0000MB cum=2.7327MB (best@22:73.9000%)
+2025-11-06 12:33:12 | id:0,train time:3.065546751022339
+
+2025-11-06 12:33:12 | id:1,train time:3.0471177101135254
+2025-11-06 12:33:12 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:12 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:12 | id:4,train time:3.0736005306243896
+2025-11-06 12:33:12 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:12 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:12 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:33:12 | server receive: plaintext size:92435 bytes
+2025-11-06 12:33:12 | server agg: epoch 31.
+2025-11-06 12:33:13 | [E31] acc=70.7100% loss=0.7900 time=2.9800s up=0.0882MB down=0.0000MB cum=2.8209MB (best@22:73.9000%)
+2025-11-06 12:33:15 | id:3,train time:2.89874267578125
+
+2025-11-06 12:33:15 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:15 | id:0,train time:2.924867868423462
+2025-11-06 12:33:15 | id:1,train time:2.9340932369232178
+2025-11-06 12:33:15 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:15 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:15 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:15 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:33:15 | server receive: plaintext size:92435 bytes
+2025-11-06 12:33:15 | server agg: epoch 32.
+2025-11-06 12:33:16 | [E32] acc=69.0000% loss=0.8150 time=3.1400s up=0.0882MB down=0.0000MB cum=2.9090MB (best@22:73.9000%)
+2025-11-06 12:33:18 | id:3,train time:2.765125036239624
+2025-11-06 12:33:18 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:18 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:18 | id:2,train time:2.79970383644104
+2025-11-06 12:33:18 | id:1,train time:2.7977046966552734
+2025-11-06 12:33:18 | id:0,train time:2.797703742980957
+2025-11-06 12:33:18 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:18 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:18 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:18 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:33:18 | server receive: plaintext size:92435 bytes
+2025-11-06 12:33:18 | server agg: epoch 33.
+2025-11-06 12:33:19 | [E33] acc=68.7000% loss=0.8280 time=2.9500s up=0.0882MB down=0.0000MB cum=2.9972MB (best@22:73.9000%)
+2025-11-06 12:33:21 | id:4,train time:3.0279698371887207
+2025-11-06 12:33:21 | id:0,train time:3.006458044052124
+2025-11-06 12:33:21 | id:3,train time:3.010894536972046
+2025-11-06 12:33:21 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:21 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:21 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:21 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:21 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:21 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:33:21 | server receive: plaintext size:92435 bytes
+2025-11-06 12:33:21 | server agg: epoch 34.
+2025-11-06 12:33:22 | [E34] acc=69.9500% loss=0.7970 time=2.9400s up=0.0882MB down=0.0000MB cum=3.0854MB (best@22:73.9000%)
+2025-11-06 12:33:24 | id:3,train time:3.472228765487671
+2025-11-06 12:33:24 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:24 | id:1,train time:3.5076000690460205
+2025-11-06 12:33:24 | id:0,train time:3.5066003799438477
+2025-11-06 12:33:24 | id:2,train time:3.5053975582122803
+2025-11-06 12:33:24 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:24 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:24 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:24 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:24 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:33:24 | server receive: plaintext size:92435 bytes
+2025-11-06 12:33:24 | server agg: epoch 35.
+2025-11-06 12:33:25 | [E35] acc=70.4400% loss=0.7630 time=3.7400s up=0.0882MB down=0.0000MB cum=3.1735MB (best@22:73.9000%)
+2025-11-06 12:33:30 | id:3,train time:5.0994298458099365
+2025-11-06 12:33:30 | id:1,train time:5.117062568664551
+2025-11-06 12:33:30 | id:2,train time:5.119569778442383
+2025-11-06 12:33:30 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:30 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:30 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:30 | id:4,train time:5.139615297317505
+2025-11-06 12:33:30 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:30 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:33:30 | server receive: plaintext size:92435 bytes
+2025-11-06 12:33:30 | server agg: epoch 36.
+2025-11-06 12:33:31 | [E36] acc=73.2600% loss=0.7050 time=5.5500s up=0.0882MB down=0.0000MB cum=3.2617MB (best@22:73.9000%)
+2025-11-06 12:33:34 | id:4,train time:4.7268805503845215
+2025-11-06 12:33:34 | id:0,train time:4.726880788803101
+2025-11-06 12:33:34 | id:1,train time:4.748962879180908
+2025-11-06 12:33:34 | id:3,train time:4.741959095001221
+2025-11-06 12:33:34 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:34 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:34 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:34 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:33:34 | server receive: plaintext size:92435 bytes
+2025-11-06 12:33:35 | server agg: epoch 37.
+2025-11-06 12:33:36 | [E37] acc=69.9900% loss=0.7950 time=4.6000s up=0.0882MB down=0.0000MB cum=3.3498MB (best@22:73.9000%)
+2025-11-06 12:33:39 | id:2,train time:4.3712756633758545
+2025-11-06 12:33:39 | id:0,train time:4.36477518081665
+
+2025-11-06 12:33:39 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:39 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:39 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:39 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:39 | id:3,train time:4.382329702377319
+2025-11-06 12:33:39 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:39 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:33:39 | server receive: plaintext size:92435 bytes
+2025-11-06 12:33:39 | server agg: epoch 38.
+2025-11-06 12:33:40 | [E38] acc=72.3500% loss=0.7130 time=4.0800s up=0.0882MB down=0.0000MB cum=3.4380MB (best@22:73.9000%)
+2025-11-06 12:33:42 | id:4,train time:3.1998729705810547
+2025-11-06 12:33:42 | id:0,train time:3.2280638217926025
+2025-11-06 12:33:42 | id:1,train time:3.225562334060669
+2025-11-06 12:33:42 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:42 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:42 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:42 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:33:42 | server receive: plaintext size:92435 bytes
+2025-11-06 12:33:42 | server agg: epoch 39.
+2025-11-06 12:33:43 | [E39] acc=73.2700% loss=0.6940 time=3.3300s up=0.0882MB down=0.0000MB cum=3.5261MB (best@22:73.9000%)
+2025-11-06 12:33:45 | id:4,train time:2.7441797256469727
+2025-11-06 12:33:45 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:45 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:45 | id:1,train time:2.758392810821533
+
+2025-11-06 12:33:45 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:45 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:45 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:33:45 | server receive: plaintext size:92435 bytes
+2025-11-06 12:33:45 | server agg: epoch 40.
+2025-11-06 12:33:46 | [E40] acc=71.8000% loss=0.7390 time=2.6800s up=0.0882MB down=0.0000MB cum=3.6143MB (best@22:73.9000%)
+2025-11-06 12:33:48 | id:4,train time:3.1706764698028564
+2025-11-06 12:33:48 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:48 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:48 | id:1,train time:3.1949353218078613
+2025-11-06 12:33:48 | id:2,train time:3.1883912086486816
+2025-11-06 12:33:48 | id:3,train time:3.1863880157470703
+2025-11-06 12:33:48 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:48 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:48 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:48 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:33:48 | server receive: plaintext size:92435 bytes
+2025-11-06 12:33:48 | server agg: epoch 41.
+2025-11-06 12:33:49 | [E41] acc=73.2800% loss=0.6970 time=3.2100s up=0.0882MB down=0.0000MB cum=3.7024MB (best@22:73.9000%)
+2025-11-06 12:33:51 | id:0,train time:2.8565077781677246
+2025-11-06 12:33:51 | id:1,train time:2.8481321334838867
+2025-11-06 12:33:51 | id:3,train time:2.8670287132263184
+uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:51 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:51 | id:4,train time:2.871535301208496
+2025-11-06 12:33:51 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:51 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:51 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:33:51 | server receive: plaintext size:92435 bytes
+2025-11-06 12:33:51 | server agg: epoch 42.
+2025-11-06 12:33:52 | [E42] acc=74.0000% loss=0.6860 time=3.0400s up=0.0882MB down=0.0000MB cum=3.7906MB (best@43:74.0000%)
+2025-11-06 12:33:54 | id:4,train time:3.088650941848755
+2025-11-06 12:33:54 | id:1,train time:3.107246160507202
+2025-11-06 12:33:54 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:54 | id:3,train time:3.1031575202941895
+2025-11-06 12:33:54 | id:0,train time:3.119753360748291
+
+2025-11-06 12:33:54 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:54 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:54 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:54 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:54 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:33:54 | server receive: plaintext size:92435 bytes
+2025-11-06 12:33:54 | server agg: epoch 43.
+2025-11-06 12:33:55 | [E43] acc=71.8600% loss=0.7360 time=3.1300s up=0.0882MB down=0.0000MB cum=3.8787MB (best@43:74.0000%)
+2025-11-06 12:33:57 | id:0,train time:3.0104031562805176
+2025-11-06 12:33:57 | id:4,train time:3.001182794570923
+2025-11-06 12:33:57 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:57 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:58 | id:3,train time:3.0335447788238525
+2025-11-06 12:33:58 | id:2,train time:3.0294129848480225
+2025-11-06 12:33:58 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:58 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:33:58 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:33:58 | server receive: plaintext size:92435 bytes
+2025-11-06 12:33:58 | server agg: epoch 44.
+2025-11-06 12:33:58 | [E44] acc=71.4800% loss=0.7290 time=2.9100s up=0.0882MB down=0.0000MB cum=3.9669MB (best@43:74.0000%)
+2025-11-06 12:34:00 | id:3,train time:2.650693893432617
+2025-11-06 12:34:00 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:00 | id:4,train time:2.6844420433044434
+2025-11-06 12:34:00 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:00 | id:1,train time:2.699631929397583
+ uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:00 | id:0,train time:2.698298454284668
+2025-11-06 12:34:00 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:00 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:00 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:34:00 | server receive: plaintext size:92435 bytes
+2025-11-06 12:34:00 | server agg: epoch 45.
+2025-11-06 12:34:01 | [E45] acc=70.9300% loss=0.7490 time=2.9000s up=0.0882MB down=0.0000MB cum=4.0550MB (best@43:74.0000%)
+2025-11-06 12:34:03 | id:2,train time:2.6383004188537598
+2025-11-06 12:34:03 | id:4,train time:2.656499147415161
+2025-11-06 12:34:03 | id:0,train time:2.645953416824341
+2025-11-06 12:34:03 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:03 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:03 | id:3,train time:2.659796953201294
+2025-11-06 12:34:03 | id:1,train time:2.6715846061706543
+2025-11-06 12:34:03 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:03 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:03 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:34:03 | server receive: plaintext size:92435 bytes
+2025-11-06 12:34:03 | server agg: epoch 46.
+2025-11-06 12:34:04 | [E46] acc=73.2900% loss=0.7380 time=2.8400s up=0.0882MB down=0.0000MB cum=4.1432MB (best@43:74.0000%)
+2025-11-06 12:34:06 | id:1,train time:3.0434255599975586
+2025-11-06 12:34:06 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:06 | id:4,train time:3.078768014907837
+2025-11-06 12:34:06 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:06 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:06 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:06 | id:0,train time:3.0888283252716064
+2025-11-06 12:34:06 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:06 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:34:06 | server receive: plaintext size:92435 bytes
+2025-11-06 12:34:06 | server agg: epoch 47.
+2025-11-06 12:34:07 | [E47] acc=73.1800% loss=0.7360 time=3.1500s up=0.0882MB down=0.0000MB cum=4.2313MB (best@43:74.0000%)
+2025-11-06 12:34:09 | id:0,train time:3.0139653682708742025-11-06 12:34:09 | id:4,train time:3.0135934352874756
+2025-11-06 12:34:09 | id:1,train time:3.0145955085754395
+2025-11-06 12:34:09 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:09 | id:3,train time:3.030160903930664
+2025-11-06 12:34:09 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:09 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:09 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:34:09 | server receive: plaintext size:92435 bytes
+2025-11-06 12:34:09 | server agg: epoch 48.
+2025-11-06 12:34:10 | [E48] acc=71.8800% loss=0.7420 time=2.9900s up=0.0882MB down=0.0000MB cum=4.3195MB (best@43:74.0000%)
+2025-11-06 12:34:12 | id:4,train time:2.659517526626587
+
+2025-11-06 12:34:12 | id:0,train time:2.6681528091430664
+2025-11-06 12:34:12 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:12 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:12 | id:3,train time:2.6622540950775146
+2025-11-06 12:34:12 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:12 | id:2,train time:2.6652536392211914
+2025-11-06 12:34:12 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:12 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:12 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:34:12 | server receive: plaintext size:92435 bytes
+2025-11-06 12:34:12 | server agg: epoch 49.
+2025-11-06 12:34:13 | [E49] acc=68.3900% loss=0.8240 time=2.9800s up=0.0882MB down=0.0000MB cum=4.4076MB (best@43:74.0000%)
+2025-11-06 12:34:15 | id:0,train time:3.0563886165618896
+2025-11-06 12:34:15 | id:3,train time:3.0634751319885254
+2025-11-06 12:34:15 | id:4,train time:3.052489995956421
+2025-11-06 12:34:15 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:15 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:15 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:15 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:15 | id:1,train time:3.0853679180145264
+2025-11-06 12:34:15 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:15 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:34:15 | server receive: plaintext size:92435 bytes
+2025-11-06 12:34:15 | server agg: epoch 50.
+2025-11-06 12:34:16 | [E50] acc=69.7900% loss=0.7940 time=2.9300s up=0.0882MB down=0.0000MB cum=4.4958MB (best@43:74.0000%)
+2025-11-06 12:34:18 | id:4,train time:3.225040912628174
+2025-11-06 12:34:18 | id:0,train time:3.2412965297698975
+2025-11-06 12:34:18 | id:2,train time:3.239295482635498
+ uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:18 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:18 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:18 | id:3,train time:3.2548043727874756
+2025-11-06 12:34:19 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:19 | id:1,train time:3.2643136978149414
+2025-11-06 12:34:19 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:19 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:34:19 | server receive: plaintext size:92435 bytes
+2025-11-06 12:34:19 | server agg: epoch 51.
+2025-11-06 12:34:19 | [E51] acc=71.2100% loss=0.7930 time=3.3900s up=0.0882MB down=0.0000MB cum=4.5840MB (best@43:74.0000%)
+2025-11-06 12:34:22 | id:0,train time:3.2758901119232178
+2025-11-06 12:34:22 | id:1,train time:3.257537841796875
+2025-11-06 12:34:22 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:22 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:22 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:22 | id:4,train time:3.280963659286499
+2025-11-06 12:34:22 | id:2,train time:3.2829697132110596
+2025-11-06 12:34:22 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:22 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:34:22 | server receive: plaintext size:92435 bytes
+2025-11-06 12:34:22 | server agg: epoch 52.
+2025-11-06 12:34:23 | [E52] acc=74.3700% loss=0.7050 time=3.2900s up=0.0882MB down=0.0000MB cum=4.6721MB (best@53:74.3700%)
+2025-11-06 12:34:25 | id:4,train time:3.058868408203125
+2025-11-06 12:34:25 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:25 | id:0,train time:3.1121034622192383
+2025-11-06 12:34:25 | id:1,train time:3.1129136085510254
+2025-11-06 12:34:25 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:25 | id:2,train time:3.131119966506958
+2025-11-06 12:34:25 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:25 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:25 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:25 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:34:25 | server receive: plaintext size:92435 bytes
+2025-11-06 12:34:25 | server agg: epoch 53.
+2025-11-06 12:34:26 | [E53] acc=70.8900% loss=0.7730 time=3.1200s up=0.0882MB down=0.0000MB cum=4.7603MB (best@53:74.3700%)
+2025-11-06 12:34:28 | id:3,train time:2.732799530029297
+2025-11-06 12:34:28 | id:0,train time:2.7478604316711426
+uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:28 | id:2,train time:2.749375581741333
+2025-11-06 12:34:28 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:28 | id:1,train time:2.728816032409668
+2025-11-06 12:34:28 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:28 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:28 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:34:28 | server receive: plaintext size:92435 bytes
+2025-11-06 12:34:28 | server agg: epoch 54.
+2025-11-06 12:34:29 | [E54] acc=73.1300% loss=0.7290 time=2.8000s up=0.0882MB down=0.0000MB cum=4.8484MB (best@53:74.3700%)
+2025-11-06 12:34:31 | id:4,train time:3.150836944580078
+2025-11-06 12:34:31 | id:2,train time:3.149837017059326
+2025-11-06 12:34:31 | id:3,train time:3.142247438430786
+2025-11-06 12:34:31 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:31 | id:1,train time:3.159345865249634
+2025-11-06 12:34:31 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:31 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:31 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:34:31 | server receive: plaintext size:92435 bytes
+2025-11-06 12:34:31 | server agg: epoch 55.
+2025-11-06 12:34:32 | [E55] acc=69.6800% loss=0.7940 time=3.2900s up=0.0882MB down=0.0000MB cum=4.9366MB (best@53:74.3700%)
+2025-11-06 12:34:34 | id:1,train time:3.0816702842712402
+2025-11-06 12:34:34 | id:0,train time:3.0972280502319336
+uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:34 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:34 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:34 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:34 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:34 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:34:34 | server receive: plaintext size:92435 bytes
+2025-11-06 12:34:34 | server agg: epoch 56.
+2025-11-06 12:34:35 | [E56] acc=69.6200% loss=0.8040 time=3.0100s up=0.0882MB down=0.0000MB cum=5.0247MB (best@53:74.3700%)
+2025-11-06 12:34:37 | id:4,train time:2.758218288421631
+2025-11-06 12:34:37 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:37 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:37 | id:2,train time:2.7787373065948486
+2025-11-06 12:34:37 | id:0,train time:2.7900643348693848
+2025-11-06 12:34:37 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:37 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:37 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:34:37 | server receive: plaintext size:92435 bytes
+2025-11-06 12:34:37 | server agg: epoch 57.
+2025-11-06 12:34:38 | [E57] acc=69.2200% loss=0.8020 time=2.8900s up=0.0882MB down=0.0000MB cum=5.1129MB (best@53:74.3700%)
+2025-11-06 12:34:40 | id:4,train time:2.681432008743286
+2025-11-06 12:34:40 | id:1,train time:2.6984479427337646
+2025-11-06 12:34:40 | id:2,train time:2.6832094192504883
+2025-11-06 12:34:40 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:40 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:40 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:40 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:40 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:34:40 | server receive: plaintext size:92435 bytes
+2025-11-06 12:34:40 | server agg: epoch 58.
+2025-11-06 12:34:41 | [E58] acc=68.6300% loss=0.8190 time=2.8700s up=0.0882MB down=0.0000MB cum=5.2010MB (best@53:74.3700%)
+2025-11-06 12:34:43 | id:4,train time:3.0991556644439697
+2025-11-06 12:34:43 | id:1,train time:3.101710319519043
+2025-11-06 12:34:43 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:43 | id:2,train time:3.1202571392059326
+uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:43 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:43 | id:3,train time:3.1138947010040283
+2025-11-06 12:34:43 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:43 | id:0,train time:3.139047384262085
+2025-11-06 12:34:43 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:43 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:34:43 | server receive: plaintext size:92435 bytes
+2025-11-06 12:34:43 | server agg: epoch 59.
+2025-11-06 12:34:44 | [E59] acc=70.8300% loss=0.7780 time=3.2000s up=0.0882MB down=0.0000MB cum=5.2892MB (best@53:74.3700%)
+2025-11-06 12:34:46 | id:0,train time:3.025886297225952
+
+2025-11-06 12:34:46 | id:4,train time:3.039396047592163
+2025-11-06 12:34:46 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:46 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:46 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:46 | id:1,train time:3.067605495452881
+2025-11-06 12:34:46 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:46 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:34:46 | server receive: plaintext size:92435 bytes
+2025-11-06 12:34:46 | server agg: epoch 60.
+2025-11-06 12:34:47 | [E60] acc=71.7100% loss=0.7520 time=3.0600s up=0.0882MB down=0.0000MB cum=5.3773MB (best@53:74.3700%)
+2025-11-06 12:34:49 | id:4,train time:2.7485060691833496
+2025-11-06 12:34:49 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:49 | id:1,train time:2.7620270252227783
+2025-11-06 12:34:49 | id:0,train time:2.7918999195098877
+uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:49 | id:2,train time:2.7843575477600098
+2025-11-06 12:34:49 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:49 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:49 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:34:49 | server receive: plaintext size:92435 bytes
+2025-11-06 12:34:49 | server agg: epoch 61.
+2025-11-06 12:34:50 | [E61] acc=67.4900% loss=0.8160 time=2.8000s up=0.0882MB down=0.0000MB cum=5.4655MB (best@53:74.3700%)
+2025-11-06 12:34:52 | id:0,train time:3.055690050125122
+2025-11-06 12:34:52 | id:1,train time:3.085752248764038
+2025-11-06 12:34:52 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:52 | id:4,train time:3.0812461376190186
+2025-11-06 12:34:52 | id:3,train time:3.0872538089752197
+uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:52 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:52 | id:2,train time:3.0767416954040527
+2025-11-06 12:34:52 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:52 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:52 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:34:52 | server receive: plaintext size:92435 bytes
+2025-11-06 12:34:52 | server agg: epoch 62.
+2025-11-06 12:34:53 | [E62] acc=75.1900% loss=0.7060 time=3.3000s up=0.0882MB down=0.0000MB cum=5.5536MB (best@63:75.1900%)
+2025-11-06 12:34:55 | id:4,train time:2.966005563735962
+2025-11-06 12:34:55 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:55 | id:3,train time:2.98568058013916
+1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:55 | id:2,train time:2.9950101375579834
+2025-11-06 12:34:55 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:55 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:55 | id:0,train time:3.0344996452331543
+2025-11-06 12:34:55 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:55 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:34:55 | server receive: plaintext size:92435 bytes
+2025-11-06 12:34:55 | server agg: epoch 63.
+2025-11-06 12:34:56 | [E63] acc=75.1600% loss=0.6730 time=2.9200s up=0.0882MB down=0.0000MB cum=5.6418MB (best@63:75.1900%)
+2025-11-06 12:34:58 | id:2,train time:3.012740135192871
+
+2025-11-06 12:34:58 | id:1,train time:3.0131940841674805
+2025-11-06 12:34:58 | id:0,train time:2.9956090450286865
+2025-11-06 12:34:58 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:58 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:58 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:58 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:58 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:34:58 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:34:58 | server receive: plaintext size:92435 bytes
+2025-11-06 12:34:58 | server agg: epoch 64.
+2025-11-06 12:34:59 | [E64] acc=75.0600% loss=0.6740 time=3.4100s up=0.0882MB down=0.0000MB cum=5.7299MB (best@63:75.1900%)
+2025-11-06 12:35:02 | id:3,train time:3.481996536254883
+2025-11-06 12:35:02 | id:4,train time:3.4970405101776123
+2025-11-06 12:35:02 | id:2,train time:3.4960384368896484
+2025-11-06 12:35:02 | id:0,train time:3.4910390377044678
+uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:02 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:02 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:02 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:02 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:35:02 | server receive: plaintext size:92435 bytes
+2025-11-06 12:35:02 | server agg: epoch 65.
+2025-11-06 12:35:03 | [E65] acc=73.8000% loss=0.7050 time=3.2000s up=0.0882MB down=0.0000MB cum=5.8181MB (best@63:75.1900%)
+2025-11-06 12:35:05 | id:3,train time:3.0095109939575195
+2025-11-06 12:35:05 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:05 | id:1,train time:3.026503086090088
+2025-11-06 12:35:05 | [PT-PackSparse(mask+vals)] client 12025-11-06 12:35:05 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:05 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:05 | id:0,train time:3.046067953109741
+2025-11-06 12:35:05 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:05 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:35:05 | server receive: plaintext size:92435 bytes
+2025-11-06 12:35:05 | server agg: epoch 66.
+2025-11-06 12:35:06 | [E66] acc=73.5500% loss=0.6930 time=3.0600s up=0.0882MB down=0.0000MB cum=5.9062MB (best@63:75.1900%)
+2025-11-06 12:35:08 | id:0,train time:3.1590986251831055
+2025-11-06 12:35:08 | id:2,train time:3.1796700954437256
+2025-11-06 12:35:08 | id:3,train time:3.1731669902801514
+2025-11-06 12:35:08 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:08 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:08 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:08 | id:1,train time:3.1841776371002197
+uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:08 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:08 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:35:08 | server receive: plaintext size:92435 bytes
+2025-11-06 12:35:08 | server agg: epoch 67.
+2025-11-06 12:35:09 | [E67] acc=73.3500% loss=0.6990 time=3.3300s up=0.0882MB down=0.0000MB cum=5.9944MB (best@63:75.1900%)
+2025-11-06 12:35:11 | id:2,train time:3.104391098022461
+2025-11-06 12:35:12 | [PT-PackSparse(mask+vals)] client 2025-11-06 12:35:12 | id:4,train time:3.1158981323242182025-11-06 12:35:12 | id:1,train time:3.114967107772827
+2025-11-06 12:35:12 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:12 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:12 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:12 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:35:12 | server receive: plaintext size:92435 bytes
+2025-11-06 12:35:12 | server agg: epoch 68.
+2025-11-06 12:35:12 | [E68] acc=73.2400% loss=0.7170 time=3.1700s up=0.0882MB down=0.0000MB cum=6.0825MB (best@63:75.1900%)
+2025-11-06 12:35:15 | id:1,train time:3.3365626335144043
+2025-11-06 12:35:15 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:15 | id:0,train time:3.361955165863037
+2025-11-06 12:35:15 | id:4,train time:3.3673274517059326
+2025-11-06 12:35:15 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:15 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:15 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:15 | id:2,train time:3.391850709915161
+2025-11-06 12:35:15 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:15 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:35:15 | server receive: plaintext size:92435 bytes
+2025-11-06 12:35:15 | server agg: epoch 69.
+2025-11-06 12:35:16 | [E69] acc=70.9600% loss=0.7770 time=3.5600s up=0.0882MB down=0.0000MB cum=6.1707MB (best@63:75.1900%)
+2025-11-06 12:35:19 | id:3,train time:3.4992692470550537
+2025-11-06 12:35:19 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:19 | id:0,train time:3.5309579372406006
+2025-11-06 12:35:19 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:19 | id:4,train time:3.5425047874450684
+2025-11-06 12:35:19 | id:2,train time:3.558560609817505
+2025-11-06 12:35:19 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:19 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:19 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:35:19 | server receive: plaintext size:92435 bytes
+2025-11-06 12:35:19 | server agg: epoch 70.
+2025-11-06 12:35:19 | [E70] acc=75.0700% loss=0.6640 time=3.5500s up=0.0882MB down=0.0000MB cum=6.2589MB (best@63:75.1900%)
+2025-11-06 12:35:22 | id:4,train time:3.3489866256713867
+2025-11-06 12:35:22 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:22 | id:3,train time:3.3800244331359863
+2025-11-06 12:35:22 | id:1,train time:3.3921258449554443
+2025-11-06 12:35:22 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:22 | id:2,train time:3.395036458969116
+ uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:22 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:22 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:22 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:35:22 | server receive: plaintext size:92435 bytes
+2025-11-06 12:35:22 | server agg: epoch 71.
+2025-11-06 12:35:23 | [E71] acc=73.9400% loss=0.6990 time=3.3800s up=0.0882MB down=0.0000MB cum=6.3470MB (best@63:75.1900%)
+2025-11-06 12:35:25 | id:0,train time:3.231402635574341
+2025-11-06 12:35:25 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:25 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:25 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:25 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:25 | id:2,train time:3.280301094055176
+2025-11-06 12:35:25 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:25 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:35:25 | server receive: plaintext size:92435 bytes
+2025-11-06 12:35:25 | server agg: epoch 72.
+2025-11-06 12:35:26 | [E72] acc=75.0400% loss=0.6680 time=3.6800s up=0.0882MB down=0.0000MB cum=6.4352MB (best@63:75.1900%)
+2025-11-06 12:35:30 | id:3,train time:4.234229803085327
+2025-11-06 12:35:30 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:30 | id:1,train time:4.276376008987427
+2025-11-06 12:35:30 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:30 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:30 | id:2,train time:4.311998128890991
+2025-11-06 12:35:30 | id:0,train time:4.3268890380859375
+uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:30 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:31 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:35:31 | server receive: plaintext size:92435 bytes
+2025-11-06 12:35:31 | server agg: epoch 73.
+2025-11-06 12:35:31 | [E73] acc=77.4200% loss=0.6330 time=5.0800s up=0.0882MB down=0.0000MB cum=6.5233MB (best@74:77.4200%)
+2025-11-06 12:35:34 | id:3,train time:3.6103174686431885
+2025-11-06 12:35:35 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:35 | id:2,train time:3.6571474075317383
+2025-11-06 12:35:35 | id:0,train time:3.6733145713806152
+2025-11-06 12:35:35 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:35 | id:1,train time:3.6873254776000977
+2025-11-06 12:35:35 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:35 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:35 | id:4,train time:3.7115912437438965
+2025-11-06 12:35:35 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:35 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:35:35 | server receive: plaintext size:92435 bytes
+2025-11-06 12:35:35 | server agg: epoch 74.
+2025-11-06 12:35:35 | [E74] acc=76.6600% loss=0.6350 time=3.9000s up=0.0882MB down=0.0000MB cum=6.6115MB (best@74:77.4200%)
+2025-11-06 12:35:39 | id:3,train time:4.4705846309661865
+2025-11-06 12:35:39 | id:0,train time:4.469586133956909
+2025-11-06 12:35:39 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:39 | id:1,train time:4.505373477935791
+2025-11-06 12:35:39 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:39 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:39 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:39 | id:2,train time:4.5518763065338135
+2025-11-06 12:35:39 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:39 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:35:39 | server receive: plaintext size:92435 bytes
+2025-11-06 12:35:39 | server agg: epoch 75.
+2025-11-06 12:35:40 | [E75] acc=78.4800% loss=0.5880 time=4.6900s up=0.0882MB down=0.0000MB cum=6.6996MB (best@76:78.4800%)
+2025-11-06 12:35:43 | id:4,train time:4.093624830245972
+2025-11-06 12:35:43 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:43 | id:3,train time:4.1627702713012695
+2025-11-06 12:35:43 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:43 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:43 | id:0,train time:4.206598281860352
+2025-11-06 12:35:43 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:43 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:43 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:35:43 | server receive: plaintext size:92435 bytes
+2025-11-06 12:35:44 | server agg: epoch 76.
+2025-11-06 12:35:44 | [E76] acc=77.7700% loss=0.6390 time=4.2300s up=0.0882MB down=0.0000MB cum=6.7878MB (best@76:78.4800%)
+2025-11-06 12:35:48 | id:4,train time:4.385396957397461
+2025-11-06 12:35:48 | id:0,train time:4.391449451446533
+ uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:48 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:48 | id:3,train time:4.422935247421265
+2025-11-06 12:35:48 | id:1,train time:4.435074329376221
+2025-11-06 12:35:48 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:48 | id:2,train time:4.426037549972534
+2025-11-06 12:35:48 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:48 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:35:48 | server receive: plaintext size:92435 bytes
+2025-11-06 12:35:48 | server agg: epoch 77.
+2025-11-06 12:35:49 | [E77] acc=77.3100% loss=0.6120 time=4.4300s up=0.0882MB down=0.0000MB cum=6.8759MB (best@76:78.4800%)
+2025-11-06 12:35:52 | id:0,train time:4.3323752880096436
+2025-11-06 12:35:52 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:52 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:52 | id:2,train time:4.3695597648620605
+2025-11-06 12:35:52 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:52 | id:3,train time:4.395667314529419
+2025-11-06 12:35:52 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:52 | id:4,train time:4.414981842041016
+2025-11-06 12:35:52 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:52 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:35:52 | server receive: plaintext size:92435 bytes
+2025-11-06 12:35:53 | server agg: epoch 78.
+2025-11-06 12:35:53 | [E78] acc=77.3200% loss=0.6500 time=4.5000s up=0.0882MB down=0.0000MB cum=6.9641MB (best@76:78.4800%)
+2025-11-06 12:35:58 | id:1,train time:5.2489728927612305
+2025-11-06 12:35:58 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:58 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:58 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:58 | id:0,train time:5.321578741073608
+2025-11-06 12:35:58 | id:2,train time:5.322127819061279
+ uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:58 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:35:58 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:35:58 | server receive: plaintext size:92435 bytes
+2025-11-06 12:35:58 | server agg: epoch 79.
+2025-11-06 12:35:59 | [E79] acc=78.4300% loss=0.6250 time=5.2700s up=0.0882MB down=0.0000MB cum=7.0522MB (best@76:78.4800%)
+2025-11-06 12:36:02 | id:3,train time:4.039304971694946
+2025-11-06 12:36:02 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:36:02 | id:4,train time:4.137819528579712
+2025-11-06 12:36:02 | id:1,train time:4.157767057418823
+2025-11-06 12:36:02 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:36:02 | id:2,train time:4.172545433044434
+2025-11-06 12:36:02 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:36:02 | id:0,train time:4.202816724777222
+2025-11-06 12:36:02 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:36:03 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:36:03 | server receive: plaintext size:92435 bytes
+2025-11-06 12:36:03 | server agg: epoch 80.
+2025-11-06 12:36:04 | [E80] acc=77.5100% loss=0.6500 time=5.4100s up=0.0882MB down=0.0000MB cum=7.1404MB (best@76:78.4800%)
+2025-11-06 12:36:07 | id:1,train time:4.111518144607544
+2025-11-06 12:36:07 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:36:07 | id:4,train time:4.150588274002075
+2025-11-06 12:36:07 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:36:07 | id:0,train time:4.160601377487183
+2025-11-06 12:36:07 | id:2,train time:4.167602062225342
+ uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:36:07 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:36:07 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:36:07 | server receive: plaintext size:92435 bytes
+2025-11-06 12:36:07 | server agg: epoch 81.
+2025-11-06 12:36:08 | [E81] acc=73.8200% loss=0.7520 time=4.2800s up=0.0882MB down=0.0000MB cum=7.2285MB (best@76:78.4800%)
+2025-11-06 12:36:12 | id:3,train time:4.499303340911865
+2025-11-06 12:36:12 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:36:12 | id:4,train time:4.594067573547363
+2025-11-06 12:36:12 | id:2,train time:4.602074146270752
+2025-11-06 12:36:12 | id:1,train time:4.60658073425293
+2025-11-06 12:36:12 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:36:12 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:36:12 | id:0,train time:4.6665637493133545
+2025-11-06 12:36:12 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:36:13 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:36:13 | server receive: plaintext size:92435 bytes
+2025-11-06 12:36:13 | server agg: epoch 82.
+2025-11-06 12:36:14 | [E82] acc=74.4500% loss=0.7140 time=5.5200s up=0.0882MB down=0.0000MB cum=7.3167MB (best@76:78.4800%)
+2025-11-06 12:36:18 | id:2,train time:4.965855360031128
+2025-11-06 12:36:18 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:36:18 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:36:18 | id:1,train time:5.012736558914185
+2025-11-06 12:36:18 | id:0,train time:5.031068563461304
+2025-11-06 12:36:18 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:36:18 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:36:18 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:36:18 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:36:18 | server receive: plaintext size:92435 bytes
+2025-11-06 12:36:18 | server agg: epoch 83.
+2025-11-06 12:36:19 | [E83] acc=74.2400% loss=0.7340 time=5.1600s up=0.0882MB down=0.0000MB cum=7.4048MB (best@76:78.4800%)
+2025-11-06 12:36:24 | id:3,train time:5.291357040405273
+2025-11-06 12:36:24 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:36:24 | id:4,train time:5.316500186920166
+2025-11-06 12:36:24 | id:0,train time:5.335501432418823
+2025-11-06 12:36:24 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:36:24 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:36:24 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:36:24 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:36:24 | server receive: plaintext size:92435 bytes
+2025-11-06 12:36:24 | server agg: epoch 84.
+2025-11-06 12:36:25 | [E84] acc=75.0900% loss=0.7050 time=5.5400s up=0.0882MB down=0.0000MB cum=7.4930MB (best@76:78.4800%)
+2025-11-06 12:36:29 | id:4,train time:5.713484048843384
+2025-11-06 12:36:29 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:36:29 | id:3,train time:5.755258560180664
+2025-11-06 12:36:29 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:36:29 | id:2,train time:5.83723783493042
+2025-11-06 12:36:29 | id:1,train time:5.850276231765747
+ uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:36:29 | id:0,train time:5.862324237823486
+ uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:36:29 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:36:31 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:36:31 | server receive: plaintext size:92435 bytes
+2025-11-06 12:36:31 | server agg: epoch 85.
+2025-11-06 12:36:31 | [E85] acc=75.4500% loss=0.7010 time=6.8400s up=0.0882MB down=0.0000MB cum=7.5811MB (best@76:78.4800%)
+2025-11-06 12:36:36 | id:4,train time:5.719717741012573
+2025-11-06 12:36:36 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:36:36 | id:3,train time:5.827346086502075
+2025-11-06 12:36:36 | id:1,train time:5.825878620147705
+2025-11-06 12:36:36 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:36:36 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:36:36 | id:0,train time:5.900763988494873
+2025-11-06 12:36:36 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:36:36 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:36:36 | server receive: plaintext size:92435 bytes
+2025-11-06 12:36:37 | server agg: epoch 86.
+2025-11-06 12:36:37 | [E86] acc=75.8000% loss=0.6910 time=5.9500s up=0.0882MB down=0.0000MB cum=7.6693MB (best@76:78.4800%)
+2025-11-06 12:36:43 | id:3,train time:6.467158555984497
+2025-11-06 12:36:43 | id:4,train time:6.495663642883301
+2025-11-06 12:36:43 | id:1,train time:6.4839677810668945
+2025-11-06 12:36:43 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:36:43 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:36:43 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:36:43 | id:0,train time:6.5315163135528564
+2025-11-06 12:36:43 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:36:43 | id:2,train time:6.537265062332153
+2025-11-06 12:36:43 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:36:43 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:36:43 | server receive: plaintext size:92435 bytes
+2025-11-06 12:36:43 | server agg: epoch 87.
+2025-11-06 12:36:45 | [E87] acc=77.6100% loss=0.6330 time=7.1100s up=0.0882MB down=0.0000MB cum=7.7575MB (best@76:78.4800%)
+2025-11-06 12:36:50 | id:3,train time:6.472472190856934
+2025-11-06 12:36:50 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:36:50 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:36:50 | id:0,train time:6.558622121810913
+2025-11-06 12:36:50 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:36:50 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:36:50 | id:2,train time:6.573649644851685
+2025-11-06 12:36:50 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:36:50 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:36:50 | server receive: plaintext size:92435 bytes
+2025-11-06 12:36:50 | server agg: epoch 88.
+2025-11-06 12:36:51 | [E88] acc=76.2200% loss=0.6940 time=6.3900s up=0.0882MB down=0.0000MB cum=7.8456MB (best@76:78.4800%)
+2025-11-06 12:36:56 | id:4,train time:6.118736505508423
+2025-11-06 12:36:56 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:36:56 | id:3,train time:6.163355350494385
+2025-11-06 12:36:56 | id:0,train time:6.156850814819336
+2025-11-06 12:36:56 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:36:56 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:36:56 | id:1,train time:6.207040548324585
+2025-11-06 12:36:56 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:36:56 | id:2,train time:6.2491796016693115
+2025-11-06 12:36:56 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:36:56 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:36:56 | server receive: plaintext size:92435 bytes
+2025-11-06 12:36:56 | server agg: epoch 89.
+2025-11-06 12:36:57 | [E89] acc=74.9300% loss=0.7030 time=6.2000s up=0.0882MB down=0.0000MB cum=7.9338MB (best@76:78.4800%)
+2025-11-06 12:37:01 | id:4,train time:5.291446208953857
+2025-11-06 12:37:01 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:01 | id:1,train time:5.322108507156372
+2025-11-06 12:37:01 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:01 | id:3,train time:5.3567023277282715
+2025-11-06 12:37:01 | id:2,train time:5.34051513671875
+2025-11-06 12:37:01 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:01 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:01 | id:0,train time:5.362064838409424
+2025-11-06 12:37:01 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:02 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:37:02 | server receive: plaintext size:92435 bytes
+2025-11-06 12:37:03 | server agg: epoch 90.
+2025-11-06 12:37:03 | [E90] acc=77.6200% loss=0.6360 time=6.1400s up=0.0882MB down=0.0000MB cum=8.0219MB (best@76:78.4800%)
+2025-11-06 12:37:07 | id:3,train time:4.261215925216675
+2025-11-06 12:37:07 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:07 | id:0,train time:4.295740604400635
+2025-11-06 12:37:07 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:07 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:07 | id:2,train time:4.355767250061035
+2025-11-06 12:37:07 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:07 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:07 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:37:07 | server receive: plaintext size:92435 bytes
+2025-11-06 12:37:07 | server agg: epoch 91.
+2025-11-06 12:37:08 | [E91] acc=76.4600% loss=0.6620 time=4.5200s up=0.0882MB down=0.0000MB cum=8.1101MB (best@76:78.4800%)
+2025-11-06 12:37:12 | id:3,train time:5.514753103256226
+2025-11-06 12:37:12 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:12 | id:4,train time:5.527416706085205
+2025-11-06 12:37:13 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:13 | id:1,train time:5.546258926391602
+2025-11-06 12:37:13 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:13 | id:0,train time:5.594798803329468
+2025-11-06 12:37:13 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:13 | id:2,train time:5.608797788619995
+2025-11-06 12:37:13 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:13 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:37:13 | server receive: plaintext size:92435 bytes
+2025-11-06 12:37:13 | server agg: epoch 92.
+2025-11-06 12:37:14 | [E92] acc=75.0900% loss=0.6920 time=5.6100s up=0.0882MB down=0.0000MB cum=8.1982MB (best@76:78.4800%)
+2025-11-06 12:37:19 | id:4,train time:6.647142171859741
+2025-11-06 12:37:19 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:19 | id:0,train time:6.7700722217559814
+2025-11-06 12:37:19 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:19 | id:3,train time:6.780576229095459
+2025-11-06 12:37:19 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:19 | id:2,train time:6.807952404022217
+2025-11-06 12:37:19 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:19 | id:1,train time:6.847388505935669
+2025-11-06 12:37:19 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:19 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:37:20 | server receive: plaintext size:92435 bytes
+2025-11-06 12:37:20 | server agg: epoch 93.
+2025-11-06 12:37:21 | [E93] acc=75.2200% loss=0.6980 time=7.1100s up=0.0882MB down=0.0000MB cum=8.2864MB (best@76:78.4800%)
+2025-11-06 12:37:26 | id:3,train time:6.526662111282349
+2025-11-06 12:37:26 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:26 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:26 | id:0,train time:6.619786500930786
+2025-11-06 12:37:26 | id:4,train time:6.623785018920898
+2025-11-06 12:37:26 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:26 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:26 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:26 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:37:26 | server receive: plaintext size:92435 bytes
+2025-11-06 12:37:26 | server agg: epoch 94.
+2025-11-06 12:37:27 | [E94] acc=75.8400% loss=0.7140 time=6.4400s up=0.0882MB down=0.0000MB cum=8.3745MB (best@76:78.4800%)
+2025-11-06 12:37:32 | id:1,train time:5.677612066268921
+2025-11-06 12:37:32 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:32 | id:2,train time:5.706535577774048
+2025-11-06 12:37:32 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:32 | id:0,train time:5.789588928222656
+2025-11-06 12:37:32 | id:3,train time:5.789591073989868
+2025-11-06 12:37:32 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:32 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:32 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:37:32 | server receive: plaintext size:92435 bytes
+2025-11-06 12:37:32 | server agg: epoch 95.
+2025-11-06 12:37:33 | [E95] acc=76.6100% loss=0.6860 time=5.7800s up=0.0882MB down=0.0000MB cum=8.4627MB (best@76:78.4800%)
+2025-11-06 12:37:38 | id:3,train time:6.141909122467041
+2025-11-06 12:37:38 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:38 | id:0,train time:6.2041261196136475
+2025-11-06 12:37:38 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:38 | id:2,train time:6.231882333755493
+2025-11-06 12:37:38 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:38 | id:1,train time:6.2508931159973145
+2025-11-06 12:37:38 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:38 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:37:38 | server receive: plaintext size:92435 bytes
+2025-11-06 12:37:38 | server agg: epoch 96.
+2025-11-06 12:37:39 | [E96] acc=75.4000% loss=0.7120 time=6.2800s up=0.0882MB down=0.0000MB cum=8.5508MB (best@76:78.4800%)
+2025-11-06 12:37:43 | id:3,train time:4.542526006698608
+2025-11-06 12:37:43 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:43 | id:4,train time:4.626479864120483
+2025-11-06 12:37:43 | id:2,train time:4.627983808517456
+ uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:43 | id:1,train time:4.6365602016448975
+uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:43 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:43 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:44 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:37:44 | server receive: plaintext size:92435 bytes
+2025-11-06 12:37:44 | server agg: epoch 97.
+2025-11-06 12:37:45 | [E97] acc=76.8800% loss=0.6690 time=5.8900s up=0.0882MB down=0.0000MB cum=8.6390MB (best@76:78.4800%)
+2025-11-06 12:37:50 | id:0,train time:5.631958484649658
+2025-11-06 12:37:50 | id:3,train time:5.650462865829468
+2025-11-06 12:37:50 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:50 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:50 | id:2,train time:5.701720714569092
+2025-11-06 12:37:50 | id:4,train time:5.6977128982543945
+2025-11-06 12:37:50 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:50 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:50 | id:1,train time:5.787832975387573
+2025-11-06 12:37:50 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:50 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:37:50 | server receive: plaintext size:92435 bytes
+2025-11-06 12:37:50 | server agg: epoch 98.
+2025-11-06 12:37:51 | [E98] acc=77.8600% loss=0.6380 time=5.9800s up=0.0882MB down=0.0000MB cum=8.7271MB (best@76:78.4800%)
+2025-11-06 12:37:55 | id:4,train time:5.418881893157959
+2025-11-06 12:37:55 | [PT-PackSparse(mask+vals)] client 1 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:55 | id:3,train time:5.429389953613281
+2025-11-06 12:37:55 | id:2,train time:5.436048746109009
+2025-11-06 12:37:55 | id:0,train time:5.439967393875122
+2025-11-06 12:37:55 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:55 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:55 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:37:55 | enc=False, isSpars=topk, cipher_count=True
+2025-11-06 12:37:55 | server receive: plaintext size:92435 bytes
+2025-11-06 12:37:55 | server agg: epoch 99.
+2025-11-06 12:37:56 | [E99] acc=77.1600% loss=0.6660 time=5.1600s up=0.0882MB down=0.0000MB cum=8.8153MB (best@76:78.4800%)
+2025-11-06 12:37:56 | server end!
+2025-11-06 12:37:56 | [Summary] mode=plain-topk | rounds_run=100 | best_acc=78.4800% (best@76) | time=391.9497s | up=8.8153MB | down=0.0000MB | total=8.8153MB | avg_up/participation=0.0882MB | 
+2025-11-06 12:37:57 | Total plaintext uplink: 9243500 bytes
+2025-11-06 12:37:57 | Accuracy list: [36.059999999999995, 49.75, 60.46, 56.989999999999995, 56.36, 53.54, 56.74, 60.84, 63.77, 67.72, 71.14, 68.36, 64.18, 64.0, 65.09, 64.96, 70.0, 70.75, 71.38, 70.71, 72.24000000000001, 73.9, 72.5, 68.78, 70.82000000000001, 72.24000000000001, 68.97999999999999, 71.17, 70.34, 69.76, 69.85, 70.71, 69.0, 68.7, 69.95, 70.44, 73.26, 69.99, 72.35000000000001, 73.27, 71.8, 73.28, 74.0, 71.86, 71.48, 70.93, 73.29, 73.18, 71.88, 68.39, 69.78999999999999, 71.21, 74.37, 70.89, 73.13, 69.67999999999999, 69.62, 69.22, 68.63, 70.83, 71.71, 67.49000000000001, 75.19, 75.16000000000001, 75.06, 73.8, 73.55000000000001, 73.35000000000001, 73.24000000000001, 70.96000000000001, 75.07000000000001, 73.94, 75.03999999999999, 77.42, 76.66, 78.48, 77.77, 77.31, 77.32, 78.43, 77.51, 73.82, 74.45, 74.24, 75.09, 75.44999999999999, 75.8, 77.61, 76.22, 74.92999999999999, 77.62, 76.46, 75.09, 75.22, 75.84, 76.61, 75.4, 76.88000000000001, 77.86, 77.16]%.
+2025-11-06 12:37:57 | Loss list:[1.987, 1.603, 1.356, 1.319, 1.268, 1.287, 1.232, 1.126, 1.083, 0.996, 0.923, 0.948, 0.982, 0.969, 0.957, 0.945, 0.859, 0.837, 0.83, 0.823, 0.806, 0.776, 0.785, 0.831, 0.799, 0.758, 0.816, 0.768, 0.786, 0.797, 0.806, 0.79, 0.815, 0.828, 0.797, 0.763, 0.705, 0.795, 0.713, 0.694, 0.739, 0.697, 0.686, 0.736, 0.729, 0.749, 0.738, 0.736, 0.742, 0.824, 0.794, 0.793, 0.705, 0.773, 0.729, 0.794, 0.804, 0.802, 0.819, 0.778, 0.752, 0.816, 0.706, 0.673, 0.674, 0.705, 0.693, 0.699, 0.717, 0.777, 0.664, 0.699, 0.668, 0.633, 0.635, 0.588, 0.639, 0.612, 0.65, 0.625, 0.65, 0.752, 0.714, 0.734, 0.705, 0.701, 0.691, 0.633, 0.694, 0.703, 0.636, 0.662, 0.692, 0.698, 0.714, 0.686, 0.712, 0.669, 0.638, 0.666]
+2025-11-06 12:37:57 | time list:[17.64, 3.22, 2.86, 3.15, 2.71, 2.91, 2.78, 3.24, 2.79, 2.73, 2.77, 2.84, 2.9, 3.08, 2.83, 3.04, 2.74, 2.75, 3.0, 3.05, 2.87, 3.0, 2.79, 3.01, 2.63, 2.88, 3.07, 3.03, 2.71, 2.97, 2.84, 2.98, 3.14, 2.95, 2.94, 3.74, 5.55, 4.6, 4.08, 3.33, 2.68, 3.21, 3.04, 3.13, 2.91, 2.9, 2.84, 3.15, 2.99, 2.98, 2.93, 3.39, 3.29, 3.12, 2.8, 3.29, 3.01, 2.89, 2.87, 3.2, 3.06, 2.8, 3.3, 2.92, 3.41, 3.2, 3.06, 3.33, 3.17, 3.56, 3.55, 3.38, 3.68, 5.08, 3.9, 4.69, 4.23, 4.43, 4.5, 5.27, 5.41, 4.28, 5.52, 5.16, 5.54, 6.84, 5.95, 7.11, 6.39, 6.2, 6.14, 4.52, 5.61, 7.11, 6.44, 5.78, 6.28, 5.89, 5.98, 5.16]s
+2025-11-06 12:37:57 | Participate list: [100, 100, 100, 100, 100].
+2025-11-06 12:37:57 | tmp_len_clusters:[]
+2025-11-06 12:38:01 | id:3,train time:5.486208200454712
+2025-11-06 12:38:01 | [PT-PackSparse(mask+vals)] client 3 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:38:01 | [PT-PackSparse(mask+vals)] client 4 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:38:01 | id:1,train time:5.60591983795166
+2025-11-06 12:38:01 | id:2,train time:5.608127593994141
+ uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:38:01 | [PT-PackSparse(mask+vals)] client 2 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)
+2025-11-06 12:38:01 | id:0,train time:5.62866997718811
+2025-11-06 12:38:01 | [PT-PackSparse(mask+vals)] client 0 uplink ~17792 bytes (mask 1s: 556/5554, vals: 4448)

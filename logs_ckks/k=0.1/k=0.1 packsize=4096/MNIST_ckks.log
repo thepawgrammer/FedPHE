@@ -1,0 +1,83 @@
+2025-11-13 18:05:05 | Basic information: device cpu, learning rate 0.001, num clients 5, epochs 100,noniid_method dirichlet,            isEnc True,isBatch True,sparsification topk, client selection False,topk 0.1, enc_batch_size 4096
+2025-11-13 18:05:06 | training weights: [0.2, 0.2, 0.2, 0.2, 0.2]
+2025-11-13 18:05:06 | testing weights:[0.2, 0.2, 0.2, 0.2, 0.2]
+2025-11-13 18:05:06 | client0, train samples 12000,test samples 2000
+2025-11-13 18:05:06 | client1, train samples 12000,test samples 2000
+2025-11-13 18:05:06 | client2, train samples 12000,test samples 2000
+2025-11-13 18:05:06 | client3, train samples 12000,test samples 2000
+2025-11-13 18:05:06 | client4, train samples 12000,test samples 2000
+2025-11-13 18:05:06 | data split finished!
+2025-11-13 18:05:06 | Batch num:11
+2025-11-13 18:05:28 | server receive: ciphertext size:3343369 bytes (3.1885 MB)
+2025-11-13 18:05:28 | server agg: epoch 0.
+2025-11-13 18:05:30 | ***********Server epoch 0, Clients accuracy:94.69, loss:0.13%***********
+
+2025-11-13 18:05:36 | server receive: ciphertext size:3341716 bytes (3.1869 MB)
+2025-11-13 18:05:36 | server agg: epoch 1.
+2025-11-13 18:05:37 | ***********Server epoch 1, Clients accuracy:97.34, loss:0.06%***********
+
+2025-11-13 18:05:40 | server receive: ciphertext size:3342921 bytes (3.1881 MB)
+2025-11-13 18:05:40 | server agg: epoch 2.
+2025-11-13 18:05:42 | ***********Server epoch 2, Clients accuracy:97.89, loss:0.04%***********
+
+2025-11-13 18:05:47 | server receive: ciphertext size:3342658 bytes (3.1878 MB)
+2025-11-13 18:05:47 | server agg: epoch 3.
+2025-11-13 18:05:48 | ***********Server epoch 3, Clients accuracy:97.72, loss:0.04%***********
+
+2025-11-13 18:05:54 | server receive: ciphertext size:3343875 bytes (3.1890 MB)
+2025-11-13 18:05:54 | server agg: epoch 4.
+2025-11-13 18:05:55 | ***********Server epoch 4, Clients accuracy:97.91, loss:0.04%***********
+
+2025-11-13 18:06:01 | server receive: ciphertext size:3343996 bytes (3.1891 MB)
+2025-11-13 18:06:01 | server agg: epoch 5.
+2025-11-13 18:06:03 | ***********Server epoch 5, Clients accuracy:98.15, loss:0.03%***********
+
+2025-11-13 18:06:07 | server receive: ciphertext size:3343442 bytes (3.1886 MB)
+2025-11-13 18:06:07 | server agg: epoch 6.
+2025-11-13 18:06:08 | ***********Server epoch 6, Clients accuracy:97.85, loss:0.04%***********
+
+2025-11-13 18:06:13 | server receive: ciphertext size:3343769 bytes (3.1889 MB)
+2025-11-13 18:06:13 | server agg: epoch 7.
+2025-11-13 18:06:14 | ***********Server epoch 7, Clients accuracy:98.0, loss:0.03%***********
+
+2025-11-13 18:06:19 | server receive: ciphertext size:3343356 bytes (3.1885 MB)
+2025-11-13 18:06:19 | server agg: epoch 8.
+2025-11-13 18:06:20 | ***********Server epoch 8, Clients accuracy:98.12, loss:0.04%***********
+
+2025-11-13 18:06:24 | server receive: ciphertext size:3343276 bytes (3.1884 MB)
+2025-11-13 18:06:24 | server agg: epoch 9.
+2025-11-13 18:06:25 | ***********Server epoch 9, Clients accuracy:98.05, loss:0.04%***********
+
+2025-11-13 18:06:28 | server receive: ciphertext size:3343496 bytes (3.1886 MB)
+2025-11-13 18:06:28 | server agg: epoch 10.
+2025-11-13 18:06:30 | ***********Server epoch 10, Clients accuracy:98.04, loss:0.04%***********
+
+2025-11-13 18:06:41 | server receive: ciphertext size:3342630 bytes (3.1878 MB)
+2025-11-13 18:06:41 | server agg: epoch 11.
+2025-11-13 18:06:43 | ***********Server epoch 11, Clients accuracy:97.95, loss:0.04%***********
+
+2025-11-13 18:06:47 | server receive: ciphertext size:3343306 bytes (3.1884 MB)
+2025-11-13 18:06:47 | server agg: epoch 12.
+2025-11-13 18:06:48 | ***********Server epoch 12, Clients accuracy:97.99, loss:0.04%***********
+
+2025-11-13 18:06:53 | server receive: ciphertext size:3342978 bytes (3.1881 MB)
+2025-11-13 18:06:53 | server agg: epoch 13.
+2025-11-13 18:06:54 | ***********Server epoch 13, Clients accuracy:97.95, loss:0.04%***********
+
+2025-11-13 18:07:01 | server receive: ciphertext size:3342978 bytes (3.1881 MB)
+2025-11-13 18:07:01 | server agg: epoch 14.
+2025-11-13 18:07:02 | ***********Server epoch 14, Clients accuracy:97.98, loss:0.05%***********
+
+2025-11-13 18:07:06 | server receive: ciphertext size:3342912 bytes (3.1880 MB)
+2025-11-13 18:07:06 | server agg: epoch 15.
+2025-11-13 18:07:07 | ***********Server epoch 15, Clients accuracy:98.08, loss:0.04%***********
+
+2025-11-13 18:07:07 | [Converged] No improvement in best_acc for 10 rounds. best_acc=98.1500 at epoch 5.
+2025-11-13 18:07:07 | server end!
+2025-11-13 18:07:07 | Training stopped early at epoch 15 (best_acc=98.1500 at epoch 5).
+2025-11-13 18:07:07 | Total ciphertext size: 53490678 bytes (51.0127 MB), size list: [3343369, 3341716, 3342921, 3342658, 3343875, 3343996, 3343442, 3343769, 3343356, 3343276, 3343496, 3342630, 3343306, 3342978, 3342978, 3342912].
+2025-11-13 18:07:07 | Accuracy list: [94.69, 97.34, 97.89, 97.72, 97.91, 98.15, 97.85, 98.0, 98.12, 98.05, 98.04, 97.95, 97.99, 97.95, 97.98, 98.08]%.
+2025-11-13 18:07:07 | Loss list:[0.13, 0.06, 0.04, 0.04, 0.04, 0.03, 0.04, 0.03, 0.04, 0.04, 0.04, 0.04, 0.04, 0.04, 0.05, 0.04]
+2025-11-13 18:07:07 | time list:[19.62, 27.25, 31.84, 38.07, 45.49, 52.73, 58.5, 64.53, 70.23, 75.06, 79.64, 92.8, 98.18, 104.45, 112.01]s
+2025-11-13 18:07:07 | Participate list: [16, 16, 16, 16, 16].
+2025-11-13 18:07:07 | tmp_len_clusters:[]
